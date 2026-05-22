@@ -18,6 +18,8 @@
 # misc
 .DS_Store
 *.pem
+.claude/
+handoff/
 
 # debug
 npm-debug.log*

@@ -1,0 +1,22 @@
+/** Extract a YouTube video id from common URL formats. Returns "" when not parseable. */
+export function youTubeId(url?: string): string {
+  if (!url) {
+    return "";
+  }
+
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=)([\w-]{11})/,
+    /(?:youtu\.be\/)([\w-]{11})/,
+    /(?:youtube\.com\/embed\/)([\w-]{11})/,
+    /(?:youtube\.com\/shorts\/)([\w-]{11})/,
+  ];
+
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) {
+      return match[1];
+    }
+  }
+
+  return "";
+}
