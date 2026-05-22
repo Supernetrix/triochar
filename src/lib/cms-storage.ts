@@ -186,7 +186,10 @@ function encodeRepoPath(filePath: string) {
 
 async function gitHubRequest<T>(filePath: string, init?: RequestInit) {
   const config = gitHubConfig();
-  const url = `https://api.github.com/repos/${config.repo}/contents/${encodeRepoPath(filePath)}`;
+  const queryStart = filePath.indexOf("?");
+  const rawPath = queryStart >= 0 ? filePath.slice(0, queryStart) : filePath;
+  const query = queryStart >= 0 ? filePath.slice(queryStart) : "";
+  const url = `https://api.github.com/repos/${config.repo}/contents/${encodeRepoPath(rawPath)}${query}`;
   const response = await fetch(url, {
     ...init,
     headers: {
