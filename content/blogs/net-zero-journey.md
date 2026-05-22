@@ -1,20 +1,21 @@
 ---
-title: "From Thought to Net Zero"
-slug: "net-zero-journey"
-summary: "How the customer journey from climate intent to net zero can be turned into a clear website narrative."
-date: "2026-05-21"
-image: "/images/hero-carbon-platform.png"
+title: From Thought to Net Zero
+slug: net-zero-journey
+summary: >-
+  How the customer journey from climate intent to net zero can be turned into a
+  clear website narrative.
+date: '2026-05-21'
+image: /images/hero-carbon-platform.png
 tags:
-  - "Net zero"
-  - "Strategy"
-draft: false
+  - Net zero
+  - Strategy
+draft: true
 featured: true
-seoTitle: "From Thought to Net Zero"
-seoDescription: "A Triochar blog post about the net-zero buyer journey."
-category: "Strategy"
-author: "Triochar Team"
+seoTitle: From Thought to Net Zero
+seoDescription: A Triochar blog post about the net-zero buyer journey.
+category: Strategy
+author: Triochar Team
 ---
-
 ## The Journey Needs Structure
 
 Most organizations start with a thought: a climate goal, an ESG requirement, or a stakeholder expectation. A strong carbon platform turns that loose intent into a sequence of decisions.
