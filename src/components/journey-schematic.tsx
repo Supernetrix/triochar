@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 
 const steps = [
   "Thought",
@@ -20,8 +21,14 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function JourneySchematic() {
   const reduced = useReducedMotion();
+  const mobileJourneyRef = useRef<HTMLDivElement>(null);
   const last = steps.length - 1;
   const lineDuration = 1.15;
+  const { scrollYProgress } = useScroll({
+    target: mobileJourneyRef,
+    offset: ["start 78%", "end 38%"],
+  });
+  const mobileLineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <div className="soft-card rounded-3xl p-4 sm:p-7 md:p-10">
@@ -92,61 +99,70 @@ export function JourneySchematic() {
         })}
       </div>
 
-      {/* Mobile / tablet — readable vertical journey */}
-      <div className="relative mt-7 rounded-2xl border border-[var(--line)] bg-[var(--surface-pure)] px-4 py-5 sm:px-5 lg:hidden">
-        <div className="absolute bottom-8 left-[2.2rem] top-8 w-[3px] overflow-hidden rounded-full bg-[color:var(--mint-2)]/55 sm:left-[2.45rem]">
+      {/* Mobile / tablet — refined vertical journey */}
+      <div
+        ref={mobileJourneyRef}
+        className="relative mt-7 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface-pure)] p-3.5 shadow-[0_18px_42px_-36px_rgba(28,38,32,0.55)] sm:p-4 lg:hidden"
+      >
+        <div className="absolute bottom-8 left-[1.95rem] top-8 w-[2px] overflow-hidden rounded-full bg-[color:var(--mint-2)]/45 sm:left-[2.1rem]">
           <motion.div
             className="h-full w-full origin-top rounded-full"
-            style={{ background: "linear-gradient(180deg, var(--mint-2), var(--forest))" }}
-            initial={reduced ? false : { scaleY: 0 }}
-            whileInView={reduced ? undefined : { scaleY: 1 }}
-            viewport={{ once: true, margin: "-70px" }}
-            transition={{ duration: lineDuration, ease: EASE }}
+            initial={false}
+            style={{
+              background: "linear-gradient(180deg, var(--mint-2), var(--forest))",
+              scaleY: reduced ? 1 : mobileLineScale,
+            }}
           />
         </div>
 
-        <div className="relative grid gap-2.5">
+        <div className="relative grid gap-1.5">
           {steps.map((label, i) => {
             const isLast = i === last;
-            const delay = reduced ? 0 : 0.12 + (i / last) * lineDuration * 0.86;
 
             return (
-              <motion.div
+              <div
                 key={label}
-                initial={reduced ? false : { opacity: 0, x: -10 }}
-                whileInView={reduced ? undefined : { opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.38, delay, ease: EASE }}
-                className={`relative flex items-center gap-3 rounded-2xl border px-3 py-3 ${
+                className={`relative flex items-center gap-3 rounded-2xl px-2.5 py-2 ${
                   isLast
-                    ? "border-[color:var(--forest)] bg-[var(--forest)] text-white shadow-[0_18px_38px_-30px_rgba(28,38,32,0.75)]"
-                    : "border-[var(--line)] bg-white/72"
+                    ? "mt-1 bg-[var(--forest)] text-white shadow-[0_18px_38px_-30px_rgba(28,38,32,0.75)]"
+                    : i % 2 === 0
+                      ? "bg-white/78"
+                      : "bg-[var(--mint-soft)]/45"
                 }`}
               >
                 <span
-                  className={`relative z-10 grid h-9 w-9 shrink-0 place-items-center rounded-full font-mono text-[0.7rem] font-bold ${
+                  className={`relative z-10 grid h-8 w-8 shrink-0 place-items-center rounded-full font-mono text-[0.66rem] font-bold shadow-[0_10px_20px_-16px_rgba(28,38,32,0.75)] ${
                     isLast
-                      ? "bg-[var(--mint)] text-[color:var(--forest)] ring-[3px] ring-white/20"
+                      ? "bg-[var(--mint)] text-[color:var(--forest)] ring-[4px] ring-white/12"
                       : "bg-[var(--forest)] text-white"
                   }`}
                 >
                   {isLast ? "★" : i + 1}
                 </span>
 
-                <span
-                  className={`min-w-0 flex-1 text-[0.92rem] font-bold leading-tight ${
-                    isLast ? "text-white" : "text-[color:var(--ink)]"
-                  }`}
-                >
-                  {label}
-                </span>
+                <div className="min-w-0 flex-1">
+                  <div
+                    className={`text-[0.56rem] font-bold uppercase tracking-[0.16em] ${
+                      isLast ? "text-white/55" : "text-[color:var(--gold)]"
+                    }`}
+                  >
+                    {isLast ? "Destination" : `Step ${String(i + 1).padStart(2, "0")}`}
+                  </div>
+                  <div
+                    className={`mt-0.5 text-[0.88rem] font-bold leading-tight ${
+                      isLast ? "text-white" : "text-[color:var(--ink)]"
+                    }`}
+                  >
+                    {label}
+                  </div>
+                </div>
 
                 {isLast ? (
                   <span className="rounded-full bg-white/10 px-2.5 py-1 text-[0.56rem] font-bold uppercase tracking-[0.16em] text-white/78">
                     Goal
                   </span>
                 ) : null}
-              </motion.div>
+              </div>
             );
           })}
         </div>
