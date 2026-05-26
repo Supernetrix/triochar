@@ -8,7 +8,7 @@ const definitions = [
   {
     n: "01",
     term: "Bankable Credit",
-    body: "A credit backed by project economics, documentation, registry readiness, and delivery logic that can stand up to buyer, financier, and stakeholder scrutiny.",
+    body: "A credit backed by project economics, documentation, registry readiness, and secure delivery logic that can stand up to buyer, financier, and stakeholder scrutiny.",
   },
   {
     n: "02",
@@ -18,10 +18,10 @@ const definitions = [
 ];
 
 const whoWeAre = [
-  { title: "A lean process", text: "No heavy infrastructure — a focused path from intent to credible credits." },
-  { title: "Bankable projects", text: "We bring projects backed by documentation, economics, and delivery logic." },
+  { title: "A lean process", text: "A lean process infrastructure, with a focused pathway from intent to credible credits." },
+  { title: "Bankable projects", text: "We bring projects backed by integrity framework, bankability, and security." },
   { title: "Flexible with strategy", text: "Procurement and origination paths shaped around your real climate goals." },
-  { title: "Built for net zero", text: "We are here, end to end, to help you reach your decarbonisation goal." },
+  { title: "Built for net zero", text: "We are here, end to end, to help you reach your decarbonization goal." },
 ];
 
 export default function Home() {
@@ -38,17 +38,16 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.03}>
               <h1 className="font-display mx-auto mt-5 max-w-3xl text-balance text-[2.1rem] leading-[1.08] text-[color:var(--ink)] sm:text-5xl lg:text-[4.4rem] lg:leading-[1.05]">
-                We serve your need for{" "}
+                Bankable and{" "}
                 <span className="font-display-italic text-[color:var(--forest-2)]">
-                  Bankable &amp; Trustworthy
+                  Trustworthy
                 </span>{" "}
                 Carbon Credits
               </h1>
             </Reveal>
             <Reveal delay={0.06}>
               <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-[color:var(--ink)]/72 sm:text-base sm:leading-7">
-                Triochar guides companies from first thought to net zero — connecting serious
-                buyers with credible, field-led carbon projects.
+                Triochar guides you to complete your journey from decarbonization thought to becoming net zero.
               </p>
             </Reveal>
             <Reveal delay={0.09}>
@@ -57,7 +56,7 @@ export default function Home() {
                   href="/contact"
                   className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[var(--forest)] px-7 py-4 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-[var(--forest-2)]"
                 >
-                  Let us Begin
+                  Let us Begin the Conversation
                   <ArrowRight size={14} />
                 </Link>
                 <Link
@@ -81,9 +80,9 @@ export default function Home() {
         <div className="container-shell">
           <Reveal>
             <div className="max-w-2xl">
-              <div className="eyebrow">What we mean</div>
+                <div className="eyebrow">What we mean</div>
               <h2 className="font-display mt-4 text-balance text-[2rem] leading-[1.1] text-[color:var(--ink)] sm:text-4xl md:text-5xl">
-                Two words define every credit we present.
+                Two words define every project we present.
               </h2>
             </div>
           </Reveal>
@@ -96,7 +95,6 @@ export default function Home() {
                     <span className="font-display grid h-11 w-11 place-items-center rounded-full bg-[var(--mint)] text-base text-[color:var(--forest)]">
                       {def.n}
                     </span>
-                    <span className="eyebrow-plain text-[color:var(--gold)]">Definition</span>
                   </div>
                   <h3 className="font-display mt-6 text-[1.7rem] text-[color:var(--ink)] sm:text-3xl">
                     {def.term}
@@ -146,9 +144,9 @@ export default function Home() {
         <div className="container-shell grid gap-10 lg:grid-cols-[0.82fr_1fr] lg:items-start lg:gap-16">
           <Reveal>
             <div className="lg:sticky lg:top-28">
-              <div className="eyebrow">Who we are</div>
+                <div className="eyebrow">Who are we</div>
               <h2 className="font-display mt-4 text-balance text-[2.6rem] leading-[1.04] text-[color:var(--ink)] sm:text-5xl md:text-6xl">
-                Let us <span className="font-display-italic text-[color:var(--forest-2)]">Begin</span>.
+                WHO ARE <span className="font-display-italic text-[color:var(--forest-2)]">WE</span>.
               </h2>
               <p className="mt-4 max-w-md text-sm leading-relaxed text-[color:var(--ink)]/72">
                 Triochar is a lean, trustworthy partner built around one outcome — getting your
@@ -158,7 +156,7 @@ export default function Home() {
                 href="/contact"
                 className="mt-7 inline-flex items-center justify-center gap-2.5 rounded-full bg-[var(--forest)] px-7 py-4 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-[var(--forest-2)]"
               >
-                Contact Us
+                Start the Conversation
                 <ArrowRight size={14} />
               </Link>
             </div>

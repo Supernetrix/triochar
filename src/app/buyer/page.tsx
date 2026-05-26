@@ -34,7 +34,7 @@ export default function BuyerPage() {
       <PageHero
         eyebrow="Buyer"
         title="Acquire carbon credits with clarity and confidence."
-        description="For buyers, Triochar turns a complex carbon market into a curated path: credible projects, clear signals, and flexible strategy."
+        description="For buyers we prioritize trust, project fit, and procurement readiness, keeping the process lean and flexible."
       />
 
       <section className="py-16 md:py-20">
@@ -47,8 +47,8 @@ export default function BuyerPage() {
                 <span className="font-display-italic text-[color:var(--forest-2)]">credit selection</span>.
               </h2>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-[color:var(--ink)]/72">
-                The buyer experience prioritises trust, project fit, and procurement readiness —
-                without overwhelming teams with unnecessary infrastructure.
+                For buyers we prioritize trust, project fit, and procurement readiness, keeping the
+                process lean and flexible.
               </p>
               <Link
                 href="/contact"

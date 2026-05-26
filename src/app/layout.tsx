@@ -31,6 +31,10 @@ export const metadata: Metadata = {
   },
   description: siteConfig.seoDescription,
   metadataBase: new URL("https://triochar.vercel.app"),
+  icons: {
+    icon: "/brand/triochar-favicon.png",
+    apple: "/brand/triochar-favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

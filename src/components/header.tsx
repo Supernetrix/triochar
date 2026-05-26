@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -19,7 +20,7 @@ const middleNav = [
 
 const allNav = [...leftNav, ...middleNav, { label: "Contact Us", href: "/contact" }];
 
-export function Header({ brandName, logoText }: { brandName: string; logoText: string }) {
+export function Header({ brandName }: { brandName: string; logoText: string }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -46,46 +47,48 @@ export function Header({ brandName, logoText }: { brandName: string; logoText: s
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[var(--background)]/85 backdrop-blur-md">
-      <div className="container-shell flex h-20 items-center justify-between gap-4 md:grid md:grid-cols-[1fr_auto_1fr]">
-        {/* Left: logo + main nav */}
-        <div className="flex items-center gap-1">
-          <Link href="/" className="mr-2 flex items-center gap-2.5 sm:mr-3 sm:gap-3" aria-label={`${brandName} home`}>
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--forest)] font-display text-sm text-[color:var(--mint)] shadow-sm">
-              {logoText.slice(0, 1).toUpperCase()}
-            </span>
-            <span className="font-display text-lg text-[color:var(--ink)] sm:text-xl">
-              {brandName}
-            </span>
-          </Link>
-          <nav className="hidden items-center md:flex">{leftNav.map(navLink)}</nav>
-        </div>
-
-        {/* Middle: audience nav */}
-        <nav className="hidden items-center justify-center md:flex">{middleNav.map(navLink)}</nav>
-
-        {/* Right: contact CTA */}
-        <div className="flex items-center justify-end">
+      <div className="container-shell relative flex h-20 items-center gap-3">
+        {/* Left: logo + main nav (logo never shrinks) */}
+        <div className="flex shrink-0 items-center gap-3 sm:gap-4">
           <Link
-            href="/contact"
-            className="hidden rounded-full bg-[var(--forest)] px-6 py-3 text-xs font-extrabold uppercase tracking-widest text-white transition hover:bg-[var(--forest-2)] hover:shadow-sm md:inline-block"
+            href="/"
+            className="block shrink-0"
+            aria-label={`${brandName} home`}
           >
-            Contact Us
+            <Image
+              src="/brand/triochar-logo.svg"
+              alt={brandName}
+              width={176}
+              height={40}
+              priority
+              unoptimized
+              style={{ width: "auto" }}
+              className="h-9 sm:h-10"
+            />
           </Link>
-          <button
-            type="button"
-            className="grid h-10 w-10 place-items-center rounded-lg border border-[var(--line)] text-[color:var(--forest)] hover:bg-white/50 md:hidden"
-            aria-label="Toggle navigation"
-            aria-expanded={open}
-            onClick={() => setOpen((value) => !value)}
-          >
-            {open ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          <nav className="hidden items-center lg:flex">{leftNav.map(navLink)}</nav>
         </div>
+
+        {/* Middle: audience nav — absolutely centered so it stays in the page middle */}
+        <nav className="absolute inset-y-0 left-1/2 hidden -translate-x-1/2 items-center lg:flex">
+          {middleNav.map(navLink)}
+        </nav>
+
+        {/* Right: mobile menu toggle (Contact Us removed per client) */}
+        <button
+          type="button"
+          className="ml-auto grid h-10 w-10 place-items-center rounded-lg border border-[var(--line)] text-[color:var(--forest)] hover:bg-white/50 lg:hidden"
+          aria-label="Toggle navigation"
+          aria-expanded={open}
+          onClick={() => setOpen((value) => !value)}
+        >
+          {open ? <X size={18} /> : <Menu size={18} />}
+        </button>
       </div>
 
       <div
         className={cn(
-          "overflow-hidden transition-all duration-300 md:hidden",
+          "overflow-hidden transition-all duration-300 lg:hidden",
           open
             ? "max-h-96 border-b border-[var(--line)] bg-[var(--background)] opacity-100"
             : "max-h-0 opacity-0",

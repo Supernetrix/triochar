@@ -16,7 +16,7 @@ export default function PortfolioPage() {
       <PageHero
         eyebrow="Portfolio"
         title="Project Portfolio"
-        description="Bankable carbon credit projects with clear ownership, geography, and credit logic."
+        description="Bankable carbon credit projects with clear ownership, geography, market standards, and credit logic."
       />
       <section className="py-14 md:py-20">
         <div className="container-shell">

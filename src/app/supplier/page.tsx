@@ -34,7 +34,7 @@ export default function SupplierPage() {
       <PageHero
         eyebrow="Supplier"
         title="Bring credible carbon supply to serious buyers."
-        description="For project developers and originators, Triochar creates a polished pathway from local project reality to buyer-facing confidence."
+        description="From suppliers, we gather the right project material, shape the project and story, and prepare the trust layer buyers expect."
       />
 
       <section className="py-16 md:py-20">
@@ -48,8 +48,8 @@ export default function SupplierPage() {
                 proof.
               </h2>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-[color:var(--ink)]/72">
-                The supplier experience is practical: gather the right project material, shape the
-                story, and prepare the trust layer buyers expect — without heavy infrastructure.
+                From suppliers, we gather the right project material, shape the project and story,
+                and prepare the trust layer buyers expect.
               </p>
               <Link
                 href="/contact"

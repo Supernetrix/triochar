@@ -12,17 +12,17 @@ type ProjectType = {
 
 const projectTypes: ProjectType[] = [
   {
-    label: "Biochar & Soil Carbon",
-    note: "Durable carbon removal with measurable agricultural co-benefits.",
+    label: "Biochar & Other CDR Projects",
+    note: "Durable carbon removal pathways with measurable co-benefits.",
     image: "/images/project-biochar.png",
   },
   {
-    label: "Mangrove & Blue Carbon",
-    note: "Coastal restoration with resilient, community-led stewardship.",
+    label: "ARR & Agroforestry",
+    note: "Restoration and tree-based systems with clear project boundaries.",
     image: "/images/project-mangrove.png",
   },
   {
-    label: "Regenerative Agriculture",
+    label: "Soil Organic Carbon",
     note: "Soil health and land-use change across distributed farmer networks.",
     image: "/images/project-regenerative.png",
   },

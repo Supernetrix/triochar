@@ -1,19 +1,16 @@
 "use client";
 
 import { useRef } from "react";
+import { BadgeCheck, Lightbulb } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 
 const steps = [
-  "Thought",
-  "Decarbonising Company",
-  "Commitment",
-  "Baseline",
-  "GHG Accounting",
-  "Target Setting",
-  "ESG Reporting",
-  "Decarbonisation Plan",
-  "Reduction Measures",
-  "Offsetting Measures",
+  "Thought of Decarbonization",
+  "Public Commitment",
+  "Baseline and GHG Accounting",
+  "ESG Reporting and Target Setting",
+  "Decarbonization Plan",
+  "Reduction and Offsetting Measures",
   "Net Zero",
 ];
 
@@ -34,13 +31,13 @@ export function JourneySchematic() {
     <div className="soft-card rounded-3xl p-4 sm:p-7 md:p-10">
       <div className="mx-auto max-w-2xl text-center">
         <div className="eyebrow-plain text-[0.6rem] sm:text-[0.7rem]">
-          The Decarbonisation Journey
+          The Decarbonization Journey
         </div>
         <h2 className="font-display mt-2.5 text-[1.5rem] leading-tight text-[color:var(--ink)] sm:text-3xl md:text-[2.4rem]">
-          Where do you <span className="font-display-italic text-[color:var(--forest-2)]">stand?</span>
+          Thought to <span className="font-display-italic text-[color:var(--forest-2)]">Net Zero</span>
         </h2>
         <p className="mx-auto mt-2.5 max-w-md text-[0.8rem] leading-relaxed text-[color:var(--ink)]/72 sm:text-sm">
-          The path from first thought to net zero — Triochar meets you wherever you are.
+          We help you achieve your decarbonization goal.
         </p>
       </div>
 
@@ -79,7 +76,7 @@ export function JourneySchematic() {
                       : "h-7 w-7 bg-[var(--forest)] text-white"
                   }`}
                 >
-                  {isLast ? "★" : i + 1}
+                  {i === 0 ? <Lightbulb size={13} /> : isLast ? <BadgeCheck size={14} /> : i + 1}
                 </motion.span>
 
                 <motion.span
@@ -87,7 +84,7 @@ export function JourneySchematic() {
                   whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-90px" }}
                   transition={{ duration: 0.4, delay: delay + 0.05 }}
-                  className={`absolute left-1/2 w-24 -translate-x-1/2 text-center text-[11px] font-semibold leading-tight text-[color:var(--ink)] ${
+                  className={`absolute left-1/2 w-32 -translate-x-1/2 text-center text-[11px] font-semibold leading-tight text-[color:var(--ink)] ${
                     above ? "bottom-full mb-3.5" : "top-full mt-3.5"
                   }`}
                 >
@@ -137,7 +134,7 @@ export function JourneySchematic() {
                       : "bg-[var(--forest)] text-white"
                   }`}
                 >
-                  {isLast ? "★" : i + 1}
+                  {i === 0 ? <Lightbulb size={14} /> : isLast ? <BadgeCheck size={14} /> : i + 1}
                 </span>
 
                 <div className="min-w-0 flex-1">

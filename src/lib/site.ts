@@ -8,18 +8,19 @@
 export const siteConfig = {
   brandName: "Triochar",
   logoText: "Triochar",
-  tagline: "Bankable & Trustworthy Carbon Credits",
+  tagline: "Bankable and Trustworthy Carbon Credits",
 
-  contactEmail: "partnerships@triochar.com",
-  contactPhone: "Phone available on request",
-  contactLocation: "India & global carbon markets",
+  contactEmail: "partnerships@triochar.io",
+  contactPhone: "Book a calendar call",
+  contactPhoneHref: "https://triochar.io/meet-kubi",
+  contactLocation: "Global carbon market",
 
-  seoTitle: "Triochar | Bankable & Trustworthy Carbon Credits",
+  seoTitle: "Triochar | Bankable and Trustworthy Carbon Credits",
   seoDescription:
-    "Triochar serves your need for bankable and trustworthy carbon credits — guiding companies from first thought to net zero.",
+    "Triochar guides you to complete your journey from decarbonization thought to becoming net zero.",
 
   footerNote:
-    "A lean, trustworthy partner for credible carbon credit discovery and corporate decarbonisation.",
+    "A lean and trustworthy partner for credible carbon credit discovery and corporate decarbonization.",
 };
 
 export type SiteConfig = typeof siteConfig;
