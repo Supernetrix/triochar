@@ -13,7 +13,7 @@ summary: >-
   net-zero goals.
 date: '2026-05-28'
 tags: []
-featured: true
+featured: false
 draft: false
 image: /uploads/1779952487207-carbon-removal-park-novocarbo.jpg
 projectType: Industrial Biochar Carbon Removal
