@@ -97,6 +97,13 @@ function asTagText(value: unknown) {
   return Array.isArray(value) ? value.join(", ") : "";
 }
 
+function parseTags(value: string) {
+  return value
+    .split(",")
+    .map((tag) => tag.trim())
+    .filter(Boolean);
+}
+
 function asString(value: unknown) {
   return typeof value === "string" ? value : value === undefined || value === null ? "" : String(value);
 }
@@ -222,6 +229,7 @@ export function SimpleCms() {
   const [message, setMessage] = useState("");
   const [mode, setMode] = useState<"local" | "github" | "">("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [tagDrafts, setTagDrafts] = useState<Record<string, string>>({});
 
   const activeCollection = useMemo(
     () => CMS_COLLECTIONS.find((collection) => collection.name === activeCollectionName) || CMS_COLLECTIONS[0],
@@ -250,6 +258,7 @@ export function SimpleCms() {
   const selectedIsNew = !originalSlug;
   const selectedIsDraft = Boolean(selectedEntry?.draft);
   const fieldSections = useMemo(() => splitFields(activeCollection), [activeCollection]);
+  const tagDraftKey = (entry: CmsEntry, fieldName: string) => `${entry.collection}:${originalSlug || entry.slug || "new"}:${fieldName}`;
 
   useEffect(() => {
     const savedPassword = window.sessionStorage.getItem(passwordStorageKey);
@@ -450,13 +459,14 @@ export function SimpleCms() {
     }
 
     if (field.type === "tags") {
-      updateField(
-        field,
-        event.target.value
-          .split(",")
-          .map((tag) => tag.trim())
-          .filter(Boolean),
-      );
+      const tagText = event.target.value;
+
+      if (selectedEntry) {
+        const key = tagDraftKey(selectedEntry, field.name);
+        setTagDrafts((drafts) => ({ ...drafts, [key]: tagText }));
+      }
+
+      updateField(field, parseTags(tagText));
       return;
     }
 
@@ -901,6 +911,7 @@ export function SimpleCms() {
                           key={field.name}
                           field={field}
                           entry={selectedEntry}
+                          tagText={field.type === "tags" ? tagDrafts[tagDraftKey(selectedEntry, field.name)] : undefined}
                           onChange={handleInput}
                           onUpload={uploadImage}
                         />
@@ -945,11 +956,13 @@ export function SimpleCms() {
 function FieldControl({
   field,
   entry,
+  tagText,
   onChange,
   onUpload,
 }: {
   field: CmsField;
   entry: CmsEntry;
+  tagText?: string;
   onChange: (field: CmsField, event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
   onUpload: (field: CmsField, event: ChangeEvent<HTMLInputElement>) => Promise<void>;
 }) {
@@ -1064,7 +1077,7 @@ function FieldControl({
       <label className="grid gap-2">
         {label}
         <input
-          value={asTagText(entry[field.name])}
+          value={tagText ?? asTagText(entry[field.name])}
           onChange={(event) => onChange(field, event)}
           placeholder="Biochar, Agriculture, India"
           className={`${inputClass} h-12`}
@@ -1078,7 +1091,7 @@ function FieldControl({
             ))}
           </span>
         ) : (
-          <span className="text-xs text-[#1c2620]/52">Separate tags with commas.</span>
+          <span className="text-xs text-[#1c2620]/52">Type commas between tags, for example: Biochar, Agriculture, India.</span>
         )}
       </label>
     );
