@@ -44,6 +44,10 @@ const collectionCopy: Record<
     guide: string;
   }
 > = {
+  site: {
+    description: "Navbar labels and homepage copy.",
+    guide: "Edit homepage sections and navigation text from this one fixed settings page.",
+  },
   portfolio: {
     description: "Projects shown on the portfolio page.",
     guide: "Add project basics, location, credit type, and one strong image.",
@@ -75,6 +79,12 @@ function emptyEntry(collection: CmsCollection): CmsEntry {
     draft: true,
     body: "",
   };
+
+  if (collection.singleton) {
+    entry.slug = "home";
+    entry.title = "Site & Homepage";
+    entry.draft = false;
+  }
 
   for (const field of collection.fields) {
     if (entry[field.name] !== undefined) {
@@ -161,10 +171,18 @@ function dateInputValue(value: unknown) {
 }
 
 function previewPath(collection: CmsCollection, entry: CmsEntry) {
+  if (collection.singleton) {
+    return collection.publicPath;
+  }
+
   return `${collection.publicPath}/${entry.slug}/`;
 }
 
 function CollectionIcon({ name, size = 18 }: { name: CmsCollectionName; size?: number }) {
+  if (name === "site") {
+    return <Eye size={size} />;
+  }
+
   if (name === "portfolio") {
     return <FolderKanban size={size} />;
   }
@@ -181,15 +199,109 @@ function CollectionIcon({ name, size = 18 }: { name: CmsCollectionName; size?: n
 }
 
 function splitFields(collection: CmsCollection) {
+  if (collection.name === "site") {
+    const section = (title: string, description: string, names: string[]) => ({
+      title,
+      description,
+      fields: collection.fields.filter((field) => names.includes(field.name) && !field.hidden),
+    });
+
+    return [
+      section("Navbar", "Change the labels shown in the desktop and mobile navigation.", [
+        "navMainLabel",
+        "navKnowledgeLabel",
+        "navPortfolioLabel",
+        "navSupplierLabel",
+        "navBuyerLabel",
+        "navContactLabel",
+      ]),
+      section("Hero", "Edit the opening headline, caption, and calls to action.", [
+        "heroEyebrow",
+        "heroTitleStart",
+        "heroTitleEmphasis",
+        "heroTitleEnd",
+        "heroCaption",
+        "heroPrimaryCtaLabel",
+        "heroPrimaryCtaHref",
+        "heroSecondaryCtaLabel",
+        "heroSecondaryCtaHref",
+      ]),
+      section("Journey", "Edit the copy above the decarbonisation journey schematic.", [
+        "journeyEyebrow",
+        "journeyHeadingStart",
+        "journeyHeadingEmphasis",
+        "journeyDescription",
+      ]),
+      section("Definitions", "Edit the two definition cards on the homepage.", [
+        "definitionsEyebrow",
+        "definitionsHeading",
+        "definition1Number",
+        "definition1Title",
+        "definition1Body",
+        "definition2Number",
+        "definition2Title",
+        "definition2Body",
+      ]),
+      section("Field-led Carbon Projects", "Edit the section copy and six smaller project-type cards.", [
+        "projectSectionEyebrow",
+        "projectSectionHeading",
+        "projectSectionDescription",
+        "projectSectionCtaLabel",
+        "projectSectionCtaHref",
+        "projectType1Title",
+        "projectType1Note",
+        "projectType1Image",
+        "projectType1Href",
+        "projectType2Title",
+        "projectType2Note",
+        "projectType2Image",
+        "projectType2Href",
+        "projectType3Title",
+        "projectType3Note",
+        "projectType3Image",
+        "projectType3Href",
+        "projectType4Title",
+        "projectType4Note",
+        "projectType4Image",
+        "projectType4Href",
+        "projectType5Title",
+        "projectType5Note",
+        "projectType5Image",
+        "projectType5Href",
+        "projectType6Title",
+        "projectType6Note",
+        "projectType6Image",
+        "projectType6Href",
+      ]),
+      section("Who We Are", "Edit the closing value section on the homepage.", [
+        "whoEyebrow",
+        "whoHeadingStart",
+        "whoHeadingEmphasis",
+        "whoIntro",
+        "whoCtaLabel",
+        "whoCtaHref",
+        "value1Title",
+        "value1Text",
+        "value2Title",
+        "value2Text",
+        "value3Title",
+        "value3Text",
+        "value4Title",
+        "value4Text",
+      ]),
+    ].filter((item) => item.fields.length > 0);
+  }
+
   const basic = new Set(["title", "slug", "summary"]);
   const content = new Set(["videoUrl", "body"]);
   const media = new Set(["image"]);
   const grouped = new Set([...basic, ...content, ...media]);
 
-  const basicFields = collection.fields.filter((field) => basic.has(field.name));
-  const contentFields = collection.fields.filter((field) => content.has(field.name));
-  const mediaFields = collection.fields.filter((field) => media.has(field.name));
-  const detailFields = collection.fields.filter((field) => !grouped.has(field.name));
+  const visibleFields = collection.fields.filter((field) => !field.hidden);
+  const basicFields = visibleFields.filter((field) => basic.has(field.name));
+  const contentFields = visibleFields.filter((field) => content.has(field.name));
+  const mediaFields = visibleFields.filter((field) => media.has(field.name));
+  const detailFields = visibleFields.filter((field) => !grouped.has(field.name));
 
   return [
     {
@@ -221,7 +333,7 @@ function splitFields(collection: CmsCollection) {
 export function SimpleCms() {
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [activeCollectionName, setActiveCollectionName] = useState<CmsCollectionName>("portfolio");
+  const [activeCollectionName, setActiveCollectionName] = useState<CmsCollectionName>("site");
   const [groups, setGroups] = useState<EntryGroups>([]);
   const [selectedEntry, setSelectedEntry] = useState<CmsEntry | null>(null);
   const [originalSlug, setOriginalSlug] = useState("");
@@ -255,8 +367,8 @@ export function SimpleCms() {
 
   const draftCount = entries.filter((entry) => Boolean(entry.draft)).length;
   const publishedCount = entries.length - draftCount;
-  const selectedIsNew = !originalSlug;
-  const selectedIsDraft = Boolean(selectedEntry?.draft);
+  const selectedIsNew = !activeCollection.singleton && !originalSlug;
+  const selectedIsDraft = !activeCollection.singleton && Boolean(selectedEntry?.draft);
   const fieldSections = useMemo(() => splitFields(activeCollection), [activeCollection]);
   const tagDraftKey = (entry: CmsEntry, fieldName: string) => `${entry.collection}:${originalSlug || entry.slug || "new"}:${fieldName}`;
 
@@ -424,6 +536,10 @@ export function SimpleCms() {
   }
 
   function createEntry() {
+    if (activeCollection.singleton) {
+      return;
+    }
+
     setSelectedEntry(emptyEntry(activeCollection));
     setOriginalSlug("");
     setMessage("");
@@ -583,7 +699,7 @@ export function SimpleCms() {
             <p className="mt-6 text-xs font-bold uppercase tracking-[0.24em] text-[#9a7a44]">Triochar CMS</p>
             <h1 className="mt-2 font-serif text-4xl font-bold text-[#1c2620]">Welcome back</h1>
             <p className="mt-3 text-sm leading-relaxed text-[#1c2620]/68">
-              Edit portfolio projects, policies, blogs, and vlogs from one simple dashboard.
+              Edit site copy, portfolio projects, policies, blogs, and vlogs from one simple dashboard.
             </p>
           </div>
           <div className="px-8 py-7">
@@ -626,7 +742,7 @@ export function SimpleCms() {
             <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#9a7a44]">Triochar CMS</p>
             <h1 className="mt-1 font-serif text-4xl font-bold leading-none text-[#1c2620]">Content Dashboard</h1>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#1c2620]/62">
-              Choose a content type, select an entry, make edits, then save. Draft items stay hidden from public pages.
+              Choose a content type, make edits, then save. Draft items stay hidden from public pages.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
@@ -668,7 +784,7 @@ export function SimpleCms() {
           <div className="mt-4 grid gap-2">
             {CMS_COLLECTIONS.map((collection) => {
               const count = collectionEntries(groups, collection.name).length;
-              const drafts = collectionEntries(groups, collection.name).filter((entry) => Boolean(entry.draft)).length;
+              const drafts = collection.singleton ? 0 : collectionEntries(groups, collection.name).filter((entry) => Boolean(entry.draft)).length;
               const isActive = activeCollection.name === collection.name;
 
               return (
@@ -721,36 +837,44 @@ export function SimpleCms() {
               </p>
               <p className="mt-1 text-xs leading-relaxed text-[#1c2620]/56">{collectionCopy[activeCollection.name].guide}</p>
             </div>
-            <button
-              type="button"
-              onClick={createEntry}
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#dcfed2] px-4 py-2 text-[11px] font-bold uppercase tracking-wider text-[#1d2a22] transition hover:bg-[#c8efbb]"
-            >
-              <Plus size={13} />
-              New
-            </button>
+            {!activeCollection.singleton ? (
+              <button
+                type="button"
+                onClick={createEntry}
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#dcfed2] px-4 py-2 text-[11px] font-bold uppercase tracking-wider text-[#1d2a22] transition hover:bg-[#c8efbb]"
+              >
+                <Plus size={13} />
+                New
+              </button>
+            ) : null}
           </div>
 
           <div className="mt-4 grid grid-cols-2 gap-2">
             <div className="rounded-2xl bg-[#f6fbf5] p-3">
-              <p className="text-[10px] font-bold uppercase tracking-wider text-[#1c2620]/48">Published</p>
-              <p className="mt-1 text-2xl font-bold">{publishedCount}</p>
+              <p className="text-[10px] font-bold uppercase tracking-wider text-[#1c2620]/48">
+                {activeCollection.singleton ? "Settings" : "Published"}
+              </p>
+              <p className="mt-1 text-2xl font-bold">{activeCollection.singleton ? 1 : publishedCount}</p>
             </div>
             <div className="rounded-2xl bg-[#fff8ed] p-3">
-              <p className="text-[10px] font-bold uppercase tracking-wider text-[#9a7a44]">Drafts</p>
-              <p className="mt-1 text-2xl font-bold">{draftCount}</p>
+              <p className="text-[10px] font-bold uppercase tracking-wider text-[#9a7a44]">
+                {activeCollection.singleton ? "Page" : "Drafts"}
+              </p>
+              <p className="mt-1 text-2xl font-bold">{activeCollection.singleton ? "/" : draftCount}</p>
             </div>
           </div>
 
-          <label className="mt-4 flex h-11 items-center gap-2 rounded-2xl border border-[#2c5f3a]/12 bg-[#f7fbf5] px-3 text-[#1c2620]/56 focus-within:border-[#2c5f3a] focus-within:bg-white">
-            <Search size={15} />
-            <input
-              value={searchQuery}
-              onChange={(event) => setSearchQuery(event.target.value)}
-              placeholder={`Search ${activeCollection.singular.toLowerCase()}s`}
-              className="h-full min-w-0 flex-1 bg-transparent text-sm font-semibold text-[#1c2620] outline-none placeholder:text-[#1c2620]/38"
-            />
-          </label>
+          {!activeCollection.singleton ? (
+            <label className="mt-4 flex h-11 items-center gap-2 rounded-2xl border border-[#2c5f3a]/12 bg-[#f7fbf5] px-3 text-[#1c2620]/56 focus-within:border-[#2c5f3a] focus-within:bg-white">
+              <Search size={15} />
+              <input
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+                placeholder={`Search ${activeCollection.singular.toLowerCase()}s`}
+                className="h-full min-w-0 flex-1 bg-transparent text-sm font-semibold text-[#1c2620] outline-none placeholder:text-[#1c2620]/38"
+              />
+            </label>
+          ) : null}
 
           <div className="mt-4 grid max-h-[62vh] gap-2 overflow-auto pr-1">
             {filteredEntries.length ? (
@@ -776,18 +900,18 @@ export function SimpleCms() {
                       <h2 className="text-sm font-extrabold leading-snug">{String(entry.title || entry.slug)}</h2>
                       <span
                         className={`rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ${
-                          entry.draft ? "bg-[#9a7a44]/12 text-[#9a7a44]" : "bg-[#dcfed2] text-[#2c5f3a]"
+                          !activeCollection.singleton && entry.draft ? "bg-[#9a7a44]/12 text-[#9a7a44]" : "bg-[#dcfed2] text-[#2c5f3a]"
                         }`}
                       >
-                        {entry.draft ? "Draft" : "Live"}
+                        {activeCollection.singleton ? "Site" : entry.draft ? "Draft" : "Live"}
                       </span>
                     </div>
                     <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-[#1c2620]/60">
-                      {String(entry.summary || "No summary yet.")}
+                      {String(entry.summary || (activeCollection.singleton ? "Homepage and navigation settings." : "No summary yet."))}
                     </p>
                     <div className="mt-3 flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-[#1c2620]/42">
-                      <span>{formatDate(entry.date)}</span>
-                      {entry.featured ? <span className="text-[#9a7a44]">Featured</span> : null}
+                      <span>{activeCollection.singleton ? "/" : formatDate(entry.date)}</span>
+                      {!activeCollection.singleton && entry.featured ? <span className="text-[#9a7a44]">Featured</span> : null}
                     </div>
                   </button>
                 );
@@ -810,21 +934,25 @@ export function SimpleCms() {
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="rounded-full bg-[#dcfed2] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#1d2a22]">
-                        {selectedIsNew ? "New Entry" : "Editing"}
+                        {activeCollection.singleton ? "Site Settings" : selectedIsNew ? "New Entry" : "Editing"}
                       </span>
                       <span
                         className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${
                           selectedIsDraft ? "bg-[#fff4df] text-[#9a7a44]" : "bg-[#eefbe8] text-[#2c5f3a]"
                         }`}
                       >
-                        {selectedIsDraft ? "Draft hidden from site" : "Published on site"}
+                        {activeCollection.singleton ? "Homepage content" : selectedIsDraft ? "Draft hidden from site" : "Published on site"}
                       </span>
                     </div>
                     <h2 className="mt-3 max-w-2xl font-serif text-4xl font-bold leading-tight text-[#1c2620]">
                       {String(selectedEntry.title || "Untitled")}
                     </h2>
                     <p className="mt-2 text-sm text-[#1c2620]/56">
-                      {selectedIsNew ? "Fill the required fields, then save it as a draft or publish it." : previewPath(activeCollection, selectedEntry)}
+                      {activeCollection.singleton
+                        ? "Controls the homepage and navigation labels."
+                        : selectedIsNew
+                          ? "Fill the required fields, then save it as a draft or publish it."
+                          : previewPath(activeCollection, selectedEntry)}
                     </p>
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -839,7 +967,7 @@ export function SimpleCms() {
                         Preview
                       </a>
                     ) : null}
-                    {originalSlug ? (
+                    {originalSlug && !activeCollection.singleton ? (
                       <button
                         type="button"
                         onClick={() => void deleteEntry()}
@@ -852,6 +980,7 @@ export function SimpleCms() {
                   </div>
                 </div>
 
+                {!activeCollection.singleton ? (
                 <div className="mt-6 grid gap-3 rounded-2xl border border-[#2c5f3a]/10 bg-[#f7fbf5] p-3 sm:grid-cols-[1fr_auto] sm:items-center">
                   <div>
                     <p className="text-sm font-bold text-[#1c2620]">Publishing state</p>
@@ -880,6 +1009,7 @@ export function SimpleCms() {
                     </button>
                   </div>
                 </div>
+                ) : null}
               </div>
 
               {message ? (

@@ -5,6 +5,7 @@ import "./globals.css";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { SiteChrome } from "@/components/site-chrome";
+import { getHomeContent } from "@/lib/home-content";
 import { siteConfig } from "@/lib/site";
 
 const geistSans = Geist({
@@ -37,19 +38,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const homeContent = await getHomeContent();
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
       >
         <SiteChrome
-          header={<Header brandName={siteConfig.brandName} logoText={siteConfig.logoText} />}
+          header={<Header brandName={siteConfig.brandName} logoText={siteConfig.logoText} navItems={homeContent.nav} />}
           footer={
             <Footer
               brandName={siteConfig.brandName}
               footerNote={siteConfig.footerNote}
               contactEmail={siteConfig.contactEmail}
+              navItems={homeContent.nav}
             />
           }
         >

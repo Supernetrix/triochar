@@ -1,25 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import type { NavItem } from "@/lib/home-content";
 import { siteConfig } from "@/lib/site";
-
-const exploreLinks = [
-  { label: "Main", href: "/" },
-  { label: "Knowledge", href: "/knowledge" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Supplier", href: "/supplier" },
-  { label: "Buyer", href: "/buyer" },
-  { label: "Contact Us", href: "/contact" },
-];
 
 export function Footer({
   brandName,
   footerNote,
   contactEmail,
+  navItems,
 }: {
   brandName: string;
   footerNote: string;
   contactEmail: string;
+  navItems: NavItem[];
 }) {
   return (
     <footer className="relative mt-px overflow-hidden bg-[var(--forest-deep)] text-white">
@@ -101,7 +95,7 @@ export function Footer({
               Explore
             </div>
             <nav className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3">
-              {exploreLinks.map((item) => (
+              {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -141,14 +135,6 @@ export function Footer({
             </div>
           </div>
         </div>
-      </div>
-
-      {/* oversized wordmark watermark */}
-      <div
-        aria-hidden
-        className="font-display pointer-events-none select-none overflow-hidden text-center text-[22vw] leading-[0.78] tracking-tight text-white/[0.04] md:text-[16rem]"
-      >
-        {brandName}
       </div>
 
       <div className="relative border-t border-white/10">

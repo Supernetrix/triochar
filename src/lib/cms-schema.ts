@@ -1,4 +1,4 @@
-export type CmsCollectionName = "portfolio" | "policies" | "blogs" | "vlogs";
+export type CmsCollectionName = "site" | "portfolio" | "policies" | "blogs" | "vlogs";
 
 export type CmsField = {
   name: string;
@@ -7,6 +7,7 @@ export type CmsField = {
   required?: boolean;
   options?: string[];
   hint?: string;
+  hidden?: boolean;
 };
 
 export type CmsCollection = {
@@ -15,6 +16,8 @@ export type CmsCollection = {
   singular: string;
   directory: string;
   publicPath: string;
+  singleton?: boolean;
+  singletonFile?: string;
   fields: CmsField[];
 };
 
@@ -31,6 +34,89 @@ const sharedFields: CmsField[] = [
 ];
 
 export const CMS_COLLECTIONS: CmsCollection[] = [
+  {
+    name: "site",
+    label: "Site & Homepage",
+    singular: "Site Settings",
+    directory: "site",
+    publicPath: "/",
+    singleton: true,
+    singletonFile: "home.md",
+    fields: [
+      { label: "Title", name: "title", type: "text", required: true, hidden: true },
+      { label: "Slug", name: "slug", type: "text", required: true, hidden: true },
+      { label: "Main Nav Label", name: "navMainLabel", type: "text", required: true },
+      { label: "Knowledge Nav Label", name: "navKnowledgeLabel", type: "text", required: true },
+      { label: "Portfolio Nav Label", name: "navPortfolioLabel", type: "text", required: true },
+      { label: "Supplier Nav Label", name: "navSupplierLabel", type: "text", required: true },
+      { label: "Buyer Nav Label", name: "navBuyerLabel", type: "text", required: true },
+      { label: "Contact Nav Label", name: "navContactLabel", type: "text", required: true },
+      { label: "Hero Eyebrow", name: "heroEyebrow", type: "text", required: true },
+      { label: "Hero Title Start", name: "heroTitleStart", type: "text", required: true },
+      { label: "Hero Title Emphasis", name: "heroTitleEmphasis", type: "text", required: true },
+      { label: "Hero Title End", name: "heroTitleEnd", type: "text", required: true },
+      { label: "Hero Caption", name: "heroCaption", type: "textarea", required: true },
+      { label: "Hero Primary CTA Label", name: "heroPrimaryCtaLabel", type: "text", required: true },
+      { label: "Hero Primary CTA Link", name: "heroPrimaryCtaHref", type: "text", required: true },
+      { label: "Hero Secondary CTA Label", name: "heroSecondaryCtaLabel", type: "text", required: true },
+      { label: "Hero Secondary CTA Link", name: "heroSecondaryCtaHref", type: "text", required: true },
+      { label: "Journey Eyebrow", name: "journeyEyebrow", type: "text", required: true },
+      { label: "Journey Heading Start", name: "journeyHeadingStart", type: "text", required: true },
+      { label: "Journey Heading Emphasis", name: "journeyHeadingEmphasis", type: "text", required: true },
+      { label: "Journey Description", name: "journeyDescription", type: "textarea", required: true },
+      { label: "Definition 1 Number", name: "definition1Number", type: "text", required: true },
+      { label: "Definition 1 Title", name: "definition1Title", type: "text", required: true },
+      { label: "Definition 1 Body", name: "definition1Body", type: "textarea", required: true },
+      { label: "Definition 2 Number", name: "definition2Number", type: "text", required: true },
+      { label: "Definition 2 Title", name: "definition2Title", type: "text", required: true },
+      { label: "Definition 2 Body", name: "definition2Body", type: "textarea", required: true },
+      { label: "Definitions Eyebrow", name: "definitionsEyebrow", type: "text", required: true },
+      { label: "Definitions Heading", name: "definitionsHeading", type: "text", required: true },
+      { label: "Project Section Eyebrow", name: "projectSectionEyebrow", type: "text", required: true },
+      { label: "Project Section Heading", name: "projectSectionHeading", type: "text", required: true },
+      { label: "Project Section Description", name: "projectSectionDescription", type: "textarea", required: true },
+      { label: "Project Section CTA Label", name: "projectSectionCtaLabel", type: "text", required: true },
+      { label: "Project Section CTA Link", name: "projectSectionCtaHref", type: "text", required: true },
+      { label: "Project Type 1 Title", name: "projectType1Title", type: "text", required: true },
+      { label: "Project Type 1 Note", name: "projectType1Note", type: "textarea", required: true },
+      { label: "Project Type 1 Image", name: "projectType1Image", type: "image" },
+      { label: "Project Type 1 Link", name: "projectType1Href", type: "text" },
+      { label: "Project Type 2 Title", name: "projectType2Title", type: "text", required: true },
+      { label: "Project Type 2 Note", name: "projectType2Note", type: "textarea", required: true },
+      { label: "Project Type 2 Image", name: "projectType2Image", type: "image" },
+      { label: "Project Type 2 Link", name: "projectType2Href", type: "text" },
+      { label: "Project Type 3 Title", name: "projectType3Title", type: "text", required: true },
+      { label: "Project Type 3 Note", name: "projectType3Note", type: "textarea", required: true },
+      { label: "Project Type 3 Image", name: "projectType3Image", type: "image" },
+      { label: "Project Type 3 Link", name: "projectType3Href", type: "text" },
+      { label: "Project Type 4 Title", name: "projectType4Title", type: "text", required: true },
+      { label: "Project Type 4 Note", name: "projectType4Note", type: "textarea", required: true },
+      { label: "Project Type 4 Image", name: "projectType4Image", type: "image" },
+      { label: "Project Type 4 Link", name: "projectType4Href", type: "text" },
+      { label: "Project Type 5 Title", name: "projectType5Title", type: "text", required: true },
+      { label: "Project Type 5 Note", name: "projectType5Note", type: "textarea", required: true },
+      { label: "Project Type 5 Image", name: "projectType5Image", type: "image" },
+      { label: "Project Type 5 Link", name: "projectType5Href", type: "text" },
+      { label: "Project Type 6 Title", name: "projectType6Title", type: "text", required: true },
+      { label: "Project Type 6 Note", name: "projectType6Note", type: "textarea", required: true },
+      { label: "Project Type 6 Image", name: "projectType6Image", type: "image" },
+      { label: "Project Type 6 Link", name: "projectType6Href", type: "text" },
+      { label: "Who We Are Eyebrow", name: "whoEyebrow", type: "text", required: true },
+      { label: "Who We Are Heading Start", name: "whoHeadingStart", type: "text", required: true },
+      { label: "Who We Are Heading Emphasis", name: "whoHeadingEmphasis", type: "text", required: true },
+      { label: "Who We Are Intro", name: "whoIntro", type: "textarea", required: true },
+      { label: "Who We Are CTA Label", name: "whoCtaLabel", type: "text", required: true },
+      { label: "Who We Are CTA Link", name: "whoCtaHref", type: "text", required: true },
+      { label: "Value 1 Title", name: "value1Title", type: "text", required: true },
+      { label: "Value 1 Text", name: "value1Text", type: "textarea", required: true },
+      { label: "Value 2 Title", name: "value2Title", type: "text", required: true },
+      { label: "Value 2 Text", name: "value2Text", type: "textarea", required: true },
+      { label: "Value 3 Title", name: "value3Title", type: "text", required: true },
+      { label: "Value 3 Text", name: "value3Text", type: "textarea", required: true },
+      { label: "Value 4 Title", name: "value4Title", type: "text", required: true },
+      { label: "Value 4 Text", name: "value4Text", type: "textarea", required: true },
+    ],
+  },
   {
     name: "portfolio",
     label: "Portfolio Projects",

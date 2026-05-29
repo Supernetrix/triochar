@@ -16,7 +16,14 @@ const steps = [
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-export function JourneySchematic() {
+type JourneyContent = {
+  eyebrow: string;
+  headingStart: string;
+  headingEmphasis: string;
+  description: string;
+};
+
+export function JourneySchematic({ content }: { content: JourneyContent }) {
   const reduced = useReducedMotion();
   const mobileJourneyRef = useRef<HTMLDivElement>(null);
   const last = steps.length - 1;
@@ -31,13 +38,13 @@ export function JourneySchematic() {
     <div className="soft-card rounded-3xl p-4 sm:p-7 md:p-10">
       <div className="mx-auto max-w-2xl text-center">
         <div className="eyebrow-plain text-[0.6rem] sm:text-[0.7rem]">
-          The Decarbonization Journey
+          {content.eyebrow}
         </div>
         <h2 className="font-display mt-2.5 text-[1.5rem] leading-tight text-[color:var(--ink)] sm:text-3xl md:text-[2.4rem]">
-          Thought to <span className="font-display-italic text-[color:var(--forest-2)]">Net Zero</span>
+          {content.headingStart} <span className="font-display-italic text-[color:var(--forest-2)]">{content.headingEmphasis}</span>
         </h2>
         <p className="mx-auto mt-2.5 max-w-md text-[0.8rem] leading-relaxed text-[color:var(--ink)]/72 sm:text-sm">
-          We help you achieve your decarbonization goal.
+          {content.description}
         </p>
       </div>
 

@@ -5,22 +5,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import type { NavItem } from "@/lib/home-content";
 import { cn } from "@/lib/utils";
 
-const leftNav = [
-  { label: "Main", href: "/" },
-  { label: "Knowledge", href: "/knowledge" },
-  { label: "Portfolio", href: "/portfolio" },
-];
-
-const middleNav = [
-  { label: "Supplier", href: "/supplier" },
-  { label: "Buyer", href: "/buyer" },
-];
-
-const allNav = [...leftNav, ...middleNav, { label: "Contact Us", href: "/contact" }];
-
-export function Header({ brandName }: { brandName: string; logoText: string }) {
+export function Header({ brandName, navItems }: { brandName: string; logoText: string; navItems: NavItem[] }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -47,8 +35,7 @@ export function Header({ brandName }: { brandName: string; logoText: string }) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[var(--background)]/85 backdrop-blur-md">
-      <div className="container-shell relative flex h-20 items-center gap-3">
-        {/* Left: logo + main nav (logo never shrinks) */}
+      <div className="container-shell relative flex h-20 items-center gap-5">
         <div className="flex shrink-0 items-center gap-3 sm:gap-4">
           <Link
             href="/"
@@ -66,15 +53,12 @@ export function Header({ brandName }: { brandName: string; logoText: string }) {
               className="h-9 sm:h-10"
             />
           </Link>
-          <nav className="hidden items-center lg:flex">{leftNav.map(navLink)}</nav>
         </div>
 
-        {/* Middle: audience nav — absolutely centered so it stays in the page middle */}
-        <nav className="absolute inset-y-0 left-1/2 hidden -translate-x-1/2 items-center lg:flex">
-          {middleNav.map(navLink)}
+        <nav className="ml-auto hidden flex-1 items-center justify-end gap-1 xl:gap-2 lg:flex">
+          {navItems.map(navLink)}
         </nav>
 
-        {/* Right: mobile menu toggle (Contact Us removed per client) */}
         <button
           type="button"
           className="ml-auto grid h-10 w-10 place-items-center rounded-lg border border-[var(--line)] text-[color:var(--forest)] hover:bg-white/50 lg:hidden"
@@ -95,7 +79,7 @@ export function Header({ brandName }: { brandName: string; logoText: string }) {
         )}
       >
         <nav className="grid gap-1 px-6 pb-6 pt-2">
-          {allNav.map((item) => (
+          {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
