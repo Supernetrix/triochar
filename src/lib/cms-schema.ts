@@ -1,11 +1,12 @@
-export type CmsCollectionName = "site" | "portfolio" | "policies" | "blogs" | "vlogs";
+export type CmsCollectionName = "site" | "taxonomy" | "portfolio" | "policies" | "blogs" | "vlogs";
 
 export type CmsField = {
   name: string;
   label: string;
-  type: "text" | "textarea" | "markdown" | "date" | "boolean" | "tags" | "select" | "image";
+  type: "text" | "textarea" | "markdown" | "date" | "boolean" | "tags" | "select" | "multiselect" | "image";
   required?: boolean;
   options?: string[];
+  optionsFrom?: string;
   hint?: string;
   hidden?: boolean;
 };
@@ -118,6 +119,43 @@ export const CMS_COLLECTIONS: CmsCollection[] = [
     ],
   },
   {
+    name: "taxonomy",
+    label: "Filters & Tags",
+    singular: "Filter Options",
+    directory: "site",
+    publicPath: "/portfolio",
+    singleton: true,
+    singletonFile: "filters.md",
+    fields: [
+      { label: "Title", name: "title", type: "text", required: true, hidden: true },
+      { label: "Slug", name: "slug", type: "text", required: true, hidden: true },
+      {
+        label: "Location options (Continents)",
+        name: "locationOptions",
+        type: "tags",
+        hint: "Continents shown in the Location filter, e.g. Africa, Asia, Europe.",
+      },
+      {
+        label: "Eligibility options",
+        name: "eligibilityOptions",
+        type: "tags",
+        hint: "e.g. CORSIA, CCP, Article 6, CRCF.",
+      },
+      {
+        label: "Standard options",
+        name: "standardOptions",
+        type: "tags",
+        hint: "e.g. Isometric, Puro, CSI, Rainbow, Verra, Gold Standard.",
+      },
+      {
+        label: "Type options",
+        name: "typeOptions",
+        type: "tags",
+        hint: "e.g. Biochar, DACCS, BECCS, ARR, NBS, Renewable Energy, Cookstove.",
+      },
+    ],
+  },
+  {
     name: "portfolio",
     label: "Portfolio Projects",
     singular: "Project",
@@ -128,9 +166,34 @@ export const CMS_COLLECTIONS: CmsCollection[] = [
       { label: "Slug", name: "slug", type: "text", required: true, hint: "URL part, e.g. biochar-soil-carbon" },
       { label: "Image", name: "image", type: "image" },
       { label: "Basic Info / Short Description", name: "summary", type: "textarea", required: true },
-      { label: "Project Type", name: "projectType", type: "text" },
-      { label: "Location / Country", name: "location", type: "text" },
-      { label: "Carbon Credit Type", name: "carbonCreditType", type: "text" },
+      {
+        label: "Location (Continents)",
+        name: "filterLocations",
+        type: "multiselect",
+        optionsFrom: "locationOptions",
+        hint: "Pick one or more continents. Edit the list in Filters & Tags, then Refresh.",
+      },
+      {
+        label: "Eligibility",
+        name: "filterEligibility",
+        type: "multiselect",
+        optionsFrom: "eligibilityOptions",
+        hint: "Pick all that apply. Edit the list in Filters & Tags, then Refresh.",
+      },
+      {
+        label: "Standard",
+        name: "filterStandards",
+        type: "multiselect",
+        optionsFrom: "standardOptions",
+        hint: "Pick all that apply. Edit the list in Filters & Tags, then Refresh.",
+      },
+      {
+        label: "Type",
+        name: "filterTypes",
+        type: "multiselect",
+        optionsFrom: "typeOptions",
+        hint: "Pick all that apply. Edit the list in Filters & Tags, then Refresh.",
+      },
       {
         label: "Status",
         name: "status",

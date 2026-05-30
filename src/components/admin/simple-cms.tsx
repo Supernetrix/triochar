@@ -9,6 +9,7 @@ import {
   Eye,
   FileText,
   Film,
+  Filter,
   FolderKanban,
   ImagePlus,
   Loader2,
@@ -48,6 +49,10 @@ const collectionCopy: Record<
     description: "Navbar labels and homepage copy.",
     guide: "Edit homepage sections and navigation text from this one fixed settings page.",
   },
+  taxonomy: {
+    description: "Filter option lists for the portfolio.",
+    guide: "Add, remove, or rename the options shown in the portfolio filters and project tag pickers.",
+  },
   portfolio: {
     description: "Projects shown on the portfolio page.",
     guide: "Add project basics, location, credit type, and one strong image.",
@@ -81,8 +86,8 @@ function emptyEntry(collection: CmsCollection): CmsEntry {
   };
 
   if (collection.singleton) {
-    entry.slug = "home";
-    entry.title = "Site & Homepage";
+    entry.slug = collection.name === "taxonomy" ? "filters" : "home";
+    entry.title = collection.name === "taxonomy" ? "Filters & Tags" : "Site & Homepage";
     entry.draft = false;
   }
 
@@ -93,7 +98,7 @@ function emptyEntry(collection: CmsCollection): CmsEntry {
 
     if (field.type === "boolean") {
       entry[field.name] = false;
-    } else if (field.type === "tags") {
+    } else if (field.type === "tags" || field.type === "multiselect") {
       entry[field.name] = [];
     } else {
       entry[field.name] = "";
@@ -116,6 +121,10 @@ function parseTags(value: string) {
 
 function asString(value: unknown) {
   return typeof value === "string" ? value : value === undefined || value === null ? "" : String(value);
+}
+
+function asStringArray(value: unknown): string[] {
+  return Array.isArray(value) ? value.map(asString).filter(Boolean) : [];
 }
 
 function collectionEntries(groups: EntryGroups, collection: CmsCollectionName) {
@@ -181,6 +190,10 @@ function previewPath(collection: CmsCollection, entry: CmsEntry) {
 function CollectionIcon({ name, size = 18 }: { name: CmsCollectionName; size?: number }) {
   if (name === "site") {
     return <Eye size={size} />;
+  }
+
+  if (name === "taxonomy") {
+    return <Filter size={size} />;
   }
 
   if (name === "portfolio") {
@@ -292,15 +305,28 @@ function splitFields(collection: CmsCollection) {
     ].filter((item) => item.fields.length > 0);
   }
 
+  if (collection.name === "taxonomy") {
+    return [
+      {
+        title: "Filter Options",
+        description:
+          "These lists power the portfolio filter bar and the tag pickers on each project. Type commas between options. After saving, use Refresh so the project pickers show the new options.",
+        fields: collection.fields.filter((field) => !field.hidden),
+      },
+    ];
+  }
+
   const basic = new Set(["title", "slug", "summary"]);
   const content = new Set(["videoUrl", "body"]);
   const media = new Set(["image"]);
-  const grouped = new Set([...basic, ...content, ...media]);
+  const filters = new Set(["filterLocations", "filterEligibility", "filterStandards", "filterTypes"]);
+  const grouped = new Set([...basic, ...content, ...media, ...filters]);
 
   const visibleFields = collection.fields.filter((field) => !field.hidden);
   const basicFields = visibleFields.filter((field) => basic.has(field.name));
   const contentFields = visibleFields.filter((field) => content.has(field.name));
   const mediaFields = visibleFields.filter((field) => media.has(field.name));
+  const filterFields = visibleFields.filter((field) => filters.has(field.name));
   const detailFields = visibleFields.filter((field) => !grouped.has(field.name));
 
   return [
@@ -308,6 +334,11 @@ function splitFields(collection: CmsCollection) {
       title: "Start Here",
       description: "The title, URL slug, and short summary are what users see first.",
       fields: basicFields,
+    },
+    {
+      title: "Filters",
+      description: "Pick the continents, eligibility, standards, and types this project matches. Edit the option lists under Filters & Tags.",
+      fields: filterFields,
     },
     {
       title: collection.name === "vlogs" ? "Video And Body" : "Main Content",
@@ -349,6 +380,11 @@ export function SimpleCms() {
   );
 
   const entries = collectionEntries(groups, activeCollection.name);
+  const taxonomyEntry = collectionEntries(groups, "taxonomy")[0];
+  const resolveFieldOptions = (field: CmsField) =>
+    field.type === "multiselect" && field.optionsFrom
+      ? asStringArray(taxonomyEntry?.[field.optionsFrom])
+      : field.options;
   const filteredEntries = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
 
@@ -1041,8 +1077,10 @@ export function SimpleCms() {
                           key={field.name}
                           field={field}
                           entry={selectedEntry}
+                          options={resolveFieldOptions(field)}
                           tagText={field.type === "tags" ? tagDrafts[tagDraftKey(selectedEntry, field.name)] : undefined}
                           onChange={handleInput}
+                          onSet={updateField}
                           onUpload={uploadImage}
                         />
                       ))}
@@ -1086,14 +1124,18 @@ export function SimpleCms() {
 function FieldControl({
   field,
   entry,
+  options,
   tagText,
   onChange,
+  onSet,
   onUpload,
 }: {
   field: CmsField;
   entry: CmsEntry;
+  options?: string[];
   tagText?: string;
   onChange: (field: CmsField, event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
+  onSet: (field: CmsField, value: unknown) => void;
   onUpload: (field: CmsField, event: ChangeEvent<HTMLInputElement>) => Promise<void>;
 }) {
   const inputClass =
@@ -1142,6 +1184,51 @@ function FieldControl({
           ))}
         </select>
       </label>
+    );
+  }
+
+  if (field.type === "multiselect") {
+    const selectedValues = asStringArray(entry[field.name]);
+    const available = options ?? field.options ?? [];
+
+    return (
+      <div className="grid gap-2">
+        {label}
+        {available.length ? (
+          <div className="flex flex-wrap gap-2">
+            {available.map((option) => {
+              const isActive = selectedValues.includes(option);
+
+              return (
+                <button
+                  key={option}
+                  type="button"
+                  onClick={() =>
+                    onSet(
+                      field,
+                      isActive
+                        ? selectedValues.filter((value) => value !== option)
+                        : [...selectedValues, option],
+                    )
+                  }
+                  className={`rounded-full border px-3 py-2 text-xs font-bold uppercase tracking-wider transition ${
+                    isActive
+                      ? "border-[#1d2a22] bg-[#1d2a22] text-white"
+                      : "border-[#2c5f3a]/16 bg-white text-[#1d2a22] hover:border-[#b9e2a9]"
+                  }`}
+                >
+                  {option}
+                </button>
+              );
+            })}
+          </div>
+        ) : (
+          <span className="rounded-2xl border border-dashed border-[#2c5f3a]/18 bg-[#f7fbf5] px-4 py-3 text-xs font-semibold text-[#1c2620]/56">
+            No options yet. Add them under &ldquo;Filters &amp; Tags&rdquo;, then press Refresh.
+          </span>
+        )}
+        {field.hint ? <span className="text-xs text-[#1c2620]/52">{field.hint}</span> : null}
+      </div>
     );
   }
 

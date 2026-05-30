@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { PortfolioStack } from "@/components/portfolio-stack";
-import { getEntries } from "@/lib/content";
+import { getEntries, getTaxonomy } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 
 export default function PortfolioPage() {
   const projects = getEntries("portfolio");
+  const taxonomy = getTaxonomy();
 
   return (
     <>
@@ -21,7 +22,7 @@ export default function PortfolioPage() {
       <section className="py-14 md:py-20">
         <div className="container-shell">
           {projects.length ? (
-            <PortfolioStack projects={projects} />
+            <PortfolioStack projects={projects} taxonomy={taxonomy} />
           ) : (
             <div className="mx-auto max-w-3xl rounded-2xl border border-dashed border-[var(--mint-2)] bg-white/50 p-10 text-center text-sm font-medium text-[color:var(--ink)]/66">
               New portfolio projects will appear here once published.

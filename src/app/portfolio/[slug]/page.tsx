@@ -34,10 +34,11 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
   }
 
   const stats = [
-    { label: "Project Type", value: project.projectType, icon: Leaf },
-    { label: "Credit Type", value: project.carbonCreditType, icon: ShieldCheck },
+    { label: "Location", value: project.filterLocations.join(", "), icon: MapPin },
+    { label: "Eligibility", value: project.filterEligibility.join(", "), icon: ShieldCheck },
+    { label: "Standard", value: project.filterStandards.join(", "), icon: BadgeCheck },
+    { label: "Type", value: project.filterTypes.join(", "), icon: Leaf },
     { label: "Status", value: project.status, icon: BadgeCheck },
-    { label: "Location", value: project.location, icon: MapPin },
   ].filter((item) => item.value);
   const projectImage = project.image || project.gallery?.[0];
 
@@ -102,7 +103,13 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
               Project Tags
             </h2>
             <div className="mt-5 flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
+              {[
+                ...project.filterLocations,
+                ...project.filterEligibility,
+                ...project.filterStandards,
+                ...project.filterTypes,
+                ...project.tags,
+              ].map((tag) => (
                 <span
                   key={tag}
                   className="rounded bg-[var(--mint)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[color:var(--forest)]"

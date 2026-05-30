@@ -30,6 +30,17 @@ export type ContentEntry = {
   region?: string;
   effectiveDate?: string;
   videoUrl?: string;
+  filterLocations: string[];
+  filterEligibility: string[];
+  filterStandards: string[];
+  filterTypes: string[];
+};
+
+export type Taxonomy = {
+  locationOptions: string[];
+  eligibilityOptions: string[];
+  standardOptions: string[];
+  typeOptions: string[];
 };
 
 export const collectionMeta: Record<
@@ -129,6 +140,34 @@ function normalizeEntry(collection: CollectionName, filePath: string): ContentEn
     region: asString(data.region),
     effectiveDate: asString(data.effectiveDate),
     videoUrl: asString(data.videoUrl),
+    filterLocations: asStringArray(data.filterLocations),
+    filterEligibility: asStringArray(data.filterEligibility),
+    filterStandards: asStringArray(data.filterStandards),
+    filterTypes: asStringArray(data.filterTypes),
+  };
+}
+
+export function getTaxonomy(): Taxonomy {
+  const filePath = path.join(contentRoot, "site", "filters.md");
+
+  const empty: Taxonomy = {
+    locationOptions: [],
+    eligibilityOptions: [],
+    standardOptions: [],
+    typeOptions: [],
+  };
+
+  if (!fs.existsSync(filePath)) {
+    return empty;
+  }
+
+  const { data } = readMarkdownFile(filePath);
+
+  return {
+    locationOptions: asStringArray(data.locationOptions),
+    eligibilityOptions: asStringArray(data.eligibilityOptions),
+    standardOptions: asStringArray(data.standardOptions),
+    typeOptions: asStringArray(data.typeOptions),
   };
 }
 
