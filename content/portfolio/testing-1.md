@@ -12,6 +12,15 @@ projectType: test
 location: india
 carbonCreditType: testing
 status: Active
+filterLocations:
+  - Africa
+  - North America
+filterEligibility:
+  - Article 6
+filterStandards:
+  - Rainbow
+filterTypes:
+  - DACCS
 ---
 No submissions yet
 
