@@ -2,15 +2,13 @@
 slug: novocarbo-denmark
 title: Novocarbo Denmark
 summary: >-
-  We are proud to offer premium Carbon Dioxide Removal (CDR) credits generated
-  through Novocarbo’s state-of-the-art Biochar Carbon Removal (BCR) technology.
-  By transforming sustainable biogenic residues into highly stable biochar, this
-  innovative process locks away atmospheric carbon for centuries, providing
-  corporate buyers with highly durable, permanent, and fully verifiable carbon
-  removal. These high-integrity credits directly fund a circular economy,
-  supporting the creation of climate-neutral industrial materials and
-  regenerative agricultural practices while helping your business achieve its
-  net-zero goals.
+  We offer premium CDR credits generated through Novocarbo’s advanced Biochar
+  Carbon Removal technology. By transforming sustainable biogenic residues into
+  stable biochar, this process locks away atmospheric carbon for centuries,
+  providing highly durable, permanent, and verifiable removal. These
+  high-integrity credits directly support climate-neutral industrial materials
+  and regenerative agriculture while helping your business achieve its net-zero
+  goals.
 date: '2026-05-28'
 tags: []
 featured: false
