@@ -1,6 +1,6 @@
 ---
 title: Filters & Tags
-slug: filters
+slug: home
 locationOptions:
   - Africa
   - Asia
@@ -16,16 +16,18 @@ eligibilityOptions:
 standardOptions:
   - Isometric
   - Puro
-  - CSI
+  - Carbon Standards
   - Rainbow
   - Verra
   - Gold Standard
 typeOptions:
-  - Biochar
-  - DACCS
+  - Industrial Biochar
+  - Artisan Biochar
+  - DAC
   - BECCS
   - ARR
   - NBS
   - Renewable Energy
-  - Cookstove
+  - Cookstoves
 ---
+
