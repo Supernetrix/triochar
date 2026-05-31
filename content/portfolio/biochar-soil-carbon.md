@@ -1,14 +1,15 @@
 ---
 title: Biochar Soil Carbon Program
 slug: biochar-soil-carbon
-image: "/images/project-biochar.png"
-summary: A supplier-led biochar pathway designed around durable carbon storage,
+image: /images/project-biochar.png
+summary: >-
+  A supplier-led biochar pathway designed around durable carbon storage,
   agricultural co-benefits, and buyer-ready project documentation.
 projectType: Biochar
 location: India
 carbonCreditType: Removal
 status: Readiness Review
-date: 2026-05-22T13:23:00.000+05:30
+date: '2026-05-22T07:53:00.000Z'
 featured: true
 draft: false
 gallery:
@@ -20,8 +21,13 @@ tags:
   - Agriculture
 seoTitle: Biochar Soil Carbon Program
 seoDescription: A Triochar portfolio project concept for durable biochar carbon credits.
+filterTypes:
+  - Biochar
+filterLocations:
+  - Africa
+filterStandards:
+  - Puro
 ---
-
 ## Project Overview
 
 This program represents the type of biochar project Triochar can package for carbon credit buyers. The core value is durable carbon storage supported by feedstock traceability, production controls, and practical soil-use pathways.
