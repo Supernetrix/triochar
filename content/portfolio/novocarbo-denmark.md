@@ -13,7 +13,7 @@ date: '2026-05-28'
 tags: []
 featured: false
 draft: false
-image: /uploads/1779952487207-carbon-removal-park-novocarbo.jpg
+image: /uploads/1780239110819-novocarbo-site.webp
 projectType: Industrial Biochar Carbon Removal
 location: Denmark
 carbonCreditType: Spot - Ex Post
