@@ -59,12 +59,17 @@ export default function ContactPage() {
                     {siteConfig.contactPhone}
                   </span>
                 </a>
-                <div className="flex items-center gap-3.5 rounded-xl border border-[var(--line)] bg-[var(--surface)]/50 p-4">
+                <a
+                  href={siteConfig.contactLocationHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-3.5 rounded-xl border border-[var(--line)] bg-[var(--surface)]/50 p-4 transition-colors hover:border-[var(--mint-2)] hover:bg-white"
+                >
                   <MapPin className="text-[color:var(--gold)]" size={18} />
                   <span className="text-sm font-semibold text-[color:var(--forest)]">
                     {siteConfig.contactLocation}
                   </span>
-                </div>
+                </a>
               </div>
             </div>
           </Reveal>

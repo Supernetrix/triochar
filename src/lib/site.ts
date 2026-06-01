@@ -14,6 +14,8 @@ export const siteConfig = {
   contactPhone: "Book a calendar call",
   contactPhoneHref: "https://triochar.io/meet-kubi",
   contactLocation: "Global carbon market",
+  contactLocationHref:
+    "https://www.google.com/maps/search/?api=1&query=Andrea+Souroukli+9%2C+6021+Larnaca%2C+Cyprus",
 
   seoTitle: "Triochar | Bankable and Trustworthy Carbon Credits",
   seoDescription:

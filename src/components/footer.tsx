@@ -128,10 +128,15 @@ export function Footer({
                 <Phone size={15} className="text-[color:var(--gold-soft)]" />
                 {siteConfig.contactPhone}
               </a>
-              <div className="flex items-center gap-3 text-white/74">
+              <a
+                href={siteConfig.contactLocationHref}
+                className="flex items-center gap-3 text-white/74 transition hover:text-white"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <MapPin size={15} className="text-[color:var(--gold-soft)]" />
                 {siteConfig.contactLocation}
-              </div>
+              </a>
             </div>
           </div>
         </div>
