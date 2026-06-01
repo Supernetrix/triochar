@@ -13,7 +13,7 @@ export const siteConfig = {
   contactEmail: "partnerships@triochar.io",
   contactPhone: "Book a calendar call",
   contactPhoneHref: "https://triochar.io/meet-kubi",
-  contactLocation: "Global carbon market",
+  contactLocation: "Andrea Souroukli 9, 6021 Larnaca, Cyprus",
   contactLocationHref:
     "https://www.google.com/maps/search/?api=1&query=Andrea+Souroukli+9%2C+6021+Larnaca%2C+Cyprus",
 
