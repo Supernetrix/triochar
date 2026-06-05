@@ -27,6 +27,8 @@ filterTypes:
 filterLocations:
   - Africa
 filterStandards: []
+filterEligibility:
+  - CCP
 ---
 ## Project Overview
 
