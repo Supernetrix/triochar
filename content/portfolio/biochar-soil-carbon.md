@@ -1,7 +1,7 @@
 ---
 title: Biochar Soil Carbon Program
 slug: biochar-soil-carbon
-image: /images/project-biochar.png
+image: ''
 summary: >-
   A supplier-led biochar pathway designed around durable carbon storage,
   agricultural co-benefits, and buyer-ready project documentation.
