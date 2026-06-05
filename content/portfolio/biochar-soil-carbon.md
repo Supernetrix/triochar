@@ -23,10 +23,10 @@ seoTitle: Biochar Soil Carbon Program
 seoDescription: A Triochar portfolio project concept for durable biochar carbon credits.
 filterTypes:
   - Biochar
+  - Industrial Biochar
 filterLocations:
   - Africa
-filterStandards:
-  - Puro
+filterStandards: []
 ---
 ## Project Overview
 
