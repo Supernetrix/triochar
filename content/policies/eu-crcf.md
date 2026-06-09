@@ -7,7 +7,7 @@ summary: >-
   benchmarks for permanent removals, carbon farming, and bio-based products to
   eliminate greenwashing and structure corporate climate strategies.
 date: '2026-05-15'
-image: /images/knowledge-policy.png
+image: ''
 tags:
   - European CRCF
 draft: false
