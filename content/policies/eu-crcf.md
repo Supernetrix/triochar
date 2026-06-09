@@ -20,11 +20,11 @@ region: Europe
 effectiveDate: '2026-05-15'
 pdfLink: '#'
 ---
-##Deciphering the EU Carbon Removals Certification Framework (CRCF)
+## Deciphering the EU Carbon Removals Certification Framework (CRCF)
 
 The European Union is taking a definitive step toward structuring its carbon removal sector with the introduction of Regulation (EU) 2024/3012, widely known as the Carbon Removals and Carbon Farming Certification Framework (CRCF). Designed as a voluntary mechanism, the CRCF aims to eliminate market fragmentation, combat greenwashing, and inject clear financial incentives into verified climate solutions. Rather than operating as an isolated market, this framework establishes a unified, reliable benchmark for quality across the continent.
 
-##The Pillars of Accountability: QU.A.L.ITY Benchmarks
+## The Pillars of Accountability: QU.A.L.ITY Benchmarks
 
 To guarantee that certified initiatives deliver genuine climate value, the CRCF demands that every project comply with four foundational pillars:
 
