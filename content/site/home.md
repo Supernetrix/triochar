@@ -68,7 +68,7 @@ whoEyebrow: Who are we
 whoHeadingStart: WHO ARE
 whoHeadingEmphasis: WE
 whoIntro: >-
-  Triochar is a lean, trustworthy partner built around one outcome — getting
+  Triochar is a lean, trustworthy partner built around one outcome - getting
   your company to a credible net zero.
 whoCtaLabel: Start the Conversation
 whoCtaHref: /contact
