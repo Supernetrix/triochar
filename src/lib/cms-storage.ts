@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter";
+import { normalizeCmsImagePath } from "@/lib/cms-media";
 import { CMS_COLLECTIONS, getCmsCollection, type CmsCollectionName } from "@/lib/cms-schema";
 
 export type CmsEntry = Record<string, unknown> & {
@@ -119,6 +120,19 @@ function cleanEntryForMarkdown(entry: CmsEntry) {
   return matter.stringify(body || "", cleaned);
 }
 
+function normalizeEntryImageFields(collection: CmsCollectionName, entry: CmsEntry): CmsEntry {
+  const fields = getCmsCollection(collection)?.fields || [];
+  const normalized: CmsEntry = { ...entry };
+
+  for (const field of fields) {
+    if (field.type === "image") {
+      normalized[field.name] = normalizeCmsImagePath(normalized[field.name]);
+    }
+  }
+
+  return normalized;
+}
+
 async function localListEntries(collection: CmsCollectionName) {
   const dir = path.join(contentRoot, getCmsCollection(collection)?.directory || "");
   const meta = getCmsCollection(collection);
@@ -145,11 +159,12 @@ async function localListEntries(collection: CmsCollectionName) {
 async function localSaveEntry(collection: CmsCollectionName, entry: CmsEntry, originalSlug?: string) {
   const meta = getCmsCollection(collection);
   const finalSlug = meta?.singleton ? "home" : slugify(entry.slug || String(entry.title || "untitled"));
+  const finalEntry = normalizeEntryImageFields(collection, { ...entry, slug: finalSlug });
   const targetPath = localEntryPath(collection, finalSlug);
   const originalPath = originalSlug ? localEntryPath(collection, originalSlug) : targetPath;
 
   await fs.mkdir(path.dirname(targetPath), { recursive: true });
-  await fs.writeFile(targetPath, cleanEntryForMarkdown({ ...entry, slug: finalSlug }), "utf8");
+  await fs.writeFile(targetPath, cleanEntryForMarkdown(finalEntry), "utf8");
 
   if (originalSlug && slugify(originalSlug) !== finalSlug) {
     await fs.rm(originalPath, { force: true });
@@ -319,7 +334,7 @@ async function gitHubDeleteFile(filePath: string, message: string) {
 async function gitHubSaveEntry(collection: CmsCollectionName, entry: CmsEntry, originalSlug?: string) {
   const meta = getCmsCollection(collection);
   const finalSlug = meta?.singleton ? "home" : slugify(entry.slug || String(entry.title || "untitled"));
-  const finalEntry = { ...entry, slug: finalSlug };
+  const finalEntry = normalizeEntryImageFields(collection, { ...entry, slug: finalSlug });
   const targetPath = entryPath(collection, finalSlug);
   const message = `chore(cms): update ${collection}/${finalSlug}`;
 

@@ -20,6 +20,7 @@ import {
   Search,
   Trash2,
 } from "lucide-react";
+import { normalizeCmsImagePath } from "@/lib/cms-media";
 import { CMS_COLLECTIONS, type CmsCollection, type CmsCollectionName, type CmsField } from "@/lib/cms-schema";
 
 type CmsEntry = Record<string, unknown> & {
@@ -133,6 +134,10 @@ function collectionEntries(groups: EntryGroups, collection: CmsCollectionName) {
 
 function fieldValue(entry: CmsEntry, name: string) {
   return asString(entry[name]);
+}
+
+function normalizeFieldValue(field: CmsField, value: unknown) {
+  return field.type === "image" ? normalizeCmsImagePath(value) : value;
 }
 
 function slugifyClient(value: string) {
@@ -582,6 +587,8 @@ export function SimpleCms() {
   }
 
   function updateField(field: CmsField, value: unknown) {
+    const normalizedValue = normalizeFieldValue(field, value);
+
     setSelectedEntry((current) => {
       if (!current) {
         return current;
@@ -589,11 +596,11 @@ export function SimpleCms() {
 
       const next = {
         ...current,
-        [field.name]: value,
+        [field.name]: normalizedValue,
       };
 
       if (field.name === "title" && !originalSlug && !fieldValue(current, "slug")) {
-        next.slug = slugifyClient(asString(value));
+        next.slug = slugifyClient(asString(normalizedValue));
       }
 
       return next;
@@ -644,7 +651,11 @@ export function SimpleCms() {
       });
       updateField(field, result.path);
       setStatus("success");
-      setMessage("Image uploaded. Remember to save the entry.");
+      setMessage(
+        mode === "github"
+          ? "Image uploaded to GitHub. Save the entry, then wait for the Vercel redeploy before the public preview shows it."
+          : "Image uploaded. Remember to save the entry.",
+      );
     } catch (error) {
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "Image upload failed.");
@@ -1245,7 +1256,9 @@ function FieldControl({
           className={`${inputClass} resize-y px-4 py-3 leading-relaxed`}
         />
         {field.type === "markdown" ? (
-          <span className="text-xs text-[#1c2620]/52">Tip: use ## for headings, - for bullets, and blank lines between paragraphs.</span>
+          <span className="text-xs text-[#1c2620]/52">
+            Tip: use ## Heading with a space, - for bullets, and blank lines between paragraphs.
+          </span>
         ) : null}
       </label>
     );
