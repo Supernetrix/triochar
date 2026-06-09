@@ -12,8 +12,8 @@ heroTitleStart: Bankable and
 heroTitleEmphasis: Trustworthy
 heroTitleEnd: Carbon Credits
 heroCaption: >-
-  Triochar guides you to complete your journey from decarbonization thought to
-  becoming net zero.
+  Triochar guides you to complete your journey from decarbonization to becoming
+  net zero.
 heroPrimaryCtaLabel: Let us Begin the Conversation
 heroPrimaryCtaHref: /contact
 heroSecondaryCtaLabel: View Portfolio
