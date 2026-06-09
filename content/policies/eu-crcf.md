@@ -54,6 +54,6 @@ The First Methodologies (April 2026): Delegated Act (EU) 2026/285 officially ena
 
 Looking Forward: The European Commission is currently developing the next set of technical criteria for carbon farming and structural products, slated for release later this year. Additionally, a comprehensive review scheduled for late 2026 will evaluate how these certificates might integrate into broader corporate sustainability reporting and compliance structures.
 
-Implications for Corporate Strategy
+## Implications for Corporate Strategy
 
 The CRCF is rapidly becoming the gold standard for buyers navigating corporate sustainability claims. By aligning corporate purchasing with these strict EU-vetted metrics, businesses can insulate themselves from reputational risks, future-proof their net-zero strategies, and confidently secure high-integrity removal credits before the market tightens toward 2030 targets.
