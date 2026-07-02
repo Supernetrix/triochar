@@ -25,6 +25,7 @@ export type ContentEntry = {
   location?: string;
   carbonCreditType?: string;
   status?: string;
+  registryId?: string;
   category?: string;
   author?: string;
   region?: string;
@@ -135,6 +136,7 @@ function normalizeEntry(collection: CollectionName, filePath: string): ContentEn
     location: asString(data.location),
     carbonCreditType: asString(data.carbonCreditType),
     status: asString(data.status),
+    registryId: asString(data.registryId),
     category: asString(data.category),
     author: asString(data.author),
     region: asString(data.region),

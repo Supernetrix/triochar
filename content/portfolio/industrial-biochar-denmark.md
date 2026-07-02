@@ -15,6 +15,7 @@ projectType: Industrial Biochar Carbon Removal
 location: Denmark
 carbonCreditType: Spot - Ex Post
 status: Active
+registryId: Puro ID 23456DC4
 filterLocations:
   - Europe
 filterStandards:

@@ -18,6 +18,7 @@ projectType: "Regenerative Land"
 location: "South Asia"
 carbonCreditType: "Reduction and Removal"
 status: "Supplier Screening"
+registryId: "VERRA ID 4450"
 ---
 
 ## Project Overview

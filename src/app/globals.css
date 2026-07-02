@@ -92,12 +92,12 @@
 }
 
 .container-shell {
-  width: min(1180px, calc(100% - 48px));
+  width: min(980px, calc(100% - 40px));
   margin: 0 auto;
 }
 
 .container-narrow {
-  width: min(900px, calc(100% - 48px));
+  width: min(760px, calc(100% - 40px));
   margin: 0 auto;
 }
 

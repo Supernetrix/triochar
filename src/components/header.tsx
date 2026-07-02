@@ -34,9 +34,9 @@ export function Header({ brandName, navItems }: { brandName: string; logoText: s
   );
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[var(--background)]/85 backdrop-blur-md">
-      <div className="container-shell relative flex h-20 items-center gap-5">
-        <div className="flex shrink-0 items-center gap-3 sm:gap-4">
+    <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[#fcfefb]/95 backdrop-blur-md">
+      <div className="container-shell relative flex h-20 items-center gap-4">
+        <div className="flex shrink-0 items-center">
           <Link
             href="/"
             className="block shrink-0"
@@ -50,7 +50,7 @@ export function Header({ brandName, navItems }: { brandName: string; logoText: s
               priority
               unoptimized
               style={{ width: "auto" }}
-              className="h-11 sm:h-12"
+              className="h-14 sm:h-[3.75rem]"
             />
           </Link>
         </div>

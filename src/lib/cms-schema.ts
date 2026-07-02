@@ -200,6 +200,12 @@ export const CMS_COLLECTIONS: CmsCollection[] = [
         type: "select",
         options: ["Early Origination", "Supplier Screening", "Readiness Review", "Buyer Ready", "Active"],
       },
+      {
+        label: "Registry ID",
+        name: "registryId",
+        type: "text",
+        hint: "Shown on portfolio cards, e.g. VERRA ID 4448 or Puro ID 23456DC4.",
+      },
       { label: "Publish Date", name: "date", type: "date" },
       { label: "Featured Project", name: "featured", type: "boolean" },
       { label: "Draft (hidden until ready)", name: "draft", type: "boolean" },

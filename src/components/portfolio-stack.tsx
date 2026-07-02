@@ -252,11 +252,6 @@ export function PortfolioStack({ projects, taxonomy }: { projects: ContentEntry[
                         ) : null}
                         <div className="absolute inset-0 bg-gradient-to-br from-[var(--forest-deep)]/35 via-transparent to-transparent" />
 
-                        {/* number badge */}
-                        <span className="absolute left-5 top-5 grid h-11 w-11 place-items-center rounded-full bg-white/95 font-mono text-[12px] font-bold text-[color:var(--forest)] shadow-sm backdrop-blur">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-
                         {/* status floating chip */}
                         {project.status ? (
                           <span className="absolute right-5 top-5 rounded-full bg-[var(--forest)]/92 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur">
@@ -321,7 +316,7 @@ export function PortfolioStack({ projects, taxonomy }: { projects: ContentEntry[
                         {/* footer row */}
                         <div className="mt-1 flex items-center justify-between">
                           <span className="text-[11px] font-bold uppercase tracking-widest text-[color:var(--ink)]/50">
-                            Project / {String(index + 1).padStart(2, "0")}
+                            {project.registryId || "Registry ID TBC"}
                           </span>
                           <span className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest text-[color:var(--forest-2)] transition-all group-hover:gap-3">
                             View Project

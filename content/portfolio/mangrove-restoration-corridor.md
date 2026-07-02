@@ -18,6 +18,7 @@ projectType: "Nature Restoration"
 location: "Coastal Asia"
 carbonCreditType: "Avoidance and Removal"
 status: "Early Origination"
+registryId: "VERRA ID 4452"
 ---
 
 ## Project Overview

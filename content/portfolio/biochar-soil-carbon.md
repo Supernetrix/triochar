@@ -9,6 +9,7 @@ projectType: Biochar
 location: India
 carbonCreditType: Removal
 status: Readiness Review
+registryId: VERRA ID 4448
 date: '2026-05-22T07:53:00.000Z'
 featured: true
 draft: false
