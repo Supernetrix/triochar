@@ -19,7 +19,7 @@ function gitHubConfig() {
     repo: process.env.GITHUB_REPO || "",
     branch: process.env.GITHUB_BRANCH || "main",
     committerName: process.env.GITHUB_COMMITTER_NAME || "Climate Assets Exchange CMS",
-    committerEmail: process.env.GITHUB_COMMITTER_EMAIL || "partnerships@triochar.io",
+    committerEmail: process.env.GITHUB_COMMITTER_EMAIL || "Partnerships@climate-assets.com",
   };
 }
 

@@ -48,7 +48,7 @@ GITHUB_TOKEN=github_fine_grained_token_with_contents_read_write
 GITHUB_REPO=Supernetrix/triochar
 GITHUB_BRANCH=main
 GITHUB_COMMITTER_NAME=Climate Assets Exchange CMS
-GITHUB_COMMITTER_EMAIL=partnerships@triochar.io
+GITHUB_COMMITTER_EMAIL=Partnerships@climate-assets.com
 ```
 
 When the client saves content in `/admin`, the API commits Markdown/image changes
