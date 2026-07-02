@@ -12,9 +12,9 @@ tags:
 draft: true
 featured: true
 seoTitle: From Thought to Net Zero
-seoDescription: A Triochar blog post about the net-zero buyer journey.
+seoDescription: A Climate Assets Exchange blog post about the net-zero buyer journey.
 category: Strategy
-author: Triochar Team
+author: Climate Assets Exchange Team
 ---
 ## The Journey Needs Structure
 

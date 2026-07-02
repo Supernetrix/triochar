@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://triochar.vercel.app/sitemap.xml",
+    sitemap: "https://climate-assets.com/sitemap.xml",
   };
 }

@@ -43,14 +43,14 @@ export function Header({ brandName, navItems }: { brandName: string; logoText: s
             aria-label={`${brandName} home`}
           >
             <Image
-              src="/brand/triochar-logo.svg"
+              src="/brand/climate-assets-logo.svg"
               alt={brandName}
-              width={176}
-              height={40}
+              width={180}
+              height={50}
               priority
               unoptimized
               style={{ width: "auto" }}
-              className="h-9 sm:h-10"
+              className="h-11 sm:h-12"
             />
           </Link>
         </div>

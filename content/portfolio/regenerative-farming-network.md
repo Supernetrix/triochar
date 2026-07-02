@@ -13,7 +13,7 @@ tags:
 draft: false
 featured: true
 seoTitle: "Regenerative Farming Network"
-seoDescription: "A Triochar portfolio project concept for regenerative agriculture and soil carbon."
+seoDescription: "A Climate Assets Exchange portfolio project concept for regenerative agriculture and soil carbon."
 projectType: "Regenerative Land"
 location: "South Asia"
 carbonCreditType: "Reduction and Removal"
@@ -26,7 +26,7 @@ The regenerative farming network brings multiple smallholder or regional land pa
 
 ## Supplier Fit
 
-This type of project needs careful data gathering, practical onboarding, and clear responsibility across partners. Triochar can frame those details for buyers without making the page feel technical or slow.
+This type of project needs careful data gathering, practical onboarding, and clear responsibility across partners. Climate Assets Exchange can frame those details for buyers without making the page feel technical or slow.
 
 ## Trust Layer
 

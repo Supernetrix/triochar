@@ -6,7 +6,7 @@ import { Reveal } from "@/components/reveal";
 
 export const metadata: Metadata = {
   title: "Supplier",
-  description: "Supplier pathway for carbon credit projects on Triochar.",
+  description: "Supplier pathway for carbon credit projects on Climate Assets Exchange.",
 };
 
 const steps = [
@@ -24,7 +24,7 @@ const steps = [
   },
   {
     title: "Buyer engagement",
-    text: "Triochar positions the project for serious buyer conversations and flexible commercial structures.",
+    text: "Climate Assets Exchange positions the project for serious buyer conversations and flexible commercial structures.",
   },
 ];
 

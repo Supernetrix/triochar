@@ -7,7 +7,8 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Contact Triochar for carbon credit projects, supplier engagement, and buyer inquiries.",
+  description:
+    "Contact Climate Assets Exchange for carbon credit projects, supplier engagement, and buyer inquiries.",
 };
 
 export default function ContactPage() {

@@ -6,20 +6,21 @@
  */
 
 export const siteConfig = {
-  brandName: "Triochar",
-  logoText: "Triochar",
+  brandName: "Climate Assets Exchange",
+  logoText: "Climate Assets Exchange",
   tagline: "Bankable and Trustworthy Carbon Credits",
 
   contactEmail: "partnerships@triochar.io",
   contactPhone: "Book a calendar call",
-  contactPhoneHref: "https://triochar.io/meet-kubi",
+  contactPhoneHref:
+    "https://bookings.cloud.microsoft/bookwithme/user/d714a9d88abf48afa17ef862edec79f6%40triochar.io/meetingtype/H-w8DlZKnUucU5hwTMYCGw2?anonymous&ismsaljsauthenabled",
   contactLocation: "Andrea Souroukli 9, 6021 Larnaca, Cyprus",
   contactLocationHref:
     "https://www.google.com/maps/search/?api=1&query=Andrea+Souroukli+9%2C+6021+Larnaca%2C+Cyprus",
 
-  seoTitle: "Triochar | Bankable and Trustworthy Carbon Credits",
+  seoTitle: "Climate Assets Exchange | Bankable and Trustworthy Carbon Credits",
   seoDescription:
-    "Triochar guides you to complete your journey from decarbonization thought to becoming net zero.",
+    "Climate Assets Exchange guides you to complete your journey from decarbonization thought to becoming net zero.",
 
   footerNote:
     "A lean and trustworthy partner for credible carbon credit discovery and corporate decarbonization.",

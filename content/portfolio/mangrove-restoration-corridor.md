@@ -13,7 +13,7 @@ tags:
 draft: false
 featured: true
 seoTitle: "Mangrove Restoration Corridor"
-seoDescription: "A Triochar portfolio project concept for mangrove restoration and blue carbon."
+seoDescription: "A Climate Assets Exchange portfolio project concept for mangrove restoration and blue carbon."
 projectType: "Nature Restoration"
 location: "Coastal Asia"
 carbonCreditType: "Avoidance and Removal"

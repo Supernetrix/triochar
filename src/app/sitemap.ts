@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { collectionMeta, getEntries, type CollectionName } from "@/lib/content";
 
-const baseUrl = "https://triochar.vercel.app";
+const baseUrl = "https://climate-assets.com";
 const collections: CollectionName[] = ["portfolio", "policies", "blogs", "vlogs"];
 
 export const dynamic = "force-static";

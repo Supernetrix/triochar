@@ -79,13 +79,13 @@ export function Footer({
         <div className="grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1.1fr]">
           <div className="space-y-4">
             <Image
-              src="/brand/triochar-logo-white.svg"
+              src="/brand/climate-assets-logo-white.svg"
               alt={brandName}
-              width={176}
-              height={40}
+              width={180}
+              height={50}
               unoptimized
               style={{ width: "auto" }}
-              className="h-10"
+              className="h-12"
             />
             <p className="max-w-xs text-sm leading-relaxed text-white/68">{footerNote}</p>
           </div>

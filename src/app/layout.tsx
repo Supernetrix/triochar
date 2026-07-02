@@ -31,10 +31,10 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.brandName}`,
   },
   description: siteConfig.seoDescription,
-  metadataBase: new URL("https://triochar.vercel.app"),
+  metadataBase: new URL("https://climate-assets.com"),
   icons: {
-    icon: "/brand/triochar-favicon.png",
-    apple: "/brand/triochar-favicon.png",
+    icon: "/brand/climate-assets-favicon.png",
+    apple: "/brand/climate-assets-apple-touch-icon.png",
   },
 };
 

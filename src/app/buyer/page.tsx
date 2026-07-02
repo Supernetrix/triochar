@@ -6,7 +6,7 @@ import { Reveal } from "@/components/reveal";
 
 export const metadata: Metadata = {
   title: "Buyer",
-  description: "Buyer pathway for trusted carbon credit acquisition through Triochar.",
+  description: "Buyer pathway for trusted carbon credit acquisition through Climate Assets Exchange.",
 };
 
 const steps = [
@@ -86,8 +86,8 @@ export default function BuyerPage() {
                 The right carbon credit conversation starts before the purchase.
               </h2>
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[color:var(--ink)]/65">
-                Triochar helps buyers understand project fit, trust signals, and strategic options
-                before moving to transaction steps.
+                Climate Assets Exchange helps buyers understand project fit, trust signals, and
+                strategic options before moving to transaction steps.
               </p>
               <Link
                 href="/contact"

@@ -5,7 +5,7 @@ import { getEntries, getTaxonomy } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Portfolio",
-  description: "Explore Triochar portfolio projects and carbon credit opportunities.",
+  description: "Explore Climate Assets Exchange portfolio projects and carbon credit opportunities.",
 };
 
 export default function PortfolioPage() {

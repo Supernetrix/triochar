@@ -18,8 +18,8 @@ function gitHubConfig() {
     token: process.env.GITHUB_TOKEN || process.env.GH_TOKEN || "",
     repo: process.env.GITHUB_REPO || "",
     branch: process.env.GITHUB_BRANCH || "main",
-    committerName: process.env.GITHUB_COMMITTER_NAME || "Triochar CMS",
-    committerEmail: process.env.GITHUB_COMMITTER_EMAIL || "cms@triochar.com",
+    committerName: process.env.GITHUB_COMMITTER_NAME || "Climate Assets Exchange CMS",
+    committerEmail: process.env.GITHUB_COMMITTER_EMAIL || "partnerships@triochar.io",
   };
 }
 
