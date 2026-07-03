@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, BadgeCheck, Leaf, MapPin, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, BadgeCheck, Leaf, MapPin, ShieldCheck } from "lucide-react";
 import { getEntries, getEntryBySlug } from "@/lib/content";
 
 export const dynamicParams = false;
@@ -40,7 +40,18 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
     { label: "Type", value: project.filterTypes.join(", "), icon: Leaf },
     { label: "Status", value: project.status, icon: BadgeCheck },
   ].filter((item) => item.value);
-  const projectImage = project.image || project.gallery?.[0];
+  const projectImage = project.image;
+  const projectTags = Array.from(
+    new Set(
+      [
+        ...project.filterLocations,
+        ...project.filterEligibility,
+        ...project.filterStandards,
+        ...project.filterTypes,
+        ...project.tags,
+      ].filter(Boolean),
+    ),
+  );
 
   return (
     <article>
@@ -98,21 +109,15 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
           <div className="cms-body soft-card rounded-2xl p-7 md:p-10">
             <div dangerouslySetInnerHTML={{ __html: project.html || "" }} />
           </div>
-          <aside className="soft-card h-fit rounded-2xl p-6">
-            <h2 className="font-display border-b border-[var(--line)] pb-3 text-lg text-[color:var(--ink)]">
+          <aside className="soft-card h-fit rounded-2xl p-5">
+            <h2 className="font-display border-b border-[var(--line)] pb-3 text-base text-[color:var(--ink)]">
               Project Tags
             </h2>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {[
-                ...project.filterLocations,
-                ...project.filterEligibility,
-                ...project.filterStandards,
-                ...project.filterTypes,
-                ...project.tags,
-              ].map((tag) => (
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {projectTags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded bg-[var(--mint)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[color:var(--forest)]"
+                  className="whitespace-nowrap rounded-full bg-[var(--mint)] px-3 py-1.5 text-[11px] font-bold leading-none tracking-[0.08em] text-[color:var(--forest)]"
                 >
                   {tag}
                 </span>
@@ -120,9 +125,11 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
             </div>
             <Link
               href="/contact"
-              className="mt-6 inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-[var(--forest)] px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-[var(--forest-2)]"
+              className="mt-6 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[var(--forest)] px-4 py-3 text-[11px] font-bold uppercase tracking-[0.12em] text-white transition hover:bg-[var(--forest-2)]"
+              aria-label="Discuss this project"
             >
-              Discuss This Project
+              <span className="whitespace-nowrap">Discuss Project</span>
+              <ArrowUpRight size={14} />
             </Link>
           </aside>
         </div>
