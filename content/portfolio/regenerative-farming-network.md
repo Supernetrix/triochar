@@ -5,7 +5,7 @@ summary: >-
   A distributed land-use program for farmers adopting regenerative practices,
   soil health improvements, and monitored climate benefits.
 date: '2026-05-19'
-image: ''
+image: /uploads/1783068166362-1347910.png
 gallery:
   - /images/project-regenerative.png
 tags:
