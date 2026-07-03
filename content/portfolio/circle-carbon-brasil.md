@@ -7,7 +7,7 @@ summary: >-
   institutional-grade climate assets that guarantee over 1,000 years of
   permanence alongside robust environmental co-benefits.
 date: '2026-05-20'
-image: /uploads/1783064943894-circle-carbon-photo.jpeg
+image: ''
 gallery:
   - /images/project-mangrove.png
 tags:
