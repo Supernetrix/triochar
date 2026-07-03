@@ -1,7 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import {
   AlertCircle,
   BookOpen,
@@ -134,6 +133,10 @@ function collectionEntries(groups: EntryGroups, collection: CmsCollectionName) {
 
 function fieldValue(entry: CmsEntry, name: string) {
   return asString(entry[name]);
+}
+
+function imagePreviewKey(fieldName: string, value: string) {
+  return `${fieldName}:${value}`;
 }
 
 function normalizeFieldValue(field: CmsField, value: unknown) {
@@ -378,6 +381,8 @@ export function SimpleCms() {
   const [mode, setMode] = useState<"local" | "github" | "">("");
   const [searchQuery, setSearchQuery] = useState("");
   const [tagDrafts, setTagDrafts] = useState<Record<string, string>>({});
+  const [imagePreviews, setImagePreviews] = useState<Record<string, string>>({});
+  const imagePreviewUrls = useRef<string[]>([]);
 
   const activeCollection = useMemo(
     () => CMS_COLLECTIONS.find((collection) => collection.name === activeCollectionName) || CMS_COLLECTIONS[0],
@@ -480,6 +485,16 @@ export function SimpleCms() {
 
     return () => {
       cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    const urls = imagePreviewUrls.current;
+
+    return () => {
+      for (const url of urls) {
+        URL.revokeObjectURL(url);
+      }
     };
   }, []);
 
@@ -641,6 +656,7 @@ export function SimpleCms() {
 
     const formData = new FormData();
     formData.append("file", file);
+    const objectUrl = URL.createObjectURL(file);
     setStatus("saving");
     setMessage("Uploading image...");
 
@@ -649,6 +665,11 @@ export function SimpleCms() {
         method: "POST",
         body: formData,
       });
+      imagePreviewUrls.current.push(objectUrl);
+      setImagePreviews((previews) => ({
+        ...previews,
+        [imagePreviewKey(field.name, result.path)]: objectUrl,
+      }));
       updateField(field, result.path);
       setStatus("success");
       setMessage(
@@ -657,6 +678,7 @@ export function SimpleCms() {
           : "Image uploaded. Remember to save the entry.",
       );
     } catch (error) {
+      URL.revokeObjectURL(objectUrl);
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "Image upload failed.");
     } finally {
@@ -1094,6 +1116,11 @@ export function SimpleCms() {
                           entry={selectedEntry}
                           options={resolveFieldOptions(field)}
                           tagText={field.type === "tags" ? tagDrafts[tagDraftKey(selectedEntry, field.name)] : undefined}
+                          imagePreview={
+                            field.type === "image"
+                              ? imagePreviews[imagePreviewKey(field.name, fieldValue(selectedEntry, field.name))]
+                              : undefined
+                          }
                           onChange={handleInput}
                           onSet={updateField}
                           onUpload={uploadImage}
@@ -1141,6 +1168,7 @@ function FieldControl({
   entry,
   options,
   tagText,
+  imagePreview,
   onChange,
   onSet,
   onUpload,
@@ -1149,6 +1177,7 @@ function FieldControl({
   entry: CmsEntry;
   options?: string[];
   tagText?: string;
+  imagePreview?: string;
   onChange: (field: CmsField, event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
   onSet: (field: CmsField, value: unknown) => void;
   onUpload: (field: CmsField, event: ChangeEvent<HTMLInputElement>) => Promise<void>;
@@ -1270,14 +1299,20 @@ function FieldControl({
 
   if (field.type === "image") {
     const value = fieldValue(entry, field.name);
+    const previewValue = imagePreview || value;
 
     return (
       <div className="grid gap-2">
         {label}
         <div className="grid gap-4 rounded-2xl border border-[#2c5f3a]/10 bg-white p-4">
-          {value ? (
-            <div className="relative aspect-[16/8] overflow-hidden rounded-xl border border-[#2c5f3a]/10 bg-[#eefbe8]">
-              <Image src={value} alt="" fill sizes="(max-width: 900px) 100vw, 720px" className="object-cover" />
+          {previewValue ? (
+            <div className="overflow-hidden rounded-xl border border-[#2c5f3a]/10 bg-[#eefbe8]">
+              <div
+                aria-label="Selected image preview"
+                role="img"
+                className="aspect-[16/8] bg-cover bg-center"
+                style={{ backgroundImage: `url(${JSON.stringify(previewValue)})` }}
+              />
             </div>
           ) : (
             <div className="grid aspect-[16/8] place-items-center rounded-xl border border-dashed border-[#2c5f3a]/18 bg-[#f7fbf5] text-center">
