@@ -9,7 +9,7 @@ projectType: Biochar
 location: India
 carbonCreditType: Removal
 status: Readiness Review
-registryId: VERRA ID 4448
+registryId: CSI ID GCSP1019
 date: '2026-05-22T07:53:00.000Z'
 featured: true
 draft: false
@@ -21,15 +21,19 @@ tags:
   - Durable carbon
   - Agriculture
 seoTitle: Biochar Soil Carbon Program
-seoDescription: A Climate Assets Exchange portfolio project concept for durable biochar carbon credits.
+seoDescription: >-
+  A Climate Assets Exchange portfolio project concept for durable biochar carbon
+  credits.
 filterTypes:
   - Biochar
   - Industrial Biochar
+  - Artisan Biochar
 filterLocations:
+  - Asia
   - Africa
-filterStandards: []
-filterEligibility:
-  - CCP
+filterStandards:
+  - Carbon Standards
+filterEligibility: []
 ---
 ## Project Overview
 
