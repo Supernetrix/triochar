@@ -1,26 +1,29 @@
 ---
-title: "Regenerative Farming Network"
-slug: "regenerative-farming-network"
-summary: "A distributed land-use program for farmers adopting regenerative practices, soil health improvements, and monitored climate benefits."
-date: "2026-05-19"
-image: "/images/project-regenerative.png"
+title: Regenerative Farming Network
+slug: regenerative-farming-network
+summary: >-
+  A distributed land-use program for farmers adopting regenerative practices,
+  soil health improvements, and monitored climate benefits.
+date: '2026-05-19'
+image: ''
 gallery:
-  - "/images/project-regenerative.png"
+  - /images/project-regenerative.png
 tags:
-  - "Soil carbon"
-  - "Regenerative agriculture"
-  - "Farmer network"
+  - Soil carbon
+  - Regenerative agriculture
+  - Farmer network
 draft: false
 featured: true
-seoTitle: "Regenerative Farming Network"
-seoDescription: "A Climate Assets Exchange portfolio project concept for regenerative agriculture and soil carbon."
-projectType: "Regenerative Land"
-location: "South Asia"
-carbonCreditType: "Reduction and Removal"
-status: "Supplier Screening"
-registryId: "VERRA ID 4450"
+seoTitle: Regenerative Farming Network
+seoDescription: >-
+  A Climate Assets Exchange portfolio project concept for regenerative
+  agriculture and soil carbon.
+projectType: Regenerative Land
+location: South Asia
+carbonCreditType: Reduction and Removal
+status: Supplier Screening
+registryId: VERRA ID 4450
 ---
-
 ## Project Overview
 
 The regenerative farming network brings multiple smallholder or regional land parcels into a structured program. The platform can help communicate how practice change, monitoring, and project coordination support a credible credit pathway.
