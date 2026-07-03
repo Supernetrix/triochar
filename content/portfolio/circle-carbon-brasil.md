@@ -7,13 +7,11 @@ summary: >-
   institutional-grade climate assets that guarantee over 1,000 years of
   permanence alongside robust environmental co-benefits.
 date: '2026-05-20'
-image: ''
+image: /uploads/1783066664589-circle-carbon-photo.jpeg
 gallery:
   - /images/project-mangrove.png
 tags:
-  - Nature restoration
-  - Blue carbon
-  - Community
+  - Industrial Biochar
 draft: false
 featured: true
 seoTitle: Mangrove Restoration Corridor
@@ -24,7 +22,7 @@ projectType: Nature Restoration
 location: Coastal Asia
 carbonCreditType: Avoidance and Removal
 status: Early Origination
-registryId: VERRA ID 4452
+registryId: CSI
 filterLocations:
   - South America
 filterStandards:
