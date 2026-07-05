@@ -3,13 +3,15 @@ import { Mail, MapPin, MessageCircle, Phone, UsersRound } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
+import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Contact Us",
   description:
     "Contact Climate Assets Exchange for carbon credit projects, supplier engagement, and buyer inquiries.",
-};
+  path: "/contact/",
+});
 
 export default function ContactPage() {
   return (

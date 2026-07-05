@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { PortfolioStack } from "@/components/portfolio-stack";
 import { getEntries, getTaxonomy } from "@/lib/content";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Portfolio",
   description: "Explore Climate Assets Exchange portfolio projects and carbon credit opportunities.",
-};
+  path: "/portfolio/",
+});
 
 export default function PortfolioPage() {
   const projects = getEntries("portfolio");

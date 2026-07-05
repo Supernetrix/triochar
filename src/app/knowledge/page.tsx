@@ -5,11 +5,13 @@ import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { VlogEmbed } from "@/components/vlog-embed";
 import { formatDate, getEntries } from "@/lib/content";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Knowledge",
   description: "Policies, blogs, and vlogs on carbon markets and corporate decarbonisation.",
-};
+  path: "/knowledge/",
+});
 
 function SectionHeading({
   label,

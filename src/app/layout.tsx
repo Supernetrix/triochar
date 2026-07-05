@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { SiteChrome } from "@/components/site-chrome";
 import { getHomeContent } from "@/lib/home-content";
+import { createPageMetadata, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
 const geistSans = Geist({
@@ -26,12 +27,22 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
+  ...createPageMetadata(),
   title: {
     default: siteConfig.seoTitle,
     template: `%s | ${siteConfig.brandName}`,
   },
-  description: siteConfig.seoDescription,
-  metadataBase: new URL("https://climate-assets.com"),
+  applicationName: siteConfig.brandName,
+  authors: [{ name: siteConfig.brandName, url: siteConfig.siteUrl }],
+  creator: siteConfig.brandName,
+  publisher: siteConfig.brandName,
+  category: "carbon markets",
+  metadataBase: new URL(siteConfig.siteUrl),
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: "/brand/climate-assets-favicon.png",
     apple: "/brand/climate-assets-apple-touch-icon.png",
@@ -43,6 +54,14 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([organizationJsonLd(), websiteJsonLd()]),
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
       >

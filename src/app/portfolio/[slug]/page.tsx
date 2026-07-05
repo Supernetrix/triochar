@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, BadgeCheck, Leaf, MapPin, ShieldCheck } from "lucide-react";
 import { getEntries, getEntryBySlug } from "@/lib/content";
+import { createPageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -19,10 +20,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {};
   }
 
-  return {
+  return createPageMetadata({
     title: project.seoTitle || project.title,
     description: project.seoDescription || project.summary,
-  };
+    path: `/portfolio/${project.slug}/`,
+    image: project.image || undefined,
+  });
 }
 
 export default async function PortfolioDetailPage({ params }: { params: Promise<{ slug: string }> }) {

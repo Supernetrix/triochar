@@ -3,11 +3,13 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Buyer",
   description: "Buyer pathway for trusted carbon credit acquisition through Climate Assets Exchange.",
-};
+  path: "/buyer/",
+});
 
 const steps = [
   {

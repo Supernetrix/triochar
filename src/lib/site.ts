@@ -6,6 +6,8 @@
  */
 
 export const siteConfig = {
+  siteUrl: "https://climate-assets.com",
+  siteDomain: "climate-assets.com",
   brandName: "Climate Assets Exchange",
   logoText: "Climate Assets Exchange",
   tagline: "Bankable and Trustworthy Carbon Credits",
@@ -20,7 +22,21 @@ export const siteConfig = {
 
   seoTitle: "Climate Assets Exchange | Bankable and Trustworthy Carbon Credits",
   seoDescription:
-    "Climate Assets Exchange guides you to complete your journey from decarbonization thought to becoming net zero.",
+    "Climate Assets Exchange helps buyers, suppliers, and partners discover trustworthy carbon credit projects and move from climate intent to procurement confidence.",
+  seoImage: "/images/hero-carbon-platform.png",
+  seoKeywords: [
+    "Climate Assets",
+    "Climate Assets Exchange",
+    "climate-assets.com",
+    "carbon credits",
+    "carbon credit projects",
+    "carbon credit brokerage",
+    "verified carbon credits",
+    "carbon markets",
+    "net zero",
+    "decarbonization",
+    "climate assets",
+  ],
 
   footerNote:
     "A lean and trustworthy partner for credible carbon credit discovery and corporate decarbonization.",
