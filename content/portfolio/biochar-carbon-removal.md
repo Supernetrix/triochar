@@ -1,0 +1,51 @@
+---
+title: Biochar Carbon Removal (BCR)
+slug: biochar-carbon-removal
+image: ''
+summary: >-
+  A supplier-led biochar pathway designed around durable carbon storage,
+  agricultural co-benefits, and buyer-ready project documentation.
+projectType: Biochar
+location: India
+carbonCreditType: Removal
+status: Readiness Review
+registryId: CSI ID GCSP1019
+date: '2026-05-22T07:53:00.000Z'
+featured: true
+draft: false
+gallery:
+  - /images/project-biochar.png
+  - /images/project-regenerative.png
+tags:
+  - Biochar
+  - Durable carbon
+  - Agriculture
+seoTitle: Biochar Soil Carbon Program
+seoDescription: >-
+  A Climate Assets Exchange portfolio project concept for durable biochar carbon
+  credits.
+filterTypes:
+  - Biochar
+  - Industrial Biochar
+  - Artisan Biochar
+filterLocations:
+  - Asia
+  - Africa
+  - South America
+filterStandards:
+  - Carbon Standards
+filterEligibility: []
+---
+## Project Overview
+
+This program represents the type of biochar project Climate Assets Exchange can package for carbon credit buyers. The core value is durable carbon storage supported by feedstock traceability, production controls, and practical soil-use pathways.
+
+## Bankability Signals
+
+- Clear project boundary and supplier ownership story.
+- Defined production and monitoring checkpoints.
+- Buyer-facing documentation that explains durability, use case, and delivery assumptions.
+
+## Trust Layer
+
+The platform should present the project as a diligence-ready opportunity rather than a loose marketing claim. Buyers need enough context to understand the project type, geography, credit pathway, and remaining validation steps.
