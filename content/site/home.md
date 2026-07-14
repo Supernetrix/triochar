@@ -67,8 +67,8 @@ projectType6Note: Process-led reductions and removals for harder-to-abate sector
 projectType6Image: /images/project-biochar.png
 projectType6Href: /portfolio
 whoEyebrow: Who we are
-whoHeadingStart: WHO WE
-whoHeadingEmphasis: ARE
+whoHeadingStart: WHO ARE
+whoHeadingEmphasis: WE
 whoIntro: >-
   CAX is a lean, trustworthy partner built around one outcome - getting your
   company to a credible net zero.
