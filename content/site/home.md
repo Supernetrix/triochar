@@ -12,7 +12,7 @@ heroTitleStart: Bankable and
 heroTitleEmphasis: Trustworthy
 heroTitleEnd: Carbon Credits
 heroCaption: >-
-  Climate Assets eXchange - CAX - guides you to complete your decarbonization
+  Climate Assets eXchange (CAX) guides you to complete your decarbonization
   journey to net zero.
 heroPrimaryCtaLabel: Let us Begin the Conversation
 heroPrimaryCtaHref: /contact
@@ -36,10 +36,10 @@ definition2Body: >-
   Credits sourced through transparent project relationships, clear baselines,
   measurable impact, and a preference for durable decarbonisation outcomes.
 projectSectionEyebrow: What we work on
-projectSectionHeading: Field-led carbon projects.
+projectSectionHeading: The Climate Assets
 projectSectionDescription: >-
-  Diverse project families - each presented with transparent relationships and
-  credible diligence.
+  A diverse selection of high-integrity carbon credits - fully verified,
+  securely traded.
 projectSectionCtaLabel: View Portfolio
 projectSectionCtaHref: /portfolio
 projectType1Title: Biochar & Other CDR Projects
