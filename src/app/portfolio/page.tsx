@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
-import { PortfolioStack } from "@/components/portfolio-stack";
+import { PortfolioTable } from "@/components/portfolio-table";
 import { getEntries, getTaxonomy } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 
@@ -22,9 +22,9 @@ export default function PortfolioPage() {
         description="Bankable carbon credit projects with clear ownership, geography, market standards, and credit logic."
       />
       <section className="py-14 md:py-20">
-        <div className="container-shell">
+        <div className="container-table">
           {projects.length ? (
-            <PortfolioStack projects={projects} taxonomy={taxonomy} />
+            <PortfolioTable projects={projects} taxonomy={taxonomy} />
           ) : (
             <div className="mx-auto max-w-3xl rounded-2xl border border-dashed border-[var(--mint-2)] bg-white/50 p-10 text-center text-sm font-medium text-[color:var(--ink)]/66">
               New portfolio projects will appear here once published.

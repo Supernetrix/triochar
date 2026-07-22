@@ -53,7 +53,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   const homeContent = await getHomeContent();
 
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <head>
         <script
           type="application/ld+json"

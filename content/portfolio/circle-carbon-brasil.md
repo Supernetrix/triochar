@@ -18,8 +18,10 @@ seoTitle: Mangrove Restoration Corridor
 seoDescription: >-
   A Climate Assets Exchange portfolio project concept for mangrove restoration
   and blue carbon.
-projectType: Nature Restoration
-location: Coastal Asia
+projectType: Industrial Biochar
+location: Brazil
+projectIcon: Biochar Production
+permanence: '1,000+ years'
 carbonCreditType: Avoidance and Removal
 status: Early Origination
 registryId: CSI
@@ -29,5 +31,7 @@ filterStandards:
   - Carbon Standards
 filterTypes:
   - Industrial Biochar
+filterEligibility:
+  - CCP
 ---
 Circle Carbon S.L. is an experienced project developer scaling premium Biochar Carbon Removal (BCR) projects across the Global South to deliver immediate, high-integrity climate impact. The initiative transforms agricultural and forestry residues into durable biochar, offering institutional investors verified carbon removal with a permanence exceeding 1,000 years. Validated by leading MRV standards like Carbon Standards International (CSI), these high-value assets securely bridge the gap between corporate net-zero pledges and immediate physical delivery. Beyond carbon removal, the projects unlock critical regional co-benefits, including waste management, soil regeneration, and enhanced local food security.

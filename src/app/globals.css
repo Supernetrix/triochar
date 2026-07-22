@@ -101,6 +101,11 @@
   margin: 0 auto;
 }
 
+.container-table {
+  width: min(1280px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
 .section-pad {
   padding: 92px 0;
 }
@@ -230,7 +235,8 @@
   }
 
   .container-shell,
-  .container-narrow {
+  .container-narrow,
+  .container-table {
     width: min(100% - 38px, 1180px);
   }
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ChangeEvent, FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import {
   AlertCircle,
@@ -21,6 +22,7 @@ import {
 } from "lucide-react";
 import { normalizeCmsImagePath } from "@/lib/cms-media";
 import { CMS_COLLECTIONS, type CmsCollection, type CmsCollectionName, type CmsField } from "@/lib/cms-schema";
+import { getProjectIcon } from "@/lib/project-icons";
 
 type CmsEntry = Record<string, unknown> & {
   collection: CmsCollectionName;
@@ -55,7 +57,7 @@ const collectionCopy: Record<
   },
   portfolio: {
     description: "Projects shown on the portfolio page.",
-    guide: "Add project basics, location, credit type, and one strong image.",
+    guide: "Add the compact table values, filters, detail-page copy, and one strong image.",
   },
   policies: {
     description: "Policy explainers and market notes.",
@@ -325,13 +327,15 @@ function splitFields(collection: CmsCollection) {
   }
 
   const basic = new Set(["title", "slug", "summary"]);
+  const table = new Set(["projectIcon", "projectType", "location", "permanence"]);
   const content = new Set(["videoUrl", "body"]);
   const media = new Set(["image"]);
   const filters = new Set(["filterLocations", "filterEligibility", "filterStandards", "filterTypes"]);
-  const grouped = new Set([...basic, ...content, ...media, ...filters]);
+  const grouped = new Set([...basic, ...table, ...content, ...media, ...filters]);
 
   const visibleFields = collection.fields.filter((field) => !field.hidden);
   const basicFields = visibleFields.filter((field) => basic.has(field.name));
+  const tableFields = visibleFields.filter((field) => table.has(field.name));
   const contentFields = visibleFields.filter((field) => content.has(field.name));
   const mediaFields = visibleFields.filter((field) => media.has(field.name));
   const filterFields = visibleFields.filter((field) => filters.has(field.name));
@@ -342,6 +346,11 @@ function splitFields(collection: CmsCollection) {
       title: "Start Here",
       description: "The title, URL slug, and short summary are what users see first.",
       fields: basicFields,
+    },
+    {
+      title: "Portfolio Table",
+      description: "Choose the row icon and enter the compact values shown on the public portfolio listing.",
+      fields: tableFields,
     },
     {
       title: "Filters",
@@ -1212,21 +1221,32 @@ function FieldControl({
   }
 
   if (field.type === "select") {
+    const selectedIcon = field.name === "projectIcon" ? getProjectIcon(fieldValue(entry, field.name)) : undefined;
+
     return (
       <label className="grid gap-2">
         {label}
-        <select
-          value={fieldValue(entry, field.name)}
-          onChange={(event) => onChange(field, event)}
-          className={`${inputClass} h-12`}
-        >
-          <option value="">Select...</option>
-          {field.options?.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
+        <div className={selectedIcon ? "grid grid-cols-[72px_minmax(0,1fr)] items-center gap-3" : undefined}>
+          {selectedIcon ? (
+            <span className="grid h-[72px] w-[72px] place-items-center overflow-hidden rounded-2xl border border-[#2c5f3a]/10 bg-[#f7fbf5] p-1">
+              <Image src={selectedIcon.src} alt="" width={64} height={64} className="h-full w-full rounded-xl object-cover" />
+            </span>
+          ) : null}
+          <select
+            required={field.required}
+            value={fieldValue(entry, field.name)}
+            onChange={(event) => onChange(field, event)}
+            className={`${inputClass} h-12`}
+          >
+            <option value="">Select...</option>
+            {field.options?.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+        {field.hint ? <span className="text-xs text-[#1c2620]/52">{field.hint}</span> : null}
       </label>
     );
   }

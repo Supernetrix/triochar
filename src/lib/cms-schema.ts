@@ -1,3 +1,5 @@
+import { PROJECT_ICON_OPTIONS } from "@/lib/project-icons";
+
 export type CmsCollectionName = "site" | "taxonomy" | "portfolio" | "policies" | "blogs" | "vlogs";
 
 export type CmsField = {
@@ -166,6 +168,35 @@ export const CMS_COLLECTIONS: CmsCollection[] = [
       { label: "Slug", name: "slug", type: "text", required: true, hint: "URL part, e.g. biochar-soil-carbon" },
       { label: "Image", name: "image", type: "image" },
       { label: "Basic Info / Short Description", name: "summary", type: "textarea", required: true },
+      {
+        label: "Project Icon",
+        name: "projectIcon",
+        type: "select",
+        options: [...PROJECT_ICON_OPTIONS],
+        required: true,
+        hint: "Choose the icon shown in the portfolio table.",
+      },
+      {
+        label: "Type of Project",
+        name: "projectType",
+        type: "text",
+        required: true,
+        hint: "Compact table label, e.g. Industrial Biochar or Agroforestry.",
+      },
+      {
+        label: "Project Location",
+        name: "location",
+        type: "text",
+        required: true,
+        hint: "Specific country or region shown in the table, e.g. Denmark or South Asia.",
+      },
+      {
+        label: "Permanence / Durability",
+        name: "permanence",
+        type: "text",
+        required: true,
+        hint: "Short value shown in the table, e.g. 1,000+ years or Durable storage.",
+      },
       {
         label: "Location (Continents)",
         name: "filterLocations",

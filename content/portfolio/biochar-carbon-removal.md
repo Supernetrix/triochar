@@ -7,6 +7,8 @@ summary: >-
   agricultural co-benefits, and buyer-ready project documentation.
 projectType: Biochar
 location: India
+projectIcon: Biochar Production
+permanence: Durable storage
 carbonCreditType: Removal
 status: Readiness Review
 registryId: CSI ID GCSP1019

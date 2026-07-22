@@ -18,8 +18,10 @@ seoTitle: Regenerative Farming Network
 seoDescription: >-
   A Climate Assets Exchange portfolio project concept for regenerative
   agriculture and soil carbon.
-projectType: Regenerative Land
+projectType: Regenerative Agriculture
 location: South Asia
+projectIcon: Sustainable Agriculture
+permanence: Long-term soil storage
 carbonCreditType: Reduction and Removal
 status: Supplier Screening
 registryId: VERRA ID 4450

@@ -13,6 +13,8 @@ draft: false
 image: /uploads/1780239169369-novocarbo-site.jpeg
 projectType: Industrial Biochar Carbon Removal
 location: Denmark
+projectIcon: Biochar Production
+permanence: Centuries
 carbonCreditType: Spot - Ex Post
 status: Active
 registryId: Puro ID 23456DC4
