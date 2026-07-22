@@ -10,23 +10,23 @@ if (!sourcePath) {
 
 const outputDirectory = path.join(process.cwd(), "public", "project-icons");
 const icons = [
-  { name: "biochar-production", left: 174, top: 13 },
-  { name: "afforestation", left: 626, top: 13 },
-  { name: "agroforestry", left: 1047, top: 13 },
-  { name: "clean-cookstove", left: 174, top: 334 },
-  { name: "renewable-energy", left: 626, top: 334 },
-  { name: "bioenergy-carbon-capture-and-storage", left: 1047, top: 334 },
-  { name: "direct-air-carbon-capture-and-storage", left: 185, top: 688, size: 260 },
-  { name: "enhanced-rock-weathering", left: 637, top: 688, size: 260 },
-  { name: "sustainable-agriculture", left: 1058, top: 688, size: 260 },
+  { name: "biochar-production", left: 186, top: 16 },
+  { name: "afforestation", left: 607, top: 16 },
+  { name: "agroforestry", left: 1023, top: 16 },
+  { name: "clean-cookstove", left: 186, top: 333 },
+  { name: "renewable-energy", left: 607, top: 333 },
+  { name: "bioenergy-carbon-capture-and-storage", left: 1023, top: 333 },
+  { name: "direct-air-carbon-capture-and-storage", left: 186, top: 653 },
+  { name: "enhanced-rock-weathering", left: 607, top: 653 },
+  { name: "sustainable-agriculture", left: 1023, top: 653 },
 ];
 
 await fs.mkdir(outputDirectory, { recursive: true });
 
 await Promise.all(
-  icons.map(({ name, left, top, size = 282 }) =>
+  icons.map(({ name, left, top }) =>
     sharp(sourcePath)
-      .extract({ left, top, width: size, height: size })
+      .extract({ left, top, width: 282, height: 282 })
       .resize(240, 240)
       .webp({ quality: 90 })
       .toFile(path.join(outputDirectory, `${name}.webp`)),
