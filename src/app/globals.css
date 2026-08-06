@@ -96,6 +96,11 @@
   margin: 0 auto;
 }
 
+.container-header {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
 .container-narrow {
   width: min(760px, calc(100% - 40px));
   margin: 0 auto;
@@ -235,6 +240,7 @@
   }
 
   .container-shell,
+  .container-header,
   .container-narrow,
   .container-table {
     width: min(100% - 38px, 1180px);

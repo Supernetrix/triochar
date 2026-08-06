@@ -35,7 +35,7 @@ export function Header({ brandName, navItems }: { brandName: string; logoText: s
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[#fcfefb]/95 backdrop-blur-md">
-      <div className="container-shell relative flex h-20 items-center gap-4">
+      <div className="container-header relative flex h-20 items-center gap-4">
         <div className="flex shrink-0 items-center">
           <Link
             href="/"
@@ -45,12 +45,12 @@ export function Header({ brandName, navItems }: { brandName: string; logoText: s
             <Image
               src="/brand/climate-assets-logo.png"
               alt={brandName}
-              width={192}
-              height={48}
+              width={208}
+              height={52}
               priority
               unoptimized
               style={{ width: "auto" }}
-              className="h-10 sm:h-11"
+              className="h-10 sm:h-11 xl:h-[3.25rem]"
             />
           </Link>
         </div>
