@@ -28,6 +28,8 @@ export type ContentEntry = {
   registryId?: string;
   projectIcon?: string;
   permanence?: string;
+  numberOfCredits?: string;
+  pricePerCredit?: string;
   category?: string;
   author?: string;
   region?: string;
@@ -141,6 +143,8 @@ function normalizeEntry(collection: CollectionName, filePath: string): ContentEn
     registryId: asString(data.registryId),
     projectIcon: asString(data.projectIcon),
     permanence: asString(data.permanence),
+    numberOfCredits: asString(data.numberOfCredits),
+    pricePerCredit: asString(data.pricePerCredit),
     category: asString(data.category),
     author: asString(data.author),
     region: asString(data.region),

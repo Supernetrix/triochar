@@ -13,13 +13,6 @@ export type DefinitionContent = {
   body: string;
 };
 
-export type ProjectTypeContent = {
-  label: string;
-  note: string;
-  image: string;
-  href: string;
-};
-
 export type ValueContent = {
   title: string;
   text: string;
@@ -69,51 +62,6 @@ export const defaultHomeContent = {
       body: "Credits sourced through transparent project relationships, clear baselines, measurable impact, and a preference for durable decarbonisation outcomes.",
     },
   ] satisfies DefinitionContent[],
-  projectSection: {
-    eyebrow: "What we work on",
-    heading: "Field-led carbon projects.",
-    description: "Diverse project families — each presented with transparent relationships and credible diligence.",
-    ctaLabel: "View Portfolio",
-    ctaHref: "/portfolio",
-    items: [
-      {
-        label: "Biochar & Other CDR Projects",
-        note: "Durable carbon removal pathways with measurable co-benefits.",
-        image: "/images/project-biochar.png",
-        href: "/portfolio",
-      },
-      {
-        label: "ARR & Agroforestry",
-        note: "Restoration and tree-based systems with clear project boundaries.",
-        image: "/images/project-mangrove.png",
-        href: "/portfolio",
-      },
-      {
-        label: "Soil Organic Carbon",
-        note: "Soil health and land-use change across distributed farmer networks.",
-        image: "/images/project-regenerative.png",
-        href: "/portfolio",
-      },
-      {
-        label: "Renewable Energy",
-        note: "Clean power projects with practical market-readiness signals.",
-        image: "/images/project-mangrove.png",
-        href: "/portfolio",
-      },
-      {
-        label: "Community Climate Projects",
-        note: "Locally grounded climate action shaped around trust and benefit sharing.",
-        image: "/images/project-regenerative.png",
-        href: "/portfolio",
-      },
-      {
-        label: "Industrial Decarbonisation",
-        note: "Process-led reductions and removals for harder-to-abate sectors.",
-        image: "/images/project-biochar.png",
-        href: "/portfolio",
-      },
-    ] satisfies ProjectTypeContent[],
-  },
   who: {
     eyebrow: "Who are we",
     headingStart: "WHO ARE",
@@ -134,17 +82,6 @@ export type HomeContent = typeof defaultHomeContent;
 
 function asString(value: unknown, fallback: string) {
   return typeof value === "string" && value.trim() ? value : fallback;
-}
-
-function projectItem(data: Record<string, unknown>, index: number): ProjectTypeContent {
-  const fallback = defaultHomeContent.projectSection.items[index - 1];
-
-  return {
-    label: asString(data[`projectType${index}Title`], fallback.label),
-    note: asString(data[`projectType${index}Note`], fallback.note),
-    image: asString(data[`projectType${index}Image`], fallback.image),
-    href: asString(data[`projectType${index}Href`], fallback.href),
-  };
 }
 
 function valueItem(data: Record<string, unknown>, index: number): ValueContent {
@@ -202,14 +139,6 @@ function fromData(data: Record<string, unknown>): HomeContent {
         body: asString(data.definition2Body, defaultHomeContent.definitions[1].body),
       },
     ],
-    projectSection: {
-      eyebrow: asString(data.projectSectionEyebrow, defaultHomeContent.projectSection.eyebrow),
-      heading: asString(data.projectSectionHeading, defaultHomeContent.projectSection.heading),
-      description: asString(data.projectSectionDescription, defaultHomeContent.projectSection.description),
-      ctaLabel: asString(data.projectSectionCtaLabel, defaultHomeContent.projectSection.ctaLabel),
-      ctaHref: asString(data.projectSectionCtaHref, defaultHomeContent.projectSection.ctaHref),
-      items: [1, 2, 3, 4, 5, 6].map((index) => projectItem(data, index)),
-    },
     who: {
       eyebrow: asString(data.whoEyebrow, defaultHomeContent.who.eyebrow),
       headingStart: asString(data.whoHeadingStart, defaultHomeContent.who.headingStart),

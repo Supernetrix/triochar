@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { FloatingProjects } from "@/components/floating-projects";
 import { JourneySchematic } from "@/components/journey-schematic";
+import { PortfolioTable } from "@/components/portfolio-table";
 import { Reveal } from "@/components/reveal";
+import { getEntries, getTaxonomy } from "@/lib/content";
 import { getHomeContent } from "@/lib/home-content";
 
 export default async function Home() {
   const content = await getHomeContent();
+  const projects = getEntries("portfolio");
+  const taxonomy = getTaxonomy();
 
   return (
     <>
@@ -58,7 +61,23 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* 2. Definitions */}
+      {/* 2. Portfolio */}
+      <section aria-labelledby="homepage-portfolio-heading" className="section-pad border-t border-[var(--line)]">
+        <div className="container-table">
+          <h2 id="homepage-portfolio-heading" className="sr-only">
+            Project Portfolio
+          </h2>
+          {projects.length ? (
+            <PortfolioTable projects={projects} taxonomy={taxonomy} />
+          ) : (
+            <div className="mx-auto max-w-3xl rounded-2xl border border-dashed border-[var(--mint-2)] bg-white/50 p-10 text-center text-sm font-medium text-[color:var(--ink)]/66">
+              New portfolio projects will appear here once published.
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* 3. Definitions */}
       <section className="section-pad border-t border-[var(--line)]">
         <div className="container-shell">
           <Reveal>
@@ -89,35 +108,6 @@ export default async function Home() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* 3. Project showcase */}
-      <section className="section-pad border-t border-[var(--line)]">
-        <div className="container-shell">
-          <Reveal>
-            <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-              <div className="max-w-xl">
-                <div className="eyebrow">{content.projectSection.eyebrow}</div>
-                <h2 className="font-display mt-4 text-balance text-[2rem] leading-[1.1] text-[color:var(--ink)] sm:text-4xl md:text-5xl">
-                  {content.projectSection.heading}
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-[color:var(--ink)]/72">
-                  {content.projectSection.description}
-                </p>
-              </div>
-              <Link
-                href={content.projectSection.ctaHref}
-                className="inline-flex w-fit items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface-pure)] px-5 py-3 text-xs font-bold uppercase tracking-wider text-[color:var(--ink)] transition hover:border-[var(--mint-2)] hover:bg-[var(--mint-soft)]"
-              >
-                {content.projectSection.ctaLabel}
-                <ArrowRight size={14} />
-              </Link>
-            </div>
-          </Reveal>
-          <Reveal delay={0.06} className="mt-10 md:mt-12">
-            <FloatingProjects items={content.projectSection.items} />
-          </Reveal>
         </div>
       </section>
 

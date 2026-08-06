@@ -35,37 +35,6 @@ definition2Title: Trustworthy
 definition2Body: >-
   Credits sourced through transparent project relationships, clear baselines,
   measurable impact, and a preference for durable decarbonisation outcomes.
-projectSectionEyebrow: What we work on
-projectSectionHeading: The Climate Assets
-projectSectionDescription: >-
-  A diverse selection of high-integrity carbon credits - fully verified,
-  securely traded.
-projectSectionCtaLabel: View Portfolio
-projectSectionCtaHref: /portfolio
-projectType1Title: Biochar & Other CDR Projects
-projectType1Note: Durable carbon removal pathways with measurable co-benefits.
-projectType1Image: /images/project-biochar.png
-projectType1Href: /portfolio
-projectType2Title: ARR & Agroforestry
-projectType2Note: Restoration and tree-based systems with clear project boundaries.
-projectType2Image: /images/project-mangrove.png
-projectType2Href: /portfolio
-projectType3Title: Soil Organic Carbon
-projectType3Note: Soil health and land-use change across distributed farmer networks.
-projectType3Image: /images/project-regenerative.png
-projectType3Href: /portfolio
-projectType4Title: Renewable Energy
-projectType4Note: Clean power projects with practical market-readiness signals.
-projectType4Image: /images/project-mangrove.png
-projectType4Href: /portfolio
-projectType5Title: Community Climate Projects
-projectType5Note: Locally grounded climate action shaped around trust and benefit sharing.
-projectType5Image: /images/project-regenerative.png
-projectType5Href: /portfolio
-projectType6Title: Industrial Decarbonisation
-projectType6Note: Process-led reductions and removals for harder-to-abate sectors.
-projectType6Image: /images/project-biochar.png
-projectType6Href: /portfolio
 whoEyebrow: Who we are
 whoHeadingStart: WHO ARE
 whoHeadingEmphasis: WE
@@ -85,4 +54,3 @@ value3Text: Procurement and origination paths shaped around your real climate go
 value4Title: Built for net zero
 value4Text: 'We are here, end to end, to help you reach your decarbonization goal.'
 ---
-

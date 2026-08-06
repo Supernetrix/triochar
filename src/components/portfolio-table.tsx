@@ -24,7 +24,8 @@ const columns = [
   { label: "Location", className: "min-w-[135px]" },
   { label: "Permanence / Durability", className: "min-w-[180px]" },
   { label: "Eligibility", className: "min-w-[145px]" },
-  { label: "Standard", className: "min-w-[145px]" },
+  { label: "Number of Credits", className: "min-w-[155px]" },
+  { label: "Price per Credit", className: "min-w-[150px]" },
 ];
 
 function displayList(values: string[]) {
@@ -201,7 +202,7 @@ export function PortfolioTable({ projects, taxonomy }: { projects: ContentEntry[
       {visibleProjects.length ? (
         <div className="overflow-hidden rounded-2xl border border-[var(--line)] bg-white shadow-[0_24px_54px_-42px_rgba(28,38,32,0.5)]">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[1120px] table-fixed border-collapse text-left">
+            <table className="w-full min-w-[1280px] table-fixed border-collapse text-left">
               <thead className="bg-[#dcebcf] text-[color:var(--forest-deep)]">
                 <tr>
                   {columns.map((column) => (
@@ -225,7 +226,8 @@ export function PortfolioTable({ projects, taxonomy }: { projects: ContentEntry[
                     project.location || displayList(project.filterLocations),
                     project.permanence || "—",
                     displayList(project.filterEligibility),
-                    displayList(project.filterStandards),
+                    project.numberOfCredits || "—",
+                    project.pricePerCredit || "—",
                   ];
 
                   return (

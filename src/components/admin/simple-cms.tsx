@@ -265,37 +265,6 @@ function splitFields(collection: CmsCollection) {
         "definition2Title",
         "definition2Body",
       ]),
-      section("Field-led Carbon Projects", "Edit the section copy and six smaller project-type cards.", [
-        "projectSectionEyebrow",
-        "projectSectionHeading",
-        "projectSectionDescription",
-        "projectSectionCtaLabel",
-        "projectSectionCtaHref",
-        "projectType1Title",
-        "projectType1Note",
-        "projectType1Image",
-        "projectType1Href",
-        "projectType2Title",
-        "projectType2Note",
-        "projectType2Image",
-        "projectType2Href",
-        "projectType3Title",
-        "projectType3Note",
-        "projectType3Image",
-        "projectType3Href",
-        "projectType4Title",
-        "projectType4Note",
-        "projectType4Image",
-        "projectType4Href",
-        "projectType5Title",
-        "projectType5Note",
-        "projectType5Image",
-        "projectType5Href",
-        "projectType6Title",
-        "projectType6Note",
-        "projectType6Image",
-        "projectType6Href",
-      ]),
       section("Who We Are", "Edit the closing value section on the homepage.", [
         "whoEyebrow",
         "whoHeadingStart",
@@ -327,7 +296,14 @@ function splitFields(collection: CmsCollection) {
   }
 
   const basic = new Set(["title", "slug", "summary"]);
-  const table = new Set(["projectIcon", "projectType", "location", "permanence"]);
+  const table = new Set([
+    "projectIcon",
+    "projectType",
+    "location",
+    "permanence",
+    "numberOfCredits",
+    "pricePerCredit",
+  ]);
   const content = new Set(["videoUrl", "body"]);
   const media = new Set(["image"]);
   const filters = new Set(["filterLocations", "filterEligibility", "filterStandards", "filterTypes"]);
