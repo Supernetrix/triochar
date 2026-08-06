@@ -9,8 +9,8 @@ image: /images/project-regenerative.png
 tags:
   - Field note
   - Video
-draft: true
-featured: true
+draft: false
+featured: false
 seoTitle: 'Field Note: Reading a Project Site'
 seoDescription: A Climate Assets video placeholder for project site review.
 category: Field Note
