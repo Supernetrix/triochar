@@ -9,8 +9,8 @@ image: /images/hero-carbon-platform.png
 tags:
   - Net zero
   - Strategy
-draft: true
-featured: true
+draft: false
+featured: false
 seoTitle: From Thought to Net Zero
 seoDescription: A Climate Assets blog post about the net-zero buyer journey.
 category: Strategy
