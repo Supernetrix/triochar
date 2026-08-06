@@ -15,12 +15,21 @@ seoTitle: 'Field Note: Reading a Project Site'
 seoDescription: A Climate Assets video placeholder for project site review.
 category: Field Note
 author: Climate Assets Team
-videoUrl: 'https://www.youtube.com/'
+videoUrl: 'https://youtu.be/nDYkebrWVcI'
 ---
-## Video Summary
+Want to improve your soil, increase your crop yields, and earn income through carbon credits?
+Welcome to artisan biochar production, powered by Carbon Standards International! This initiative empowers farmers in eligible regions to produce artisan biochar, decarbonize the atmosphere, enhance soil fertility, and build a sustainable income stream.
 
-This video slot can be used for founder explainers, field visits, project walk-throughs, or educational content about carbon credit quality.
+In this video, Kubi (Founder of Triochar) walks you through everything you need to know about joining the Artisan Pro program:
 
-## Suggested Content
+Links and Resources:
+Check if your country qualifies:
+https://datatopics.worldbank.org/world-development-indicators/the-world-by-income-and-region.html
 
-Use short videos to explain what buyers are seeing: project type, geography, community role, and the credit pathway.
+Global Standards Guide by CSI:
+https://www.carbon-standards.com/docs/transfer/4000000.pdf
+
+Registered Carbon Sink Projects:
+https://global-c-registry.org
+
+Watch the full video: https://youtu.be/nDYkebrWVcI
