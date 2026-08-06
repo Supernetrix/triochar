@@ -7,14 +7,13 @@ summary: >-
 date: '2026-05-16'
 image: /uploads/1786035790320-decarbonize-your-farm.png
 tags:
-  - Field note
-  - Video
+  - Youtube Video
 draft: false
-featured: false
+featured: true
 seoTitle: 'Field Note: Reading a Project Site'
 seoDescription: A Climate Assets video placeholder for project site review.
-category: Field Note
-author: Climate Assets Team
+category: Biochar Carbon Removal
+author: Kubi
 videoUrl: 'https://youtu.be/nDYkebrWVcI'
 ---
 Want to improve your soil, increase your crop yields, and earn income through carbon credits?
