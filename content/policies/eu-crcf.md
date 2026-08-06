@@ -13,9 +13,9 @@ tags:
 draft: false
 featured: true
 seoTitle: Carbon Market Policy Primer
-seoDescription: A Climate Assets Exchange policy primer for carbon market buyers and suppliers.
+seoDescription: A Climate Assets policy primer for carbon market buyers and suppliers.
 category: Policy
-author: Climate Assets Exchange Team
+author: Climate Assets Team
 region: Europe
 effectiveDate: '2026-05-15'
 pdfLink: '#'

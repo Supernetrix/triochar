@@ -12,9 +12,9 @@ tags:
 draft: true
 featured: true
 seoTitle: From Thought to Net Zero
-seoDescription: A Climate Assets Exchange blog post about the net-zero buyer journey.
+seoDescription: A Climate Assets blog post about the net-zero buyer journey.
 category: Strategy
-author: Climate Assets Exchange Team
+author: Climate Assets Team
 ---
 ## The Journey Needs Structure
 

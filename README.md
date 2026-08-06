@@ -1,6 +1,6 @@
-# Climate Assets Exchange
+# Climate Assets
 
-Premium static website for Climate Assets Exchange, a carbon credits platform focused on bankable and trustworthy projects.
+Premium static website for Climate Assets, a carbon credits platform focused on bankable and trustworthy projects.
 
 ## Stack
 
@@ -47,7 +47,7 @@ CMS_ADMIN_PASSWORD=choose-a-client-password
 GITHUB_TOKEN=github_fine_grained_token_with_contents_read_write
 GITHUB_REPO=Supernetrix/triochar
 GITHUB_BRANCH=main
-GITHUB_COMMITTER_NAME=Climate Assets Exchange CMS
+GITHUB_COMMITTER_NAME=Climate Assets CMS
 GITHUB_COMMITTER_EMAIL=Partnerships@climate-assets.com
 ```
 

@@ -45,8 +45,8 @@ export function ContactForm({ fallbackEmail }: { fallbackEmail: string }) {
         body: JSON.stringify({
           ...payload,
           access_key: accessKey,
-          subject: "New inquiry from Climate Assets Exchange website",
-          from_name: "Climate Assets Exchange Website",
+          subject: "New inquiry from Climate Assets website",
+          from_name: "Climate Assets Website",
         }),
       });
 

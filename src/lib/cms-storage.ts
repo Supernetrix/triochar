@@ -18,7 +18,7 @@ function gitHubConfig() {
     token: process.env.GITHUB_TOKEN || process.env.GH_TOKEN || "",
     repo: process.env.GITHUB_REPO || "",
     branch: process.env.GITHUB_BRANCH || "main",
-    committerName: process.env.GITHUB_COMMITTER_NAME || "Climate Assets Exchange CMS",
+    committerName: process.env.GITHUB_COMMITTER_NAME || "Climate Assets CMS",
     committerEmail: process.env.GITHUB_COMMITTER_EMAIL || "Partnerships@climate-assets.com",
   };
 }

@@ -7,7 +7,7 @@ import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Supplier",
-  description: "Supplier pathway for carbon credit projects on Climate Assets Exchange.",
+  description: "Supplier pathway for carbon credit projects on Climate Assets.",
   path: "/supplier/",
 });
 
@@ -26,7 +26,7 @@ const steps = [
   },
   {
     title: "Buyer engagement",
-    text: "Climate Assets Exchange positions the project for serious buyer conversations and flexible commercial structures.",
+    text: "Climate Assets positions the project for serious buyer conversations and flexible commercial structures.",
   },
 ];
 

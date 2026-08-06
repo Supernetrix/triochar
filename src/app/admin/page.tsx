@@ -3,8 +3,8 @@ import { SimpleCms } from "@/components/admin/simple-cms";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Climate Assets Exchange CMS",
-  description: "Climate Assets Exchange content management dashboard.",
+  title: "Climate Assets CMS",
+  description: "Climate Assets content management dashboard.",
   path: "/admin/",
   noIndex: true,
 });

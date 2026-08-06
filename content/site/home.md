@@ -12,7 +12,7 @@ heroTitleStart: Bankable and
 heroTitleEmphasis: Trustworthy
 heroTitleEnd: Carbon Credits
 heroCaption: >-
-  Climate Assets eXchange (CAX) guides you to complete your decarbonization
+  Climate Assets guides you to complete your decarbonization
   journey to net zero.
 heroPrimaryCtaLabel: Let us Begin the Conversation
 heroPrimaryCtaHref: /contact
@@ -21,7 +21,7 @@ heroSecondaryCtaHref: /portfolio
 journeyEyebrow: The Decarbonisation Journey
 journeyHeadingStart: Where do you
 journeyHeadingEmphasis: stand?
-journeyDescription: The path from first thought to net zero - CAX meets you wherever you are.
+journeyDescription: The path from first thought to net zero - Climate Assets meets you wherever you are.
 definitionsEyebrow: What we mean
 definitionsHeading: Two words define every project we present.
 definition1Number: '01'
@@ -39,7 +39,7 @@ whoEyebrow: Who we are
 whoHeadingStart: WHO ARE
 whoHeadingEmphasis: WE
 whoIntro: >-
-  CAX is a lean, trustworthy partner built around one outcome - getting your
+  Climate Assets is a lean, trustworthy partner built around one outcome - getting your
   company to a credible net zero.
 whoCtaLabel: Start the Conversation
 whoCtaHref: /contact

@@ -12,9 +12,9 @@ tags:
 draft: true
 featured: true
 seoTitle: 'Field Note: Reading a Project Site'
-seoDescription: A Climate Assets Exchange video placeholder for project site review.
+seoDescription: A Climate Assets video placeholder for project site review.
 category: Field Note
-author: Climate Assets Exchange Team
+author: Climate Assets Team
 videoUrl: 'https://www.youtube.com/'
 ---
 ## Video Summary

@@ -6,7 +6,7 @@ import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Portfolio",
-  description: "Explore Climate Assets Exchange portfolio projects and carbon credit opportunities.",
+  description: "Explore Climate Assets portfolio projects and carbon credit opportunities.",
   path: "/portfolio/",
 });
 

@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = createPageMetadata({
   title: "Contact Us",
   description:
-    "Contact Climate Assets Exchange for carbon credit projects, supplier engagement, and buyer inquiries.",
+    "Contact Climate Assets for carbon credit projects, supplier engagement, and buyer inquiries.",
   path: "/contact/",
 });
 

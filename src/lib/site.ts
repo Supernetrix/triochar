@@ -8,8 +8,8 @@
 export const siteConfig = {
   siteUrl: "https://climate-assets.com",
   siteDomain: "climate-assets.com",
-  brandName: "Climate Assets Exchange",
-  logoText: "Climate Assets Exchange",
+  brandName: "Climate Assets",
+  logoText: "Climate Assets",
   tagline: "Bankable and Trustworthy Carbon Credits",
 
   contactEmail: "Partnerships@climate-assets.com",
@@ -20,13 +20,12 @@ export const siteConfig = {
   contactLocationHref:
     "https://www.google.com/maps/search/?api=1&query=Andrea+Souroukli+9%2C+6021+Larnaca%2C+Cyprus",
 
-  seoTitle: "Climate Assets Exchange | Bankable and Trustworthy Carbon Credits",
+  seoTitle: "Climate Assets | Bankable and Trustworthy Carbon Credits",
   seoDescription:
-    "Climate Assets Exchange helps buyers, suppliers, and partners discover trustworthy carbon credit projects and move from climate intent to procurement confidence.",
+    "Climate Assets helps buyers, suppliers, and partners discover trustworthy carbon credit projects and move from climate intent to procurement confidence.",
   seoImage: "/images/hero-carbon-platform.png",
   seoKeywords: [
     "Climate Assets",
-    "Climate Assets Exchange",
     "climate-assets.com",
     "carbon credits",
     "carbon credit projects",

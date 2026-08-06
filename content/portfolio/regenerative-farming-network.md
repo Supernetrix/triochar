@@ -16,7 +16,7 @@ draft: false
 featured: true
 seoTitle: Regenerative Farming Network
 seoDescription: >-
-  A Climate Assets Exchange portfolio project concept for regenerative
+  A Climate Assets portfolio project concept for regenerative
   agriculture and soil carbon.
 projectType: Regenerative Agriculture
 location: South Asia
@@ -32,7 +32,7 @@ The regenerative farming network brings multiple smallholder or regional land pa
 
 ## Supplier Fit
 
-This type of project needs careful data gathering, practical onboarding, and clear responsibility across partners. Climate Assets Exchange can frame those details for buyers without making the page feel technical or slow.
+This type of project needs careful data gathering, practical onboarding, and clear responsibility across partners. Climate Assets can frame those details for buyers without making the page feel technical or slow.
 
 ## Trust Layer
 

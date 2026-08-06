@@ -751,7 +751,7 @@ export function SimpleCms() {
               <Lock size={20} />
             </div>
             <p className="mt-6 text-xs font-bold uppercase tracking-[0.24em] text-[#9a7a44]">
-              Climate Assets Exchange CMS
+              Climate Assets CMS
             </p>
             <h1 className="mt-2 font-serif text-4xl font-bold text-[#1c2620]">Welcome back</h1>
             <p className="mt-3 text-sm leading-relaxed text-[#1c2620]/68">
@@ -796,7 +796,7 @@ export function SimpleCms() {
         <div className="mx-auto flex max-w-[1480px] flex-col gap-5 px-5 py-6 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#9a7a44]">
-              Climate Assets Exchange CMS
+              Climate Assets CMS
             </p>
             <h1 className="mt-1 font-serif text-4xl font-bold leading-none text-[#1c2620]">Content Dashboard</h1>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#1c2620]/62">

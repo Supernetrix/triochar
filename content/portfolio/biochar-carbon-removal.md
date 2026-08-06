@@ -24,7 +24,7 @@ tags:
   - Agriculture
 seoTitle: Biochar Soil Carbon Program
 seoDescription: >-
-  A Climate Assets Exchange portfolio project concept for durable biochar carbon
+  A Climate Assets portfolio project concept for durable biochar carbon
   credits.
 filterTypes:
   - Biochar
@@ -40,7 +40,7 @@ filterEligibility: []
 ---
 ## Project Overview
 
-This program represents the type of biochar project Climate Assets Exchange can package for carbon credit buyers. The core value is durable carbon storage supported by feedstock traceability, production controls, and practical soil-use pathways.
+This program represents the type of biochar project Climate Assets can package for carbon credit buyers. The core value is durable carbon storage supported by feedstock traceability, production controls, and practical soil-use pathways.
 
 ## Bankability Signals
 

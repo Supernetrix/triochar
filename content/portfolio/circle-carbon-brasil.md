@@ -16,7 +16,7 @@ draft: false
 featured: true
 seoTitle: Mangrove Restoration Corridor
 seoDescription: >-
-  A Climate Assets Exchange portfolio project concept for mangrove restoration
+  A Climate Assets portfolio project concept for mangrove restoration
   and blue carbon.
 projectType: Industrial Biochar
 location: Brazil

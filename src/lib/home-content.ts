@@ -34,7 +34,7 @@ export const defaultHomeContent = {
     titleStart: "Bankable and",
     titleEmphasis: "Trustworthy",
     titleEnd: "Carbon Credits",
-    caption: "Climate Assets Exchange guides you to complete your journey from decarbonization thought to becoming net zero.",
+    caption: "Climate Assets guides you to complete your journey from decarbonization thought to becoming net zero.",
     primaryCtaLabel: "Let us Begin the Conversation",
     primaryCtaHref: "/contact",
     secondaryCtaLabel: "View Portfolio",
@@ -44,7 +44,7 @@ export const defaultHomeContent = {
     eyebrow: "The Decarbonisation Journey",
     headingStart: "Where do you",
     headingEmphasis: "stand?",
-    description: "The path from first thought to net zero — Climate Assets Exchange meets you wherever you are.",
+    description: "The path from first thought to net zero — Climate Assets meets you wherever you are.",
   },
   definitionsIntro: {
     eyebrow: "What we mean",
@@ -66,7 +66,7 @@ export const defaultHomeContent = {
     eyebrow: "Who are we",
     headingStart: "WHO ARE",
     headingEmphasis: "WE",
-    intro: "Climate Assets Exchange is a lean, trustworthy partner built around one outcome — getting your company to a credible net zero.",
+    intro: "Climate Assets is a lean, trustworthy partner built around one outcome — getting your company to a credible net zero.",
     ctaLabel: "Start the Conversation",
     ctaHref: "/contact",
     values: [

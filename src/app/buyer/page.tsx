@@ -7,7 +7,7 @@ import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Buyer",
-  description: "Buyer pathway for trusted carbon credit acquisition through Climate Assets Exchange.",
+  description: "Buyer pathway for trusted carbon credit acquisition through Climate Assets.",
   path: "/buyer/",
 });
 
@@ -88,7 +88,7 @@ export default function BuyerPage() {
                 The right carbon credit conversation starts before the purchase.
               </h2>
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[color:var(--ink)]/65">
-                Climate Assets Exchange helps buyers understand project fit, trust signals, and
+                Climate Assets helps buyers understand project fit, trust signals, and
                 strategic options before moving to transaction steps.
               </p>
               <Link
