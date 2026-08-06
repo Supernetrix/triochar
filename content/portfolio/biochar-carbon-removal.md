@@ -13,7 +13,7 @@ carbonCreditType: Removal
 status: Readiness Review
 registryId: CSI ID GCSP1019
 date: '2026-05-22T07:53:00.000Z'
-featured: true
+featured: false
 draft: false
 gallery:
   - /images/project-biochar.png
@@ -23,9 +23,7 @@ tags:
   - Durable carbon
   - Agriculture
 seoTitle: Biochar Soil Carbon Program
-seoDescription: >-
-  A Climate Assets portfolio project concept for durable biochar carbon
-  credits.
+seoDescription: A Climate Assets portfolio project concept for durable biochar carbon credits.
 filterTypes:
   - Biochar
   - Industrial Biochar
