@@ -5,7 +5,7 @@ summary: >-
   A video placeholder for explaining how project visuals, local context, and
   documentation can work together.
 date: '2026-05-16'
-image: /images/project-regenerative.png
+image: /uploads/1786035790320-decarbonize-your-farm.png
 tags:
   - Field note
   - Video
