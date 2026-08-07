@@ -1,6 +1,6 @@
 ---
 slug: wastex-indonesia
-title: WasteX Indonesia
+title: WasteX
 summary: >-
   WasteX partners with Indonesian agricultural producers to convert organic
   waste like corn cobs and sawdust into biochar using pyrolysis. Certified as
