@@ -33,7 +33,7 @@ filterTypes:
   - Industrial Biochar
 filterEligibility:
   - CCP
-numberOfCredits: '40,000 per year for 5 years'
+numberOfCredits: '40,000'
 pricePerCredit: ' 210 USD'
 ---
 Circle Carbon S.L. is an experienced project developer scaling premium Biochar Carbon Removal (BCR) projects across the Global South to deliver immediate, high-integrity climate impact. The initiative transforms agricultural and forestry residues into durable biochar, offering institutional investors verified carbon removal with a permanence exceeding 1,000 years. Validated by leading MRV standards like Carbon Standards International (CSI), these high-value assets securely bridge the gap between corporate net-zero pledges and immediate physical delivery. Beyond carbon removal, the projects unlock critical regional co-benefits, including waste management, soil regeneration, and enhanced local food security.
