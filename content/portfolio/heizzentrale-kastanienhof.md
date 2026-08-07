@@ -24,7 +24,7 @@ filterLocations: []
 filterEligibility: []
 filterStandards: []
 filterTypes: []
-status: Readiness Review
+status: Spot
 registryId: GCSP1312
 ---
 To secure the workspace for people with disabilities we switched the heating for our greenhouses from fossil fuels to regionally sourced wood chips. Part of the new heating plant is a pyrolysis unit to produce high quality biochar. With further processing of the biochar we also created new workspaces for people with disabilities. The project will increase carbon sequestration by working the produced biochar into different matrices to create a long-term carbon storage with a persistence of up to 1000 years as according to the Global Biochar C-Sink Standard. Without the project, no C-sink would be created since wood chips does not constitute a long-term carbon reservoir.
