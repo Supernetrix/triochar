@@ -22,10 +22,10 @@ const columns = [
   { label: "Type of project", className: "min-w-[160px]" },
   { label: "Project name", className: "min-w-[220px]" },
   { label: "Location", className: "min-w-[135px]" },
-  { label: "Permanence / Durability", className: "min-w-[180px]" },
+  { label: "Permanence", className: "min-w-[180px]" },
   { label: "Eligibility", className: "min-w-[145px]" },
-  { label: "Number of Credits", className: "min-w-[155px]" },
-  { label: "Price per Credit", className: "min-w-[150px]" },
+  { label: "Number of Credits", className: "min-w-[155px] text-right" },
+  { label: "Price per Credit", className: "min-w-[150px] text-right" },
 ];
 
 function displayList(values: string[]) {
@@ -252,9 +252,10 @@ export function PortfolioTable({ projects, taxonomy }: { projects: ContentEntry[
                         </div>
                       </td>
                       {values.map((value, index) => {
+                        const isNumericValue = index >= values.length - 2;
                         const cellClass = `flex min-h-[82px] items-center px-4 py-3 text-[13px] leading-[1.45] text-[color:var(--ink)] ${
                           index === 1 ? "justify-between gap-3 font-extrabold" : "font-semibold text-[color:var(--ink)]/75"
-                        }`;
+                        } ${isNumericValue ? "justify-end text-right tabular-nums" : ""}`;
 
                         return (
                           <td
