@@ -16,7 +16,7 @@ location: Denmark
 projectIcon: Biochar Production
 permanence: 1000+
 carbonCreditType: Spot - Ex Post
-status: Active
+status: Spot
 registryId: Puro ID 23456DC4
 filterLocations:
   - Europe
