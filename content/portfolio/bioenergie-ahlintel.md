@@ -29,7 +29,7 @@ filterStandards:
   - Carbon Standards
 filterTypes:
   - Industrial Biochar
-status: Buyer Ready
+status: Spot
 registryId: GCSP1093
 ---
 The Bioenergie Ahlintel GmbH & Co. KG plant generates electricity, heat, and biochar from solid biomass, i.e., wood chips sourced exclusively from roadside vegetation. The project will increase carbon sequestration by working the produced biochar into different matrices to create a long-term carbon storage with a persistence of up to 1000 years as according to the Global Biochar C-Sink Standard. Without the project, no C-sink would be created since wood chips does not constitute a long-term carbon reservoir.
