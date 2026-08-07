@@ -19,7 +19,7 @@ projectType: Industrial Biochar
 location: Indonesia
 permanence: 1000+
 numberOfCredits: '1200'
-pricePerCredit: 220 usd - negotiable
+pricePerCredit: $ 220 - negotiable
 filterLocations:
   - Asia
 filterEligibility: []
