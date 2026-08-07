@@ -19,11 +19,15 @@ projectType: Industrial Biochar
 location: Germany
 permanence: 1000-
 numberOfCredits: '243'
-pricePerCredit: ''
-filterLocations: []
-filterEligibility: []
-filterStandards: []
-filterTypes: []
+pricePerCredit: 230 EUR
+filterLocations:
+  - Europe
+filterEligibility:
+  - CRCF
+filterStandards:
+  - Carbon Standards
+filterTypes:
+  - Industrial Biochar
 status: Spot
 registryId: GCSP1312
 ---
