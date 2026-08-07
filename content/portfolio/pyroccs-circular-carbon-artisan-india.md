@@ -22,7 +22,8 @@ numberOfCredits: '20,000'
 pricePerCredit: 140 USD
 filterLocations:
   - Asia
-filterEligibility: []
+filterEligibility:
+  - Article 6
 filterStandards:
   - Carbon Standards
 filterTypes:
