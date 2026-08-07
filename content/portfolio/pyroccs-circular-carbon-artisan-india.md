@@ -19,7 +19,7 @@ projectType: Artisan Biochar
 location: India
 permanence: 1000+
 numberOfCredits: '20,000'
-pricePerCredit: 140 USD
+pricePerCredit: 9 USD
 filterLocations:
   - Asia
 filterEligibility:
