@@ -23,7 +23,7 @@ location: Brazil
 projectIcon: Biochar Production
 permanence: '1,000+'
 carbonCreditType: Avoidance and Removal
-status: Early Origination
+status: Forward
 registryId: CSI
 filterLocations:
   - South America
