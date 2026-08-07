@@ -7,19 +7,19 @@ import { Check, ChevronDown, ChevronRight, SlidersHorizontal, X } from "lucide-r
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ContentEntry, Taxonomy } from "@/lib/content";
 import { getProjectIcon } from "@/lib/project-icons";
+import { isProjectStatus, PROJECT_STATUS_OPTIONS } from "@/lib/project-status";
 
-type FilterField = "filterLocations" | "filterEligibility" | "filterStandards" | "filterTypes";
-
-const filterGroups: Array<{ key: string; label: string; taxonomyKey: keyof Taxonomy; field: FilterField }> = [
-  { key: "location", label: "Location", taxonomyKey: "locationOptions", field: "filterLocations" },
-  { key: "eligibility", label: "Eligibility", taxonomyKey: "eligibilityOptions", field: "filterEligibility" },
-  { key: "standard", label: "Standard", taxonomyKey: "standardOptions", field: "filterStandards" },
-  { key: "type", label: "Type", taxonomyKey: "typeOptions", field: "filterTypes" },
-];
+type FilterGroup = {
+  key: string;
+  label: string;
+  options: string[];
+  projectValues: (project: ContentEntry) => string[];
+};
 
 const columns = [
   { label: "Icon", className: "w-[86px]" },
-  { label: "Type of project", className: "min-w-[160px]" },
+  { label: "Status", className: "min-w-[115px]" },
+  { label: "Pathway", className: "min-w-[160px]" },
   { label: "Project name", className: "min-w-[220px]" },
   { label: "Location", className: "min-w-[135px]" },
   { label: "Permanence", className: "min-w-[180px]" },
@@ -38,10 +38,42 @@ export function PortfolioTable({ projects, taxonomy }: { projects: ContentEntry[
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const filterBarRef = useRef<HTMLDivElement>(null);
 
-  const activeGroups = useMemo(
-    () => filterGroups.filter((group) => taxonomy[group.taxonomyKey].length > 0),
+  const filterGroups = useMemo<FilterGroup[]>(
+    () => [
+      {
+        key: "status",
+        label: "Status",
+        options: [...PROJECT_STATUS_OPTIONS],
+        projectValues: (project) => (isProjectStatus(project.status) ? [project.status] : []),
+      },
+      {
+        key: "location",
+        label: "Location",
+        options: taxonomy.locationOptions,
+        projectValues: (project) => project.filterLocations,
+      },
+      {
+        key: "eligibility",
+        label: "Eligibility",
+        options: taxonomy.eligibilityOptions,
+        projectValues: (project) => project.filterEligibility,
+      },
+      {
+        key: "standard",
+        label: "Standard",
+        options: taxonomy.standardOptions,
+        projectValues: (project) => project.filterStandards,
+      },
+      {
+        key: "pathway",
+        label: "Pathway",
+        options: taxonomy.typeOptions,
+        projectValues: (project) => project.filterTypes,
+      },
+    ],
     [taxonomy],
   );
+  const activeGroups = useMemo(() => filterGroups.filter((group) => group.options.length > 0), [filterGroups]);
   const hasSelection = useMemo(
     () => Object.values(selected).some((values) => values.length > 0),
     [selected],
@@ -92,10 +124,12 @@ export function PortfolioTable({ projects, taxonomy }: { projects: ContentEntry[
     return projects.filter((project) =>
       filterGroups.every((group) => {
         const chosen = selected[group.key] || [];
-        return chosen.length === 0 || chosen.some((value) => project[group.field].includes(value));
+        const projectValues = group.projectValues(project);
+
+        return chosen.length === 0 || chosen.some((value) => projectValues.includes(value));
       }),
     );
-  }, [hasSelection, projects, selected]);
+  }, [filterGroups, hasSelection, projects, selected]);
 
   return (
     <div className="mx-auto flex flex-col gap-5">
@@ -145,7 +179,7 @@ export function PortfolioTable({ projects, taxonomy }: { projects: ContentEntry[
                   {isOpen ? (
                     <div className="absolute right-0 top-[calc(100%+0.5rem)] z-30 w-60 overflow-hidden rounded-2xl border border-[var(--line)] bg-white shadow-[0_24px_60px_-28px_rgba(28,38,32,0.5)] sm:left-0 sm:right-auto">
                       <div className="max-h-72 overflow-auto p-1.5">
-                        {taxonomy[group.taxonomyKey].map((option) => {
+                        {group.options.map((option) => {
                           const isActive = chosen.includes(option);
 
                           return (
@@ -202,7 +236,7 @@ export function PortfolioTable({ projects, taxonomy }: { projects: ContentEntry[
       {visibleProjects.length ? (
         <div className="overflow-hidden rounded-2xl border border-[var(--line)] bg-white shadow-[0_24px_54px_-42px_rgba(28,38,32,0.5)]">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[1280px] table-fixed border-collapse text-left">
+            <table className="w-full min-w-[1400px] table-fixed border-collapse text-left">
               <thead className="bg-[#dcebcf] text-[color:var(--forest-deep)]">
                 <tr>
                   {columns.map((column) => (
@@ -221,6 +255,7 @@ export function PortfolioTable({ projects, taxonomy }: { projects: ContentEntry[
                   const icon = getProjectIcon(project.projectIcon);
                   const href = `/portfolio/${project.slug}`;
                   const values = [
+                    isProjectStatus(project.status) ? project.status : "—",
                     project.projectType || displayList(project.filterTypes),
                     project.title,
                     project.location || displayList(project.filterLocations),
@@ -252,18 +287,19 @@ export function PortfolioTable({ projects, taxonomy }: { projects: ContentEntry[
                         </div>
                       </td>
                       {values.map((value, index) => {
+                        const isProjectName = index === 2;
                         const isNumericValue = index >= values.length - 2;
                         const cellClass = `flex min-h-[82px] items-center px-4 py-3 text-[13px] leading-[1.45] text-[color:var(--ink)] ${
-                          index === 1 ? "justify-between gap-3 font-extrabold" : "font-semibold text-[color:var(--ink)]/75"
+                          isProjectName ? "justify-between gap-3 font-extrabold" : "font-semibold text-[color:var(--ink)]/75"
                         } ${isNumericValue ? "justify-end text-right tabular-nums" : ""}`;
 
                         return (
                           <td
                             key={`${project.slug}:${columns[index + 1].label}`}
-                            onClick={index === 1 ? undefined : () => router.push(href)}
-                            className={`border-r border-[var(--line-soft)] p-0 last:border-r-0 ${index === 1 ? "" : "cursor-pointer"}`}
+                            onClick={isProjectName ? undefined : () => router.push(href)}
+                            className={`border-r border-[var(--line-soft)] p-0 last:border-r-0 ${isProjectName ? "" : "cursor-pointer"}`}
                           >
-                            {index === 1 ? (
+                            {isProjectName ? (
                               <Link
                                 href={href}
                                 className={`${cellClass} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--gold)]`}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, BadgeCheck, Leaf, MapPin, ShieldCheck } from "lucide-react";
 import { getEntries, getEntryBySlug } from "@/lib/content";
+import { isProjectStatus } from "@/lib/project-status";
 import { createPageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
@@ -40,8 +41,8 @@ export default async function PortfolioDetailPage({ params }: { params: Promise<
     { label: "Location", value: project.filterLocations.join(", "), icon: MapPin },
     { label: "Eligibility", value: project.filterEligibility.join(", "), icon: ShieldCheck },
     { label: "Standard", value: project.filterStandards.join(", "), icon: BadgeCheck },
-    { label: "Type", value: project.filterTypes.join(", "), icon: Leaf },
-    { label: "Status", value: project.status, icon: BadgeCheck },
+    { label: "Pathway", value: project.filterTypes.join(", "), icon: Leaf },
+    { label: "Status", value: isProjectStatus(project.status) ? project.status : "", icon: BadgeCheck },
   ].filter((item) => item.value);
   const projectImage = project.image;
   const projectTags = Array.from(

@@ -1,4 +1,5 @@
 import { PROJECT_ICON_OPTIONS } from "@/lib/project-icons";
+import { PROJECT_STATUS_OPTIONS } from "@/lib/project-status";
 
 export type CmsCollectionName = "site" | "taxonomy" | "portfolio" | "policies" | "blogs" | "vlogs";
 
@@ -121,10 +122,10 @@ export const CMS_COLLECTIONS: CmsCollection[] = [
         hint: "e.g. Isometric, Puro, CSI, Rainbow, Verra, Gold Standard.",
       },
       {
-        label: "Type options",
+        label: "Pathway",
         name: "typeOptions",
         type: "tags",
-        hint: "e.g. Biochar, DACCS, BECCS, ARR, NBS, Renewable Energy, Cookstove.",
+        hint: "Pathways shown in the portfolio filter, e.g. Biochar, DACCS, BECCS, ARR, NBS, Renewable Energy, Cookstove.",
       },
     ],
   },
@@ -148,11 +149,11 @@ export const CMS_COLLECTIONS: CmsCollection[] = [
         hint: "Choose the icon shown in the portfolio table.",
       },
       {
-        label: "Type of Project",
+        label: "Pathway",
         name: "projectType",
         type: "text",
         required: true,
-        hint: "Compact table label, e.g. Industrial Biochar or Agroforestry.",
+        hint: "Compact pathway label, e.g. Industrial Biochar or Agroforestry.",
       },
       {
         label: "Project Location",
@@ -202,7 +203,7 @@ export const CMS_COLLECTIONS: CmsCollection[] = [
         hint: "Pick all that apply. Edit the list in Filters & Tags, then Refresh.",
       },
       {
-        label: "Type",
+        label: "Pathway",
         name: "filterTypes",
         type: "multiselect",
         optionsFrom: "typeOptions",
@@ -212,7 +213,7 @@ export const CMS_COLLECTIONS: CmsCollection[] = [
         label: "Status",
         name: "status",
         type: "select",
-        options: ["Early Origination", "Supplier Screening", "Readiness Review", "Buyer Ready", "Active"],
+        options: [...PROJECT_STATUS_OPTIONS],
       },
       {
         label: "Registry ID",
