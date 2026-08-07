@@ -24,7 +24,7 @@ filterStandards:
   - Puro
 filterTypes:
   - Industrial Biochar
-pricePerCredit: 220 USD
+pricePerCredit: 195 EUR
 numberOfCredits: ' 3,600'
 ---
 This Biochar Carbon Removal (BCR) project in Denmark utilizes advanced pyrolysis technology to transform sustainable, biogenic residues into highly stable biochar. By locking away atmospheric CO₂ for centuries, the facility prevents the carbon from releasing back into the atmosphere through natural decomposition. The high-integrity environmental assets from this facility are officially registered under the Puro.earth registry, ensuring fully verified and traceable climate impact. A limited volume of 5,000 CORCs is currently available as spot credits for immediate procurement, providing corporate buyers with a reliable opportunity to secure permanent, high-quality carbon removal to meet their immediate net-zero commitments.
