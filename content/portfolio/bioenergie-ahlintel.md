@@ -17,7 +17,7 @@ image: ''
 projectIcon: Biochar Production
 projectType: Industrial Biochar
 location: Germany
-permanence: '1000'
+permanence: 1000-
 numberOfCredits: '453'
 pricePerCredit: 230 EUR
 filterLocations:
