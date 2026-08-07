@@ -18,7 +18,7 @@ projectIcon: Biochar Production
 projectType: Industrial Biochar
 location: Indonesia
 permanence: 1000+
-numberOfCredits: '1200'
+numberOfCredits: ' 1,200'
 pricePerCredit: 220 USD
 filterLocations:
   - Asia
