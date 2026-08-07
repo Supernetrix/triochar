@@ -17,15 +17,15 @@ type FilterGroup = {
 };
 
 const columns = [
-  { label: "Icon", className: "w-[86px]" },
-  { label: "Status", className: "min-w-[115px]" },
-  { label: "Pathway", className: "min-w-[160px]" },
-  { label: "Project name", className: "min-w-[220px]" },
-  { label: "Location", className: "min-w-[135px]" },
-  { label: "Permanence", className: "min-w-[180px]" },
-  { label: "Eligibility", className: "min-w-[145px]" },
-  { label: "Number of Credits", className: "min-w-[155px] text-right" },
-  { label: "Price per Credit", className: "min-w-[150px] text-right" },
+  { label: "Icon", className: "w-[68px]" },
+  { label: "Status", className: "w-[76px]" },
+  { label: "Pathway", className: "w-[120px]" },
+  { label: "Project name", className: "w-[160px]" },
+  { label: "Location", className: "w-[95px]" },
+  { label: "Permanence", className: "w-[100px]" },
+  { label: "Eligibility", className: "w-[115px]" },
+  { label: "Number of Credits", className: "w-[142px] text-right" },
+  { label: "Price per Credit", className: "w-[144px] text-right" },
 ];
 
 function displayList(values: string[]) {
@@ -236,14 +236,14 @@ export function PortfolioTable({ projects, taxonomy }: { projects: ContentEntry[
       {visibleProjects.length ? (
         <div className="overflow-hidden rounded-2xl border border-[var(--line)] bg-white shadow-[0_24px_54px_-42px_rgba(28,38,32,0.5)]">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[1400px] table-fixed border-collapse text-left">
+            <table className="w-full min-w-[1040px] table-fixed border-collapse text-left">
               <thead className="bg-[#dcebcf] text-[color:var(--forest-deep)]">
                 <tr>
                   {columns.map((column) => (
                     <th
                       key={column.label}
                       scope="col"
-                      className={`${column.className} border-b border-r border-[color:var(--forest)]/10 px-4 py-3.5 text-[11px] font-extrabold uppercase leading-snug tracking-[0.08em] last:border-r-0`}
+                      className={`${column.className} border-b border-r border-[color:var(--forest)]/10 px-3 py-3.5 text-[11px] font-extrabold uppercase leading-snug tracking-[0.08em] last:border-r-0`}
                     >
                       {column.label}
                     </th>
@@ -274,13 +274,13 @@ export function PortfolioTable({ projects, taxonomy }: { projects: ContentEntry[
                         onClick={() => router.push(href)}
                         className="cursor-pointer border-r border-[var(--line-soft)] p-0"
                       >
-                        <div className="flex min-h-[82px] items-center justify-center border-l-[3px] border-l-transparent px-3 py-2 transition-colors group-hover:border-l-[var(--gold)]">
+                        <div className="flex min-h-[82px] items-center justify-center border-l-[3px] border-l-transparent px-2 py-2 transition-colors group-hover:border-l-[var(--gold)]">
                           {icon ? (
-                            <span className="relative h-14 w-14 overflow-hidden rounded-full border border-[color:var(--forest)]/10 bg-[var(--mint-soft)] shadow-[0_5px_14px_-10px_rgba(28,38,32,0.7)]">
-                              <Image src={icon.src} alt="" fill sizes="56px" className="object-cover" />
+                            <span className="relative h-12 w-12 overflow-hidden rounded-full border border-[color:var(--forest)]/10 bg-[var(--mint-soft)] shadow-[0_5px_14px_-10px_rgba(28,38,32,0.7)]">
+                              <Image src={icon.src} alt="" fill sizes="48px" className="object-cover" />
                             </span>
                           ) : (
-                            <span className="grid h-14 w-14 place-items-center rounded-full bg-[var(--mint-soft)] text-xs font-black text-[color:var(--forest)]">
+                            <span className="grid h-12 w-12 place-items-center rounded-full bg-[var(--mint-soft)] text-xs font-black text-[color:var(--forest)]">
                               CA
                             </span>
                           )}
@@ -289,7 +289,7 @@ export function PortfolioTable({ projects, taxonomy }: { projects: ContentEntry[
                       {values.map((value, index) => {
                         const isProjectName = index === 2;
                         const isNumericValue = index >= values.length - 2;
-                        const cellClass = `flex min-h-[82px] items-center px-4 py-3 text-[13px] leading-[1.45] text-[color:var(--ink)] ${
+                        const cellClass = `flex min-h-[82px] items-center px-3 py-3 text-[13px] leading-[1.45] text-[color:var(--ink)] ${
                           isProjectName ? "justify-between gap-3 font-extrabold" : "font-semibold text-[color:var(--ink)]/75"
                         } ${isNumericValue ? "justify-end text-right tabular-nums" : ""}`;
 

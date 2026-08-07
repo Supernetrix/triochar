@@ -1,47 +1,41 @@
-# Portfolio Table Alignment QA
+# Compact Portfolio Table Design QA
 
-- Source visual truth: `/var/folders/29/_6y39w6x0ljdk6mq32422sn40000gn/T/codex-clipboard-a1bab65a-5b16-4c6e-8455-0e09e9a72c00.png`
-- Implementation screenshot: Chrome DevTools viewport capture from `http://127.0.0.1:3100/portfolio/` attached to the verification record
-- Viewport: 1600 x 900 CSS pixels
-- Source pixels: 1600 x 900
-- Implementation pixels: 1600 x 900
-- Device scale factor: 1
-- State: desktop portfolio, default filters, four visible projects
+## Evidence
+
+- Source visual truth: `/var/folders/29/_6y39w6x0ljdk6mq32422sn40000gn/T/codex-clipboard-2d2d0c23-b189-4c59-851a-187a501a398c.png`
+- Implementation screenshot: `/tmp/triochar-compact-qa/portfolio-compact-viewport.png`
+- Combined source and implementation comparison: `/tmp/triochar-compact-qa/table-comparison.jpg`
+- Source pixels: 1228 x 1038; focused source crop: 1085 x 842
+- Implementation pixels: 1585 x 927
+- CSS viewport: 1600 x 936; device density: 1x
+- State: published portfolio with seven projects, all filters closed
 
 ## Full-view comparison
 
-The existing page structure, typography, palette, imagery, spacing, and table dimensions remain unchanged. The source is scrolled farther down the page than the implementation capture, so fidelity was judged on the matching table region rather than page-level vertical position.
+The source shows the table extending beyond its white frame, cutting off the Price per Credit column and requiring horizontal scrolling. The implementation keeps the same nine columns inside the frame and shows the complete price column.
 
-## Focused table comparison
+## Focused comparison
 
-- The header now reads `Permanence` without `/ Durability`.
-- `Number of Credits` and `Price per Credit` headers are right-aligned.
-- Credit and price values share the same right edge within every row.
-- Numeric values use tabular figures for steadier vertical comparison.
-
-## Required fidelity surfaces
-
-- Fonts and typography: existing families, sizes, weights, line heights, and tracking are preserved.
-- Spacing and layout rhythm: column widths, cell padding, row heights, borders, and table overflow behavior are preserved.
-- Colors and visual tokens: unchanged from the existing implementation.
-- Image quality and asset fidelity: project icons and brand assets are unchanged.
-- Copy and content: only the requested header copy changed; project data is unchanged.
-
-## Findings
-
-No actionable P0, P1, or P2 differences remain. The two numeric columns match the requested right-edge alignment, and the shortened permanence label is visibly cleaner.
+- Layout and spacing: column widths, horizontal padding, and icon size were reduced. At a 1280px desktop viewport the table scroller reports equal client and scroll widths, so there is no horizontal overflow.
+- Fonts and typography: the existing font families, sizes, weights, line heights, and header treatment are unchanged. Long project, pathway, and eligibility values wrap naturally.
+- Colors and tokens: no palette, border, background, or shadow tokens changed.
+- Image quality and assets: existing project icons remain sharp and use the same source assets; only their displayed diameter changed from 56px to 48px.
+- Copy and content: all labels and project values are unchanged.
+- Interaction: the Status filter still opens and exposes Spot, Forward, and Offtake.
+- Console: no errors were observed. A pre-existing development-only LCP warning for the header logo remains outside this change.
 
 ## Comparison history
 
-- Pass 1: no P0/P1/P2 issues found; no follow-up visual correction required.
+- Pass 1 finding [P2]: the previous 1400px minimum width clipped the final column and forced horizontal scrolling on desktop.
+- Fix: reduced the table minimum width to 1040px, tightened explicit column widths and cell padding, and reduced the icon diameter.
+- Pass 2 evidence: all nine columns are visible in `/tmp/triochar-compact-qa/portfolio-compact-viewport.png`; measured client width and scroll width are both 1238px at a 1280px viewport.
 
-## Implementation checklist
+## Findings
 
-- [x] Shorten the permanence header.
-- [x] Right-align both numeric headers.
-- [x] Right-align both numeric value columns.
-- [x] Confirm the rendered computed styles.
-- [x] Confirm the mobile table keeps its horizontal-scroll affordance.
-- [x] Check the browser console.
+- P0: none
+- P1: none
+- P2: none remaining
 
-final result: passed
+## Final result
+
+passed
