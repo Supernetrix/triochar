@@ -26,6 +26,7 @@ import { getProjectIcon } from "@/lib/project-icons";
 
 type CmsEntry = Record<string, unknown> & {
   collection: CmsCollectionName;
+  sourceFile: string;
   slug: string;
   title?: string;
   body?: string;
@@ -77,6 +78,7 @@ function emptyEntry(collection: CmsCollection): CmsEntry {
   const today = new Date().toISOString().slice(0, 10);
   const entry: CmsEntry = {
     collection: collection.name,
+    sourceFile: "",
     slug: "",
     title: "",
     summary: "",
@@ -398,10 +400,11 @@ export function SimpleCms() {
 
   const draftCount = entries.filter((entry) => Boolean(entry.draft)).length;
   const publishedCount = entries.length - draftCount;
-  const selectedIsNew = !activeCollection.singleton && !originalSlug;
+  const selectedIsNew = !activeCollection.singleton && !selectedEntry?.sourceFile;
   const selectedIsDraft = !activeCollection.singleton && Boolean(selectedEntry?.draft);
   const fieldSections = useMemo(() => splitFields(activeCollection), [activeCollection]);
-  const tagDraftKey = (entry: CmsEntry, fieldName: string) => `${entry.collection}:${originalSlug || entry.slug || "new"}:${fieldName}`;
+  const tagDraftKey = (entry: CmsEntry, fieldName: string) =>
+    `${entry.collection}:${entry.sourceFile || originalSlug || entry.slug || "new"}:${fieldName}`;
 
   useEffect(() => {
     const savedPassword = window.sessionStorage.getItem(passwordStorageKey);
@@ -554,10 +557,11 @@ export function SimpleCms() {
 
     const nextGroups = result.groups || [];
     const nextEntries = collectionEntries(nextGroups, activeCollectionName);
+    const selectedSourceFile = selectedEntry?.sourceFile;
     const preservedEntry =
-      selectedEntry?.slug && nextEntries.find((entry) => entry.slug === selectedEntry.slug)
-        ? nextEntries.find((entry) => entry.slug === selectedEntry.slug) || null
-        : null;
+      (selectedSourceFile ? nextEntries.find((entry) => entry.sourceFile === selectedSourceFile) : null) ||
+      (selectedEntry?.slug ? nextEntries.find((entry) => entry.slug === selectedEntry.slug) : null) ||
+      null;
     const firstEntry = preservedEntry || nextEntries[0] || null;
 
     setGroups(nextGroups);
@@ -687,6 +691,7 @@ export function SimpleCms() {
         body: JSON.stringify({
           collection: activeCollection.name,
           originalSlug,
+          originalSourceFile: selectedEntry.sourceFile,
           entry: selectedEntry,
         }),
       });
@@ -702,7 +707,10 @@ export function SimpleCms() {
   }
 
   async function deleteEntry() {
-    if (!selectedEntry?.slug || !window.confirm(`Delete "${selectedEntry.title || selectedEntry.slug}"?`)) {
+    if (
+      !selectedEntry?.sourceFile ||
+      !window.confirm(`Delete "${selectedEntry.title || selectedEntry.slug}"?`)
+    ) {
       return;
     }
 
@@ -710,9 +718,10 @@ export function SimpleCms() {
     setMessage("");
 
     try {
-      await api(`/api/cms/entry/?collection=${activeCollection.name}&slug=${encodeURIComponent(selectedEntry.slug)}`, {
-        method: "DELETE",
-      });
+      await api(
+        `/api/cms/entry/?collection=${activeCollection.name}&sourceFile=${encodeURIComponent(selectedEntry.sourceFile)}`,
+        { method: "DELETE" },
+      );
       setStatus("success");
       setMessage(mode === "github" ? "Deleted from GitHub. Vercel will redeploy from this commit." : "Deleted locally.");
       await loadEntries();
@@ -937,11 +946,11 @@ export function SimpleCms() {
           <div className="mt-4 grid max-h-[62vh] gap-2 overflow-auto pr-1">
             {filteredEntries.length ? (
               filteredEntries.map((entry) => {
-                const isSelected = selectedEntry?.slug === entry.slug && originalSlug;
+                const isSelected = selectedEntry?.sourceFile === entry.sourceFile && Boolean(entry.sourceFile);
 
                 return (
                   <button
-                    key={entry.slug}
+                    key={entry.sourceFile || entry.slug}
                     type="button"
                     onClick={() => {
                       setSelectedEntry(entry);

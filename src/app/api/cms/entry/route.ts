@@ -15,6 +15,7 @@ export async function POST(request: Request) {
   const body = (await request.json().catch(() => ({}))) as {
     collection?: string;
     originalSlug?: string;
+    originalSourceFile?: string;
     entry?: Partial<CmsEntry>;
   };
 
@@ -35,11 +36,13 @@ export async function POST(request: Request) {
     {
       ...rawEntry,
       collection: body.collection,
+      sourceFile: typeof rawEntry.sourceFile === "string" ? rawEntry.sourceFile : "",
       slug,
       title,
       body: typeof rawEntry.body === "string" ? rawEntry.body : "",
     },
     body.originalSlug,
+    body.originalSourceFile,
   );
 
   return NextResponse.json({ ok: true, entry });
@@ -55,11 +58,20 @@ export async function DELETE(request: Request) {
   const { searchParams } = new URL(request.url);
   const collection = searchParams.get("collection");
   const slug = searchParams.get("slug");
+  const sourceFile = searchParams.get("sourceFile") || (slug ? `${slugify(slug)}.md` : "");
 
-  if (!collection || !isCmsCollectionName(collection) || !slug) {
-    return NextResponse.json({ ok: false, message: "Collection and slug are required." }, { status: 400 });
+  if (!collection || !isCmsCollectionName(collection) || !sourceFile) {
+    return NextResponse.json({ ok: false, message: "Collection and source file are required." }, { status: 400 });
   }
 
-  await deleteCmsEntry(collection, slug);
+  const deleted = await deleteCmsEntry(collection, sourceFile);
+
+  if (!deleted) {
+    return NextResponse.json(
+      { ok: false, message: "This entry no longer exists. Refresh the CMS to load the latest content." },
+      { status: 404 },
+    );
+  }
+
   return NextResponse.json({ ok: true });
 }

@@ -6,6 +6,7 @@ import { CMS_COLLECTIONS, getCmsCollection, type CmsCollectionName } from "@/lib
 
 export type CmsEntry = Record<string, unknown> & {
   collection: CmsCollectionName;
+  sourceFile: string;
   slug: string;
   body: string;
 };
@@ -85,8 +86,22 @@ function entryPath(collection: CmsCollectionName, slug: string) {
   return `${collectionPath(collection)}/${slugify(slug)}.md`;
 }
 
+function entryPathFromSourceFile(collection: CmsCollectionName, sourceFile: string) {
+  const fileName = path.basename(sourceFile);
+
+  if (fileName !== sourceFile || path.extname(fileName).toLowerCase() !== ".md") {
+    throw new Error("Invalid CMS source file.");
+  }
+
+  return `${collectionPath(collection)}/${fileName}`;
+}
+
 function localEntryPath(collection: CmsCollectionName, slug: string) {
   return path.join(process.cwd(), entryPath(collection, slug));
+}
+
+function localEntryPathFromSourceFile(collection: CmsCollectionName, sourceFile: string) {
+  return path.join(process.cwd(), entryPathFromSourceFile(collection, sourceFile));
 }
 
 function parseMarkdown(collection: CmsCollectionName, filePath: string, markdown: string): CmsEntry {
@@ -95,8 +110,9 @@ function parseMarkdown(collection: CmsCollectionName, filePath: string, markdown
   const slug = typeof parsed.data.slug === "string" && parsed.data.slug ? parsed.data.slug : fileSlug;
 
   return {
-    collection,
     ...parsed.data,
+    collection,
+    sourceFile: path.basename(filePath),
     slug,
     body: parsed.content.trim(),
   };
@@ -108,6 +124,7 @@ function cleanEntryForMarkdown(entry: CmsEntry) {
   const cleaned: Record<string, unknown> = {};
   delete frontmatter.body;
   delete frontmatter.collection;
+  delete frontmatter.sourceFile;
 
   for (const [key, value] of Object.entries(frontmatter)) {
     if (value === undefined || value === null) {
@@ -156,29 +173,47 @@ async function localListEntries(collection: CmsCollectionName) {
   }
 }
 
-async function localSaveEntry(collection: CmsCollectionName, entry: CmsEntry, originalSlug?: string) {
+async function localSaveEntry(
+  collection: CmsCollectionName,
+  entry: CmsEntry,
+  originalSlug?: string,
+  originalSourceFile?: string,
+) {
   const meta = getCmsCollection(collection);
   const finalSlug = meta?.singleton ? "home" : slugify(entry.slug || String(entry.title || "untitled"));
   const finalEntry = normalizeEntryImageFields(collection, { ...entry, slug: finalSlug });
   const targetPath = localEntryPath(collection, finalSlug);
-  const originalPath = originalSlug ? localEntryPath(collection, originalSlug) : targetPath;
+  const originalPath = originalSourceFile
+    ? localEntryPathFromSourceFile(collection, originalSourceFile)
+    : originalSlug
+      ? localEntryPath(collection, originalSlug)
+      : targetPath;
 
   await fs.mkdir(path.dirname(targetPath), { recursive: true });
   await fs.writeFile(targetPath, cleanEntryForMarkdown(finalEntry), "utf8");
 
-  if (originalSlug && slugify(originalSlug) !== finalSlug) {
+  if (originalPath !== targetPath) {
     await fs.rm(originalPath, { force: true });
   }
 
   return parseMarkdown(collection, `${finalSlug}.md`, await fs.readFile(targetPath, "utf8"));
 }
 
-async function localDeleteEntry(collection: CmsCollectionName, slug: string) {
+async function localDeleteEntry(collection: CmsCollectionName, sourceFile: string) {
   if (getCmsCollection(collection)?.singleton) {
-    return;
+    return false;
   }
 
-  await fs.rm(localEntryPath(collection, slug), { force: true });
+  try {
+    await fs.unlink(localEntryPathFromSourceFile(collection, sourceFile));
+    return true;
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      return false;
+    }
+
+    throw error;
+  }
 }
 
 async function localSaveMedia(file: File) {
@@ -314,7 +349,7 @@ async function gitHubDeleteFile(filePath: string, message: string) {
   const currentFile = await gitHubRequest<GitHubFile>(`${filePath}?ref=${encodeURIComponent(config.branch)}`);
 
   if (!currentFile?.sha) {
-    return;
+    return false;
   }
 
   await gitHubRequest(filePath, {
@@ -329,22 +364,34 @@ async function gitHubDeleteFile(filePath: string, message: string) {
       },
     }),
   });
+
+  return true;
 }
 
-async function gitHubSaveEntry(collection: CmsCollectionName, entry: CmsEntry, originalSlug?: string) {
+async function gitHubSaveEntry(
+  collection: CmsCollectionName,
+  entry: CmsEntry,
+  originalSlug?: string,
+  originalSourceFile?: string,
+) {
   const meta = getCmsCollection(collection);
   const finalSlug = meta?.singleton ? "home" : slugify(entry.slug || String(entry.title || "untitled"));
   const finalEntry = normalizeEntryImageFields(collection, { ...entry, slug: finalSlug });
   const targetPath = entryPath(collection, finalSlug);
+  const originalPath = originalSourceFile
+    ? entryPathFromSourceFile(collection, originalSourceFile)
+    : originalSlug
+      ? entryPath(collection, originalSlug)
+      : targetPath;
   const message = `chore(cms): update ${collection}/${finalSlug}`;
 
   await gitHubPutFile(targetPath, cleanEntryForMarkdown(finalEntry), message);
 
-  if (!meta?.singleton && originalSlug && slugify(originalSlug) !== finalSlug) {
-    await gitHubDeleteFile(entryPath(collection, originalSlug), `chore(cms): remove ${collection}/${slugify(originalSlug)}`);
+  if (!meta?.singleton && originalPath !== targetPath) {
+    await gitHubDeleteFile(originalPath, `chore(cms): remove ${collection}/${path.basename(originalPath, ".md")}`);
   }
 
-  return finalEntry;
+  return { ...finalEntry, sourceFile: path.basename(targetPath) };
 }
 
 async function gitHubSaveMedia(file: File) {
@@ -375,20 +422,28 @@ export async function listCmsEntries(collection?: CmsCollectionName) {
   return entries;
 }
 
-export async function saveCmsEntry(collection: CmsCollectionName, entry: CmsEntry, originalSlug?: string) {
+export async function saveCmsEntry(
+  collection: CmsCollectionName,
+  entry: CmsEntry,
+  originalSlug?: string,
+  originalSourceFile?: string,
+) {
   return shouldUseGitHub()
-    ? gitHubSaveEntry(collection, entry, originalSlug)
-    : localSaveEntry(collection, entry, originalSlug);
+    ? gitHubSaveEntry(collection, entry, originalSlug, originalSourceFile)
+    : localSaveEntry(collection, entry, originalSlug, originalSourceFile);
 }
 
-export async function deleteCmsEntry(collection: CmsCollectionName, slug: string) {
+export async function deleteCmsEntry(collection: CmsCollectionName, sourceFile: string) {
   if (getCmsCollection(collection)?.singleton) {
-    return;
+    return false;
   }
 
   return shouldUseGitHub()
-    ? gitHubDeleteFile(entryPath(collection, slug), `chore(cms): delete ${collection}/${slugify(slug)}`)
-    : localDeleteEntry(collection, slug);
+    ? gitHubDeleteFile(
+        entryPathFromSourceFile(collection, sourceFile),
+        `chore(cms): delete ${collection}/${path.basename(sourceFile, ".md")}`,
+      )
+    : localDeleteEntry(collection, sourceFile);
 }
 
 export async function saveCmsMedia(file: File) {
