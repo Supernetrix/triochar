@@ -7,9 +7,12 @@ summary: >-
   to enhance soil, this Artisan Pro-certified project targets 35,800 tCO2eq
   sequestered over five years.
 date: '2026-08-07'
-tags: []
+tags:
+  - Biochar
+  - Agriculture
+  - India
 featured: false
-draft: true
+draft: false
 image: ''
 projectIcon: Biochar Production
 projectType: Artisan Biochar
