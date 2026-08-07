@@ -20,12 +20,12 @@ const columns = [
   { label: "Icon", className: "w-[68px]" },
   { label: "Status", className: "w-[76px]" },
   { label: "Pathway", className: "w-[120px]" },
-  { label: "Project name", className: "w-[160px]" },
+  { label: "Project name", className: "w-[190px]" },
   { label: "Location", className: "w-[95px]" },
   { label: "Permanence", className: "w-[100px]" },
   { label: "Eligibility", className: "w-[115px]" },
-  { label: "Number of Credits", className: "w-[142px] text-right" },
-  { label: "Price per Credit", className: "w-[144px] text-right" },
+  { label: "Number of Credits", className: "w-[130px] text-right" },
+  { label: "Price per Credit", className: "w-[126px] text-right" },
 ];
 
 function displayList(values: string[]) {

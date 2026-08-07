@@ -119,15 +119,13 @@ export function Footer({
                 <Mail size={15} className="text-[color:var(--gold-soft)]" />
                 {contactEmail}
               </a>
-              <a
+              <Link
                 href={siteConfig.contactPhoneHref}
                 className="flex items-center gap-3 text-white/74 transition hover:text-white"
-                target="_blank"
-                rel="noreferrer"
               >
                 <Phone size={15} className="text-[color:var(--gold-soft)]" />
                 {siteConfig.contactPhone}
-              </a>
+              </Link>
               <a
                 href={siteConfig.contactLocationHref}
                 className="flex items-center gap-3 text-white/74 transition hover:text-white"

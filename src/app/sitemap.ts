@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/buyer/", priority: 0.8 },
     { path: "/knowledge/", priority: 0.7 },
     { path: "/contact/", priority: 0.7 },
+    { path: "/book-a-call/", priority: 0.6 },
   ].map((route) => ({
     url: absoluteUrl(route.path),
     lastModified: now,

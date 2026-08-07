@@ -13,8 +13,9 @@ export const siteConfig = {
   tagline: "Bankable and Trustworthy Carbon Credits",
 
   contactEmail: "Partnerships@climate-assets.com",
-  contactPhone: "Book a calendar call",
-  contactPhoneHref:
+  contactPhone: "Book a Climate Assets call",
+  contactPhoneHref: "/book-a-call/",
+  bookingProviderUrl:
     "https://bookings.cloud.microsoft/bookwithme/user/d714a9d88abf48afa17ef862edec79f6%40triochar.io/meetingtype/H-w8DlZKnUucU5hwTMYCGw2?anonymous&ismsaljsauthenabled",
   contactLocation: "Andrea Souroukli 9, 6021 Larnaca, Cyprus",
   contactLocationHref:

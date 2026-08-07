@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Mail, MapPin, MessageCircle, Phone, UsersRound } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { PageHero } from "@/components/page-hero";
@@ -51,17 +52,15 @@ export default function ContactPage() {
                     {siteConfig.contactEmail}
                   </span>
                 </a>
-                <a
+                <Link
                   href={siteConfig.contactPhoneHref}
-                  target="_blank"
-                  rel="noreferrer"
                   className="flex items-center gap-3.5 rounded-xl border border-[var(--line)] bg-[var(--surface)]/50 p-4 transition-colors hover:border-[var(--mint-2)] hover:bg-white"
                 >
                   <Phone className="text-[color:var(--gold)]" size={18} />
                   <span className="text-sm font-semibold text-[color:var(--forest)]">
                     {siteConfig.contactPhone}
                   </span>
-                </a>
+                </Link>
                 <a
                   href={siteConfig.contactLocationHref}
                   target="_blank"
