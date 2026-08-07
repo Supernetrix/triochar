@@ -3,6 +3,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import { sortEligibilityValues } from "@/lib/eligibility";
 
 export type CollectionName = "portfolio" | "blogs" | "vlogs" | "policies";
 
@@ -151,7 +152,7 @@ function normalizeEntry(collection: CollectionName, filePath: string): ContentEn
     effectiveDate: asString(data.effectiveDate),
     videoUrl: asString(data.videoUrl),
     filterLocations: asStringArray(data.filterLocations),
-    filterEligibility: asStringArray(data.filterEligibility),
+    filterEligibility: sortEligibilityValues(asStringArray(data.filterEligibility)),
     filterStandards: asStringArray(data.filterStandards),
     filterTypes: asStringArray(data.filterTypes),
   };

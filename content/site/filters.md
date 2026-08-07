@@ -10,9 +10,9 @@ locationOptions:
   - Oceania
 eligibilityOptions:
   - CORSIA
-  - CCP
-  - Article 6
   - CRCF
+  - Article 6
+  - CCP
 standardOptions:
   - Isometric
   - Puro
@@ -35,4 +35,3 @@ typeOptions:
   - Renewable Energy
   - Cookstoves
 ---
-

@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { normalizeCmsImagePath } from "@/lib/cms-media";
 import { CMS_COLLECTIONS, type CmsCollection, type CmsCollectionName, type CmsField } from "@/lib/cms-schema";
+import { sortEligibilityValues } from "@/lib/eligibility";
 import { getProjectIcon } from "@/lib/project-icons";
 
 type CmsEntry = Record<string, unknown> & {
@@ -370,6 +371,7 @@ export function SimpleCms() {
   const [tagDrafts, setTagDrafts] = useState<Record<string, string>>({});
   const [imagePreviews, setImagePreviews] = useState<Record<string, string>>({});
   const imagePreviewUrls = useRef<string[]>([]);
+  const slugManuallyEdited = useRef(false);
 
   const activeCollection = useMemo(
     () => CMS_COLLECTIONS.find((collection) => collection.name === activeCollectionName) || CMS_COLLECTIONS[0],
@@ -459,6 +461,7 @@ export function SimpleCms() {
         setActiveCollectionName(initialCollection.name);
         setSelectedEntry(firstEntry || emptyEntry(initialCollection));
         setOriginalSlug(firstEntry?.slug || "");
+        slugManuallyEdited.current = false;
         setStatus("idle");
         setMessage("");
       } catch {
@@ -568,6 +571,7 @@ export function SimpleCms() {
     setMode(result.mode || "");
     setSelectedEntry(firstEntry || emptyEntry(activeCollection));
     setOriginalSlug(firstEntry?.slug || "");
+    slugManuallyEdited.current = false;
   }
 
   function selectCollection(collectionName: CmsCollectionName) {
@@ -577,6 +581,7 @@ export function SimpleCms() {
     setSearchQuery("");
     setSelectedEntry(nextEntry || emptyEntry(collection));
     setOriginalSlug(nextEntry?.slug || "");
+    slugManuallyEdited.current = false;
     setMessage("");
   }
 
@@ -587,11 +592,16 @@ export function SimpleCms() {
 
     setSelectedEntry(emptyEntry(activeCollection));
     setOriginalSlug("");
+    slugManuallyEdited.current = false;
     setMessage("");
   }
 
   function updateField(field: CmsField, value: unknown) {
     const normalizedValue = normalizeFieldValue(field, value);
+
+    if (field.name === "slug" && !originalSlug) {
+      slugManuallyEdited.current = true;
+    }
 
     setSelectedEntry((current) => {
       if (!current) {
@@ -603,7 +613,7 @@ export function SimpleCms() {
         [field.name]: normalizedValue,
       };
 
-      if (field.name === "title" && !originalSlug && !fieldValue(current, "slug")) {
+      if (field.name === "title" && !current.sourceFile && !originalSlug && !slugManuallyEdited.current) {
         next.slug = slugifyClient(asString(normalizedValue));
       }
 
@@ -700,6 +710,7 @@ export function SimpleCms() {
       await loadEntries();
       setSelectedEntry(result.entry);
       setOriginalSlug(result.entry.slug);
+      slugManuallyEdited.current = false;
     } catch (error) {
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "Unable to save entry.");
@@ -955,6 +966,7 @@ export function SimpleCms() {
                     onClick={() => {
                       setSelectedEntry(entry);
                       setOriginalSlug(entry.slug);
+                      slugManuallyEdited.current = false;
                       setMessage("");
                     }}
                     className={`rounded-2xl border p-4 text-left transition ${
@@ -1252,14 +1264,18 @@ function FieldControl({
                 <button
                   key={option}
                   type="button"
-                  onClick={() =>
+                  onClick={() => {
+                    const nextValues = isActive
+                      ? selectedValues.filter((value) => value !== option)
+                      : [...selectedValues, option];
+
                     onSet(
                       field,
-                      isActive
-                        ? selectedValues.filter((value) => value !== option)
-                        : [...selectedValues, option],
-                    )
-                  }
+                      field.name === "filterEligibility"
+                        ? sortEligibilityValues(nextValues)
+                        : nextValues,
+                    );
+                  }}
                   className={`rounded-full border px-3 py-2 text-xs font-bold uppercase tracking-wider transition ${
                     isActive
                       ? "border-[#1d2a22] bg-[#1d2a22] text-white"
