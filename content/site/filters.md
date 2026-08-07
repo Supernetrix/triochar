@@ -20,10 +20,15 @@ standardOptions:
   - Rainbow
   - Verra
   - Gold Standard
+  - American Carbon Registry
+  - Climate Action Reserve
+  - Australian CCUs
+  - Cercarbono
+  - International Carbon Registry
 typeOptions:
   - Industrial Biochar
   - Artisan Biochar
-  - DAC
+  - DACCS
   - BECCS
   - ARR
   - NBS
