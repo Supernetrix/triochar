@@ -13,7 +13,7 @@ tags:
   - Germany
 featured: false
 draft: false
-image: ''
+image: /uploads/1786182188985-cs-registry-dummy-photo.jpg
 projectIcon: Biochar Production
 projectType: Industrial Biochar
 location: Germany
