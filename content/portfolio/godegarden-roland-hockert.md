@@ -12,7 +12,7 @@ tags:
   - Europe
 featured: false
 draft: false
-image: ''
+image: /uploads/1786181150708-csi-teams-background-new-logo2.jpg
 projectIcon: Biochar Production
 projectType: Industrial Biochar
 location: Sweden
