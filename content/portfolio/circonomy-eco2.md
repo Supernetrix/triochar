@@ -13,7 +13,7 @@ tags:
   - India
 featured: false
 draft: false
-image: ''
+image: /uploads/1786182215927-cs-registry-dummy-photo.jpg
 projectIcon: Biochar Production
 projectType: Artisan Biochar
 location: Kenya
