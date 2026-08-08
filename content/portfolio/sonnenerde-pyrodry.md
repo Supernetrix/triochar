@@ -9,7 +9,7 @@ summary: >-
 date: '2026-08-08'
 tags: []
 featured: false
-draft: true
+draft: false
 image: /uploads/1786180969498-sonnenerde-photo-ca-portfolio.jpg
 projectIcon: Biochar Production
 projectType: Industrial Biochar
