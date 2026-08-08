@@ -8,8 +8,6 @@ summary: >-
   targeting 160,000 tons of CO2eq sequestered over five years.
 date: '2026-08-07'
 tags:
-  - Biochar
-  - Artisan
   - India
 featured: false
 draft: false
