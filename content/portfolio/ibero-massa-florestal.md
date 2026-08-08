@@ -12,7 +12,7 @@ tags:
   - Portugal
 featured: false
 draft: false
-image: ''
+image: /uploads/1786181230935-ibero-massa-florestal-ca-portfolio.png
 projectIcon: Biochar Production
 projectType: Industrial Biochar
 location: Portugal
