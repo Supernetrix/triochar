@@ -13,7 +13,7 @@ tags:
   - India
 featured: false
 draft: false
-image: ''
+image: /uploads/1786182417309-pyroccs-circular-ca-portfolio.jpg
 projectIcon: Biochar Production
 projectType: Artisan Biochar
 location: India
