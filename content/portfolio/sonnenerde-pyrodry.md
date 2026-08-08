@@ -10,7 +10,7 @@ date: '2026-08-08'
 tags: []
 featured: false
 draft: false
-image: /uploads/1786180969498-sonnenerde-photo-ca-portfolio.jpg
+image: /uploads/1786182149947-sonnenerde-photo-ca-portfolio.jpg
 projectIcon: Biochar Production
 projectType: Industrial Biochar
 location: Austria
