@@ -17,7 +17,7 @@ projectIcon: Biochar Production
 projectType: Industrial Biochar
 location: Sweden
 permanence: 1000+
-numberOfCredits: '381185'
+numberOfCredits: '381,185'
 pricePerCredit: 215 EUR
 filterLocations:
   - Europe
