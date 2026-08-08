@@ -13,7 +13,7 @@ tags:
   - South Korea
 featured: true
 draft: false
-image: ''
+image: /uploads/1786180695890-csi-teams-background-new-logo2.jpg
 projectIcon: Biochar Production
 projectType: Industrial Biochar
 location: South Korea
