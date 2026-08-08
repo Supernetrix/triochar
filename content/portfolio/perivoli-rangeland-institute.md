@@ -18,7 +18,7 @@ projectIcon: Biochar Production
 projectType: Artisan Biochar
 location: Namibia
 permanence: 1000+
-numberOfCredits: '9208'
+numberOfCredits: '9,208'
 pricePerCredit: 110 USD
 filterLocations:
   - Africa
