@@ -2,7 +2,7 @@
 title: Site & Homepage
 slug: home
 navMainLabel: Main
-navKnowledgeLabel: Knowledge
+navKnowledgeLabel: News
 navPortfolioLabel: Portfolio
 navSupplierLabel: Supplier
 navBuyerLabel: Buyer
@@ -12,8 +12,8 @@ heroTitleStart: Bankable and
 heroTitleEmphasis: Trustworthy
 heroTitleEnd: Carbon Credits
 heroCaption: >-
-  Climate Assets guides you to complete your decarbonization
-  journey to net zero.
+  Climate Assets guides you to complete your decarbonization journey to net
+  zero.
 heroPrimaryCtaLabel: Let us Begin the Conversation
 heroPrimaryCtaHref: /contact
 heroSecondaryCtaLabel: View Portfolio
@@ -21,7 +21,9 @@ heroSecondaryCtaHref: /portfolio
 journeyEyebrow: The Decarbonisation Journey
 journeyHeadingStart: Where do you
 journeyHeadingEmphasis: stand?
-journeyDescription: The path from first thought to net zero - Climate Assets meets you wherever you are.
+journeyDescription: >-
+  The path from first thought to net zero - Climate Assets meets you wherever
+  you are.
 definitionsEyebrow: What we mean
 definitionsHeading: Two words define every project we present.
 definition1Number: '01'
@@ -39,8 +41,8 @@ whoEyebrow: Who we are
 whoHeadingStart: WHO ARE
 whoHeadingEmphasis: WE
 whoIntro: >-
-  Climate Assets is a lean, trustworthy partner built around one outcome - getting your
-  company to a credible net zero.
+  Climate Assets is a lean, trustworthy partner built around one outcome -
+  getting your company to a credible net zero.
 whoCtaLabel: Start the Conversation
 whoCtaHref: /contact
 value1Title: A lean process
@@ -54,3 +56,4 @@ value3Text: Procurement and origination paths shaped around your real climate go
 value4Title: Built for net zero
 value4Text: 'We are here, end to end, to help you reach your decarbonization goal.'
 ---
+
