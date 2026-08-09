@@ -16,7 +16,7 @@ projectIcon: Agroforestry
 projectType: Agroforestry
 location: 'Portugal, Italy'
 permanence: '40'
-numberOfCredits: ''
+numberOfCredits: '59,000'
 pricePerCredit: 65 EUR
 filterLocations:
   - Europe
