@@ -15,8 +15,8 @@ image: /uploads/1786280014929-terra-madre-ca-portfolio.jpeg
 projectIcon: Agroforestry
 projectType: Agroforestry
 location: 'Portugal, Italy'
-permanence: '25'
-numberOfCredits: '59,000'
+permanence: '40'
+numberOfCredits: ''
 pricePerCredit: 65 EUR
 filterLocations:
   - Europe
@@ -27,7 +27,7 @@ filterStandards:
   - International Carbon Registry
 filterTypes:
   - Agroforestry
-status: Spot
+status: Offtake
 registryId: 'ID: 429'
 ---
 Terra Madre Agroforestry Europe is a high-integrity carbon removal project operating across 14 working farms covering approximately 2,900 hectares of Mediterranean orchards and silvopasture in Portugal and Italy. The project focuses on transitioning active agricultural land to regenerative management, generating verified carbon removal (CDR) credits by sequestering carbon in permanent tree biomass and deep soil organic carbon. Audited under ISO 14064-2 and aligned with the European Carbon Removal Certification Framework (CRCF), the project uses a dynamic baseline and conservative measurement deductions to ensure genuine additionality. Beyond carbon sequestration, Terra Madre measures annual ecosystem-service improvements across soil health, water cycle restoration, biodiversity, and local social impact, providing a multi-benefit approach to long-term land resilience.
