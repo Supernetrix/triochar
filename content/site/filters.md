@@ -28,6 +28,7 @@ standardOptions:
 typeOptions:
   - Industrial Biochar
   - Artisan Biochar
+  - Agroforestry
   - DACCS
   - BECCS
   - ARR
