@@ -14,7 +14,7 @@ tags:
   - India
 featured: false
 draft: false
-image: ''
+image: /uploads/1786359529499-project-navachar-cover-image.png
 projectIcon: Biochar Production
 projectType: Artisan Biochar
 location: India
