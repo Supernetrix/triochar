@@ -16,7 +16,7 @@ export const siteConfig = {
   contactPhone: "Book a Climate Assets call",
   contactPhoneHref: "/book-a-call/",
   bookingProviderUrl:
-    "https://bookings.cloud.microsoft/bookwithme/user/d714a9d88abf48afa17ef862edec79f6%40triochar.io/meetingtype/H-w8DlZKnUucU5hwTMYCGw2?anonymous&ismsaljsauthenabled",
+    "https://bookings.cloud.microsoft/bookwithme/user/2b5c420f0f3240579d0f47340a83475a%40climate-assets.com?anonymous&ismsaljsauthenabled",
   contactLocation: "Andrea Souroukli 9, 6021 Larnaca, Cyprus",
   contactLocationHref:
     "https://www.google.com/maps/search/?api=1&query=Andrea+Souroukli+9%2C+6021+Larnaca%2C+Cyprus",
